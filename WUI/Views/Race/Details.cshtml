@@ -1,0 +1,47 @@
+﻿@model WUI.Models.RaceModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section css {
+    @Styles.Render("~/Content/Race/css")
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RaceModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateStart)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateStart)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateEnd)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateEnd)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>

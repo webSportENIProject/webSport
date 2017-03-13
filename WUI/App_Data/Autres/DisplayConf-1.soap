@@ -1,0 +1,66 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<SOAP-ENV:Body>
+<SOAP-ENC:Array SOAP-ENC:arrayType="a1:DisplayConfiguration[2]" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/BO/BO%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<item href="#ref-3"/>
+<item href="#ref-4"/>
+</SOAP-ENC:Array>
+<a1:DisplayConfiguration id="ref-3" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/BO/BO%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_x003C_Id_x003E_k__BackingField>
+<_a>0</_a>
+<_b>0</_b>
+<_c>0</_c>
+<_d>0</_d>
+<_e>0</_e>
+<_f>0</_f>
+<_g>0</_g>
+<_h>0</_h>
+<_i>0</_i>
+<_j>0</_j>
+<_k>0</_k>
+</_x003C_Id_x003E_k__BackingField>
+<_x003C_PersonneId_x003E_k__BackingField>1</_x003C_PersonneId_x003E_k__BackingField>
+<_x003C_Person_x003E_k__BackingField href="#ref-5"/>
+<_x003C_DeviceName_x003E_k__BackingField id="ref-6">Android X5S</_x003C_DeviceName_x003E_k__BackingField>
+<_x003C_UnitDistance_x003E_k__BackingField>Kilometers</_x003C_UnitDistance_x003E_k__BackingField>
+<_x003C_SpeedMax_x003E_k__BackingField>false</_x003C_SpeedMax_x003E_k__BackingField>
+<_x003C_SpeedAvg_x003E_k__BackingField>true</_x003C_SpeedAvg_x003E_k__BackingField>
+</a1:DisplayConfiguration>
+<a1:DisplayConfiguration id="ref-4" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/BO/BO%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_x003C_Id_x003E_k__BackingField>
+<_a>0</_a>
+<_b>0</_b>
+<_c>0</_c>
+<_d>0</_d>
+<_e>0</_e>
+<_f>0</_f>
+<_g>0</_g>
+<_h>0</_h>
+<_i>0</_i>
+<_j>0</_j>
+<_k>0</_k>
+</_x003C_Id_x003E_k__BackingField>
+<_x003C_PersonneId_x003E_k__BackingField>1</_x003C_PersonneId_x003E_k__BackingField>
+<_x003C_Person_x003E_k__BackingField href="#ref-7"/>
+<_x003C_DeviceName_x003E_k__BackingField id="ref-8">iOS 7</_x003C_DeviceName_x003E_k__BackingField>
+<_x003C_UnitDistance_x003E_k__BackingField>Miles</_x003C_UnitDistance_x003E_k__BackingField>
+<_x003C_SpeedMax_x003E_k__BackingField>true</_x003C_SpeedMax_x003E_k__BackingField>
+<_x003C_SpeedAvg_x003E_k__BackingField>true</_x003C_SpeedAvg_x003E_k__BackingField>
+</a1:DisplayConfiguration>
+<a1:Competitor id="ref-5" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/BO/BO%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_x003C_Race_x003E_k__BackingField xsi:null="1"/>
+<Personne_x002B__x003C_Id_x003E_k__BackingField>1</Personne_x002B__x003C_Id_x003E_k__BackingField>
+<Personne_x002B__x003C_Nom_x003E_k__BackingField id="ref-9">Zidane</Personne_x002B__x003C_Nom_x003E_k__BackingField>
+<Personne_x002B__x003C_Prenom_x003E_k__BackingField id="ref-10">Zinedine</Personne_x002B__x003C_Prenom_x003E_k__BackingField>
+<Personne_x002B__x003C_Email_x003E_k__BackingField id="ref-11">zinedine.zidane@gmail.com</Personne_x002B__x003C_Email_x003E_k__BackingField>
+<Personne_x002B__x003C_Phone_x003E_k__BackingField id="ref-12">0102030405</Personne_x002B__x003C_Phone_x003E_k__BackingField>
+</a1:Competitor>
+<a1:Competitor id="ref-7" xmlns:a1="http://schemas.microsoft.com/clr/nsassem/BO/BO%2C%20Version%3D1.0.0.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3Dnull">
+<_x003C_Race_x003E_k__BackingField xsi:null="1"/>
+<Personne_x002B__x003C_Id_x003E_k__BackingField>1</Personne_x002B__x003C_Id_x003E_k__BackingField>
+<Personne_x002B__x003C_Nom_x003E_k__BackingField href="#ref-9"/>
+<Personne_x002B__x003C_Prenom_x003E_k__BackingField href="#ref-10"/>
+<Personne_x002B__x003C_Email_x003E_k__BackingField href="#ref-11"/>
+<Personne_x002B__x003C_Phone_x003E_k__BackingField href="#ref-12"/>
+</a1:Competitor>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

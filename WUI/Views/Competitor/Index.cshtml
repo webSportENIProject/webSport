@@ -1,0 +1,38 @@
+﻿@using WUI.Models
+@model List<CompetitorModel>
+
+@{
+    ViewBag.Title = "Gestion des compétitions";
+}
+
+<h2>Liste des compétitions</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>DateNaissance</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nom</td>
+            <td>@item.Prenom</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>@(item.DateNaissance != null
+                    ? ((DateTime)item.DateNaissance).ToShortDateString()
+                    : "NC")</td>
+            <td>@Html.RouteLink("Voir configuration",
+                                "Configuration",
+                                new { PersonneId = @item.Id })</td>
+            
+        </tr>
+    }
+</table>

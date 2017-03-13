@@ -1,0 +1,46 @@
+﻿@model WUI.Models.DisplayConfigurationModel
+
+@{
+    ViewBag.Title = "Suppression de configuration";
+}
+
+<h2>Delete</h2>
+
+<h3>Êtes-vous sur de vouloir supprimer cette configuration ?</h3>
+<fieldset>
+    <legend>DisplayConfigurationModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PersonneId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PersonneId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeviceName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeviceName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SpeedMax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SpeedMax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SpeedAvg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SpeedAvg)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Retour à la liste", "Index")
+    </p>
+}

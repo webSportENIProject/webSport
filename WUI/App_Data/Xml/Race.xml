@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<races xmlns="http://www.eni-ecole.fr/websport">
+  <race>
+    <id>1</id>
+    <title>Foulées de l'éléphant</title>
+    <description>Course nocturne de 10km sur l'Île de Nantes</description>
+    <datestart>27/04/2017 21:00:00</datestart>
+    <dateend>28/04/2017 00:00:00</dateend>
+    <ville>Nantes</ville>
+    <competitors>
+      <competitor>
+        <id>1</id>
+        <nom>Dupond</nom>
+        <prenom>Joel</prenom>
+        <email>dupond.joel@gmail.com</email>
+        <phone>0678790964</phone>
+        <datenaissance>12/11/1990 00:00:00</datenaissance>
+      </competitor>
+      <competitor>
+        <id>2</id>
+        <nom>Hateur</nom>
+        <prenom>Nordine</prenom>
+        <email>nordinehateur@gmail.com</email>
+        <phone>06787965464</phone>
+        <datenaissance>07/08/1960 00:00:00</datenaissance>
+      </competitor>
+      <competitor>
+        <id>3</id>
+        <nom>Aubert</nom>
+        <prenom>Jean-Louis</prenom>
+        <email>jlaubert@gmail.com</email>
+        <phone>06787948657</phone>
+        <datenaissance>12/11/1990 00:00:00</datenaissance>
+      </competitor>
+    </competitors>
+    <organisers>
+      <organiser>
+        <id>4</id>
+        <nom>Dupont</nom>
+        <prenom>toto</prenom>
+        <email>toto@gmail.com</email>
+        <phone>0678154578</phone>
+        <datenaissance>25/09/1957 00:00:00</datenaissance>
+      </organiser>
+    </organisers>
+  </race>
+  <race>
+    <id>2</id>
+    <title>Semi-marathon de Nantes</title>
+    <description>Course de 21,1km dans la métropole Nantes</description>
+    <datestart>28/04/2017 09:00:00</datestart>
+    <dateend>28/04/2017 13:00:00</dateend>
+    <ville>Paris</ville>
+    <competitors>
+      <competitor>
+        <id>6</id>
+        <nom>Martin</nom>
+        <prenom>Bernard</prenom>
+        <email>bebermart1@gmail.com</email>
+        <phone>0656320964</phone>
+        <datenaissance>12/11/1990 00:00:00</datenaissance>
+      </competitor>
+      <competitor>
+        <id>7</id>
+        <nom>Rémy</nom>
+        <prenom>Marie-Claire</prenom>
+        <email>mcremy@gmail.com</email>
+        <phone>0645102030</phone>
+        <datenaissance>04/06/1973 00:00:00</datenaissance>
+      </competitor>
+    </competitors>
+    <organisers>
+      <organiser>
+        <id>8</id>
+        <nom>Rolland</nom>
+        <prenom>Johanna</prenom>
+        <email>johannarlnd@gmail.com</email>
+        <phone>0678541020</phone>
+        <datenaissance>03/01/1987 00:00:00</datenaissance>
+      </organiser>
+    </organisers>
+  </race>
+  <race>
+    <id>3</id>
+    <title>Marathon de Nantes</title>
+    <description>Course de 42.195km dans la métropole Nantes</description>
+    <datestart>28/04/2017 14:00:00</datestart>
+    <dateend>28/04/2017 20:00:00</dateend>
+    <ville>Amiens</ville>
+    <organisers>
+      <organiser>
+        <id>6</id>
+        <nom>Lievremont</nom>
+        <prenom>Marc</prenom>
+        <email>marcolievremont@gmail.com</email>
+        <phone>0678548596</phone>
+        <datenaissance>12/12/1975 00:00:00</datenaissance>
+      </organiser>
+    </organisers>
+  </race>
+</races>

@@ -1,0 +1,43 @@
+﻿@using WUI.Models
+@model List<CategoryModel>
+
+@{
+    ViewBag.Title = "Gestion des catégories";
+}
+
+@section css {
+    @Styles.Render("~/Content/Category/css")
+}
+
+<h2>Liste des catégories</h2>
+
+@{
+    var maListe = new WebGrid(
+            source: Model,
+            canPage: false,
+            canSort: true,
+            sortFieldName: "field",
+            sortDirectionFieldName: "dirct"
+        );
+}
+
+<div id="categories-list">
+    @maListe.GetHtml(
+        tableStyle:"category-table-style",
+        rowStyle:"row-style",
+        alternatingRowStyle:"alternate-row-style",
+        columns:
+            maListe.Columns(
+                maListe.Column(
+                    columnName:"Id",
+                    header:"Identifiant",
+                    canSort: false
+                ),
+                maListe.Column(
+                    columnName: "Title",
+                    header: "Titre",
+                    canSort: true
+                )
+            )
+    )
+</div>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio - FREE Community Edition 7.0.1.654 (http://www.liquid-technologies.com)-->
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.eni-ecole.fr/websport" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="races">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="race">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="id" type="xs:int" />
+              <xs:element name="title" type="xs:string" />
+              <xs:element minOccurs="0" name="description" type="xs:string" />
+              <xs:element name="datestart" type="xs:string" />
+              <xs:element name="dateend" type="xs:string" />
+              <xs:element name="ville" type="xs:string" />
+              <xs:element minOccurs="0" name="competitors">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="competitor">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element name="id" type="xs:int" />
+                          <xs:element name="nom" type="xs:string" />
+                          <xs:element name="prenom" type="xs:string" />
+                          <xs:element name="email" type="xs:string" />
+                          <xs:element name="phone" type="xs:string" />
+                          <xs:element name="datenaissance" type="xs:string" />
+                        </xs:all>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="organisers">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="organiser">
+                      <xs:complexType>
+                        <xs:all>
+                          <xs:element name="id" type="xs:int" />
+                          <xs:element name="nom" type="xs:string" />
+                          <xs:element name="prenom" type="xs:string" />
+                          <xs:element name="email" type="xs:string" />
+                          <xs:element name="phone" type="xs:string" />
+                          <xs:element name="datenaissance" type="xs:string" />
+                        </xs:all>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

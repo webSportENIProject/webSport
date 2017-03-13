@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ArrayOfDisplayConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DisplayConfiguration>
+    <id>00000000-0000-0000-0000-000000000000</id>
+    <personneid>1</personneid>
+    <devicename>Android X5S</devicename>
+    <unitdistance>Kilometers</unitdistance>
+    <speedmax>false</speedmax>
+    <speedavg>true</speedavg>
+  </DisplayConfiguration>
+  <DisplayConfiguration>
+    <id>00000000-0000-0000-0000-000000000000</id>
+    <personneid>1</personneid>
+    <devicename>iOS 7</devicename>
+    <unitdistance>Miles</unitdistance>
+    <speedmax>true</speedmax>
+    <speedavg>true</speedavg>
+  </DisplayConfiguration>
+</ArrayOfDisplayConfiguration>

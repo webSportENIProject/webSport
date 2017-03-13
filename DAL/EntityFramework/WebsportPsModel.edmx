@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WebsportPsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="WebsportPsModelStoreContainer" />
+        <Function Name="GetRaceById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebsportPsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WebSportPsEntities" p1:LazyLoadingEnabled="true" >
+          <FunctionImport Name="GetRaceById" ReturnType="Collection(WebsportPsModel.GetRaceById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetRaceById_Result">
+          <Property Type="Int32" Name="CId" Nullable="false" />
+          <Property Type="String" Name="CTitre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CDescription" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CDateStart" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="CDateEnd" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CVille" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebsportPsModelStoreContainer" CdmEntityContainer="WebSportPsEntities" >
+          <FunctionImportMapping FunctionImportName="GetRaceById" FunctionName="WebsportPsModel.Store.GetRaceById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WebsportPsModel.GetRaceById_Result">
+                <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="CTitre" ColumnName="CTitre" />
+                <ScalarProperty Name="CDescription" ColumnName="CDescription" />
+                <ScalarProperty Name="CDateStart" ColumnName="CDateStart" />
+                <ScalarProperty Name="CDateEnd" ColumnName="CDateEnd" />
+                <ScalarProperty Name="CVille" ColumnName="CVille" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

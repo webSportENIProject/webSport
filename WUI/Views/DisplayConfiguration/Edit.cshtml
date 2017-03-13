@@ -1,0 +1,61 @@
+﻿@model WUI.Models.DisplayConfigurationModel
+
+@{
+    ViewBag.Title = "Modification de configuration";
+}
+
+<h2>Modification d'une configuration</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DisplayConfigurationModel</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PersonneId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PersonneId)
+            @Html.ValidationMessageFor(model => model.PersonneId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeviceName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeviceName)
+            @Html.ValidationMessageFor(model => model.DeviceName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SpeedMax)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SpeedMax)
+            @Html.ValidationMessageFor(model => model.SpeedMax)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SpeedAvg)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SpeedAvg)
+            @Html.ValidationMessageFor(model => model.SpeedAvg)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+
+}

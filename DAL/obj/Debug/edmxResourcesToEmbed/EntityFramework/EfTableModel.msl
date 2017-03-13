@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BddLoginModelStoreContainer" CdmEntityContainer="EfTableEntities2">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="BddLoginModel.RaceEntity">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Titre" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="Town" ColumnName="Ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participants">
+      <EntityTypeMapping TypeName="BddLoginModel.ContributorEntity">
+        <MappingFragment StoreEntitySet="Participant">
+          <ScalarProperty Name="PersonId" ColumnName="PersonneId" />
+          <ScalarProperty Name="RaceId" ColumnName="CourseId" />
+          <ScalarProperty Name="EstCompetiteur" ColumnName="EstCompetiteur" />
+          <ScalarProperty Name="EstOrganisateur" ColumnName="EstOrganisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personnes">
+      <EntityTypeMapping TypeName="BddLoginModel.PersonEntity">
+        <MappingFragment StoreEntitySet="Personne">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Lastname" ColumnName="Nom" />
+          <ScalarProperty Name="Firstname" ColumnName="Prenom" />
+          <ScalarProperty Name="Mail" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Telephone" />
+          <ScalarProperty Name="BirthDate" ColumnName="DateNaissance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

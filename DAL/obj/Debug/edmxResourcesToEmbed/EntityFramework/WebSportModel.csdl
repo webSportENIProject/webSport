@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BddLoginModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WebSportEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="RaceEntities" EntityType="BddLoginModel.RaceEntity" />
+    <EntitySet Name="ContributorEntities" EntityType="BddLoginModel.ContributorEntity" />
+    <EntitySet Name="PersonEntities" EntityType="BddLoginModel.PersonEntity" />
+    <AssociationSet Name="FK_Competiteur_Course" Association="BddLoginModel.FK_Competiteur_Course">
+      <End Role="Race" EntitySet="RaceEntities" />
+      <End Role="Contributor" EntitySet="ContributorEntities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competiteur_Personne" Association="BddLoginModel.FK_Competiteur_Personne">
+      <End Role="Person" EntitySet="PersonEntities" />
+      <End Role="Contributor" EntitySet="ContributorEntities" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="RaceEntity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Town" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Contributors" Relationship="BddLoginModel.FK_Competiteur_Course" FromRole="Race" ToRole="Contributor" />
+  </EntityType>
+  <EntityType Name="ContributorEntity">
+    <Key>
+      <PropertyRef Name="PersonId" />
+      <PropertyRef Name="RaceId" />
+    </Key>
+    <Property Name="PersonId" Type="Int32" Nullable="false" />
+    <Property Name="RaceId" Type="Int32" Nullable="false" />
+    <Property Name="IsCompetitor" Type="Boolean" Nullable="false" />
+    <Property Name="IsOrganiser" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Race" Relationship="BddLoginModel.FK_Competiteur_Course" FromRole="Contributor" ToRole="Race" />
+    <NavigationProperty Name="Person" Relationship="BddLoginModel.FK_Competiteur_Personne" FromRole="Contributor" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="PersonEntity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Firstname" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Mail" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Contributors" Relationship="BddLoginModel.FK_Competiteur_Personne" FromRole="Person" ToRole="Contributor" />
+  </EntityType>
+  <Association Name="FK_Competiteur_Course">
+    <End Role="Race" Type="BddLoginModel.RaceEntity" Multiplicity="1" />
+    <End Role="Contributor" Type="BddLoginModel.ContributorEntity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Race">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contributor">
+        <PropertyRef Name="RaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competiteur_Personne">
+    <End Role="Person" Type="BddLoginModel.PersonEntity" Multiplicity="1" />
+    <End Role="Contributor" Type="BddLoginModel.ContributorEntity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contributor">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

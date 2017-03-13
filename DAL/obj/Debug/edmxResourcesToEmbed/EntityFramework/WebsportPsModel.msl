@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebsportPsModelStoreContainer" CdmEntityContainer="WebSportPsEntities">
+    <FunctionImportMapping FunctionImportName="GetRaceById" FunctionName="WebsportPsModel.Store.GetRaceById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WebsportPsModel.GetRaceById_Result">
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="CTitre" ColumnName="CTitre" />
+          <ScalarProperty Name="CDescription" ColumnName="CDescription" />
+          <ScalarProperty Name="CDateStart" ColumnName="CDateStart" />
+          <ScalarProperty Name="CDateEnd" ColumnName="CDateEnd" />
+          <ScalarProperty Name="CVille" ColumnName="CVille" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,15 @@
+﻿.category-table-style {
+    font-weight: normal;
+}
+
+.category-table-style > th {
+    font-weight: bold;
+}
+
+.category-table-style > .row-style {
+    color: black;
+}
+
+.category-table-style > .alternate-row-style {
+    color: darkgray;
+}

@@ -1,0 +1,35 @@
+﻿<!ELEMENT races (race*)>
+<!ELEMENT race (id+,
+                title*,
+                description*,
+                datestart*,
+                dateend*,
+                ville*,
+                competitors*,
+                organisers+)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT datestart (#PCDATA)>
+<!ELEMENT dateend (#PCDATA)>
+<!ELEMENT ville (#PCDATA)>
+
+<!ELEMENT competitors (competitor*)>
+<!ELEMENT competitor (id+,
+                      nom*,
+                      prenom*,
+                      email*,
+                      phone*,
+                      datenaissance*)>
+<!ELEMENT organisers (organiser*)>
+<!ELEMENT organiser (id+,
+                      nom*,
+                      prenom*,
+                      email*,
+                      phone*,
+                      datenaissance*)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT prenom (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT phone (#PCDATA)>
+<!ELEMENT datenaissance (#PCDATA)>

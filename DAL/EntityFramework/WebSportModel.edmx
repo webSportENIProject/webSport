@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BddLoginModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BddLoginModelStoreContainer">
+          <EntitySet Name="Course" EntityType="BddLoginModel.Store.Course" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Participant" EntityType="BddLoginModel.Store.Participant" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Personne" EntityType="BddLoginModel.Store.Personne" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Competiteur_Course" Association="BddLoginModel.Store.FK_Competiteur_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competiteur_Personne" Association="BddLoginModel.Store.FK_Competiteur_Personne">
+            <End Role="Personne" EntitySet="Personne" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="DateStart" Type="datetime" Nullable="false" />
+          <Property Name="DateEnd" Type="datetime" Nullable="false" />
+          <Property Name="Ville" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="PersonneId" />
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="PersonneId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="EstCompetiteur" Type="bit" Nullable="false" />
+          <Property Name="EstOrganisateur" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personne">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Prenom" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="500" />
+          <Property Name="Telephone" Type="varchar" MaxLength="10" />
+          <Property Name="DateNaissance" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Competiteur_Course">
+          <End Role="Course" Type="BddLoginModel.Store.Course" Multiplicity="1" />
+          <End Role="Participant" Type="BddLoginModel.Store.Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participant">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competiteur_Personne">
+          <End Role="Personne" Type="BddLoginModel.Store.Personne" Multiplicity="1" />
+          <End Role="Participant" Type="BddLoginModel.Store.Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Participant">
+              <PropertyRef Name="PersonneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BddLoginModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WebSportEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="RaceEntities" EntityType="BddLoginModel.RaceEntity" />
+          <EntitySet Name="ContributorEntities" EntityType="BddLoginModel.ContributorEntity" />
+          <EntitySet Name="PersonEntities" EntityType="BddLoginModel.PersonEntity" />
+          <AssociationSet Name="FK_Competiteur_Course" Association="BddLoginModel.FK_Competiteur_Course">
+            <End Role="Race" EntitySet="RaceEntities" />
+            <End Role="Contributor" EntitySet="ContributorEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competiteur_Personne" Association="BddLoginModel.FK_Competiteur_Personne">
+            <End Role="Person" EntitySet="PersonEntities" />
+            <End Role="Contributor" EntitySet="ContributorEntities" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RaceEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Town" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Contributors" Relationship="BddLoginModel.FK_Competiteur_Course" FromRole="Race" ToRole="Contributor" />
+        </EntityType>
+        <EntityType Name="ContributorEntity">
+          <Key>
+            <PropertyRef Name="PersonId" />
+            <PropertyRef Name="RaceId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="RaceId" Type="Int32" Nullable="false" />
+          <Property Name="IsCompetitor" Type="Boolean" Nullable="false" />
+          <Property Name="IsOrganiser" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Race" Relationship="BddLoginModel.FK_Competiteur_Course" FromRole="Contributor" ToRole="Race" />
+          <NavigationProperty Name="Person" Relationship="BddLoginModel.FK_Competiteur_Personne" FromRole="Contributor" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="PersonEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Lastname" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Firstname" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Mail" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Contributors" Relationship="BddLoginModel.FK_Competiteur_Personne" FromRole="Person" ToRole="Contributor" />
+        </EntityType>
+        <Association Name="FK_Competiteur_Course">
+          <End Role="Race" Type="BddLoginModel.RaceEntity" Multiplicity="1" />
+          <End Role="Contributor" Type="BddLoginModel.ContributorEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Race">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contributor">
+              <PropertyRef Name="RaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competiteur_Personne">
+          <End Role="Person" Type="BddLoginModel.PersonEntity" Multiplicity="1" />
+          <End Role="Contributor" Type="BddLoginModel.ContributorEntity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contributor">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BddLoginModelStoreContainer" CdmEntityContainer="WebSportEntities">
+          <EntitySetMapping Name="RaceEntities">
+            <EntityTypeMapping TypeName="BddLoginModel.RaceEntity">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Titre" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="Town" ColumnName="Ville" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContributorEntities">
+            <EntityTypeMapping TypeName="BddLoginModel.ContributorEntity">
+              <MappingFragment StoreEntitySet="Participant">
+                <ScalarProperty Name="PersonId" ColumnName="PersonneId" />
+                <ScalarProperty Name="RaceId" ColumnName="CourseId" />
+                <ScalarProperty Name="IsCompetitor" ColumnName="EstCompetiteur" />
+                <ScalarProperty Name="IsOrganiser" ColumnName="EstOrganisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonEntities">
+            <EntityTypeMapping TypeName="BddLoginModel.PersonEntity">
+              <MappingFragment StoreEntitySet="Personne">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Lastname" ColumnName="Nom" />
+                <ScalarProperty Name="Firstname" ColumnName="Prenom" />
+                <ScalarProperty Name="Mail" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Telephone" />
+                <ScalarProperty Name="BirthDate" ColumnName="DateNaissance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

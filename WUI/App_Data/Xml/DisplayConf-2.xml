@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ArrayOfDisplayConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DisplayConfiguration>
+    <id>00000000-0000-0000-0000-000000000000</id>
+    <personneid>2</personneid>
+    <devicename>Lumia 620</devicename>
+    <unitdistance>Kilometers</unitdistance>
+    <speedmax>true</speedmax>
+    <speedavg>false</speedavg>
+  </DisplayConfiguration>
+</ArrayOfDisplayConfiguration>

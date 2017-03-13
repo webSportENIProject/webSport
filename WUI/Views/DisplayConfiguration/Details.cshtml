@@ -1,0 +1,43 @@
+﻿@model WUI.Models.DisplayConfigurationModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DisplayConfigurationModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PersonneId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PersonneId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeviceName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeviceName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SpeedMax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SpeedMax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SpeedAvg)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SpeedAvg)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Retour à la liste", "Index")
+</p>
