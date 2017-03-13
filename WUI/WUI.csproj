@@ -170,7 +170,6 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CompetitorController.cs" />
     <Compile Include="Controllers\DisplayConfigurationController.cs" />
@@ -182,7 +181,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\CultureHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Attributes\CompareDateAttribute.cs" />
     <Compile Include="Models\CategoryModel.cs" />
@@ -191,23 +189,12 @@
     <Compile Include="Models\DisplayConfigurationModel.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\OrganizerModel.cs" />
-    <Compile Include="Models\Personnage.cs" />
     <Compile Include="Models\PersonneModel.cs" />
     <Compile Include="Models\PoiModel.cs" />
     <Compile Include="Models\PointModel.cs" />
     <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\RaceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiteRessource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SiteRessource.resx</DependentUpon>
-    </Compile>
-    <Compile Include="SiteRessource.fr-FR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SiteRessource.fr-FR.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_Data\Xml\Race.xml">
@@ -297,14 +284,6 @@
     <Content Include="Areas\Administration\Views\Web.config" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Administration\Index.cshtml" />
-    <EmbeddedResource Include="SiteRessource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SiteRessource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SiteRessource.fr-FR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SiteRessource.fr-FR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -413,7 +392,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51402</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53974/</IISUrl>
+          <IISUrl>http://localhost:53973/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
