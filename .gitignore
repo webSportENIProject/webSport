@@ -3,7 +3,6 @@
 ###################
 *.com
 *.class
-*.dll
 *.exe
 *.pdb
 *.dll.config
@@ -66,7 +65,6 @@ Thumbs.db
 *.[Cc]ache
 *[Rr]esharper*
 NuGet.exe
-_[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 \.vs/config/applicationhost\.config
