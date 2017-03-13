@@ -67,9 +67,6 @@ Thumbs.db
 *[Rr]esharper*
 NuGet.exe
 _[Ss]cripts
-*.exe
-*.dll
-*.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
 \.vs/config/applicationhost\.config
