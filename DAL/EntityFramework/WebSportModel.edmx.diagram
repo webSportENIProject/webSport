@@ -4,19 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b4baff9f34404351a109dc39d6782cb9" Name="Diagramme1">
-        <EntityTypeShape EntityType="BddLoginModel.UserTable" Width="1.5" PointX="2.75" PointY="0.625" />
-        <EntityTypeShape EntityType="BddLoginModel.webpages_Membership" Width="1.5" PointX="5.5" PointY="0.5" />
-        <EntityTypeShape EntityType="BddLoginModel.webpages_OAuthMembership" Width="1.5" PointX="0.5" PointY="3.5" />
-        <EntityTypeShape EntityType="BddLoginModel.webpages_Roles" Width="1.5" PointX="0.5" PointY="0.625" />
-        <AssociationConnector Association="BddLoginModel.webpages_UsersInRoles" />
-        <AssociationConnector Association="BddLoginModel.webpages_UsersInRoles1" />
-        <EntityTypeShape EntityType="BddLoginModel.CourseEntity" Width="1.5" PointX="5" PointY="9.375" />
-        <EntityTypeShape EntityType="BddLoginModel.ParticipantEntity" Width="1.5" PointX="7.25" PointY="5.5" />
-        <EntityTypeShape EntityType="BddLoginModel.PersonneEntity" Width="1.5" PointX="5" PointY="5.25" />
-        <AssociationConnector Association="BddLoginModel.FK_Competiteur_Course1" />
-        <AssociationConnector Association="BddLoginModel.FK_Competiteur_Personne1" />
-        <AssociationConnector Association="BddLoginModel.FK_PersonneUserTable" />
+      <Diagram DiagramId="66ecf5f06a4a4a5da9532dafffbee197" Name="Diagram1">
+        <EntityTypeShape EntityType="WebSportModel.CourseEntity" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebSportModel.ParticipantEntity" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebSportModel.PersonneEntity" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebSportModel.UserTable" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebSportModel.webpages_Membership" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebSportModel.webpages_OAuthMembership" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebSportModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="WebSportModel.FK_Competiteur_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="WebSportModel.FK_Competiteur_Personne" ManuallyRouted="false" />
+        <AssociationConnector Association="WebSportModel.FK_PersonneUserTable" ManuallyRouted="false" />
+        <AssociationConnector Association="WebSportModel.webpages_UsersInRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -25,12 +25,12 @@ namespace DAL.EntityFramework
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<CourseEntity> Course { get; set; }
+        public DbSet<ParticipantEntity> Participant { get; set; }
+        public DbSet<PersonneEntity> Personne { get; set; }
         public DbSet<UserTable> UserTable { get; set; }
         public DbSet<webpages_Membership> webpages_Membership { get; set; }
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public DbSet<webpages_Roles> webpages_Roles { get; set; }
-        public DbSet<CourseEntity> Course { get; set; }
-        public DbSet<ParticipantEntity> Participant { get; set; }
-        public DbSet<PersonneEntity> Personne { get; set; }
     }
 }

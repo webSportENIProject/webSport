@@ -16,16 +16,14 @@ namespace DAL.EntityFramework
     {
         public UserTable()
         {
-            this.webpages_Roles = new HashSet<webpages_Roles>();
-            this.webpages_Roles1 = new HashSet<webpages_Roles>();
             this.Personne = new HashSet<PersonneEntity>();
+            this.webpages_Roles = new HashSet<webpages_Roles>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
     
-        public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
-        public virtual ICollection<webpages_Roles> webpages_Roles1 { get; set; }
         public virtual ICollection<PersonneEntity> Personne { get; set; }
+        public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
     }
 }

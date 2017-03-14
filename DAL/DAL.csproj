@@ -136,36 +136,34 @@
   <ItemGroup>
     <Content Include="DLL\Mono.Security.dll" />
     <Content Include="DLL\Npgsql.dll" />
+    <Content Include="EntityFramework\WebSportModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSportModel.edmx</DependentUpon>
+      <LastGenOutput>WebSportModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityFramework\WebSportModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSportModel.edmx</DependentUpon>
+      <LastGenOutput>WebSportModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EntityDeploy Include="EntityFramework\WebSportModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebSportModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="EntityFramework\WebSportModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSportModel.edmx</DependentUpon>
-      <LastGenOutput>WebSportModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="EntityFramework\WebSportModel.edmx.diagram">
-      <DependentUpon>WebSportModel.edmx</DependentUpon>
-    </None>
-    <None Include="EntityFramework\WebSportModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebSportModel.edmx</DependentUpon>
-      <LastGenOutput>WebSportModel.cs</LastGenOutput>
-    </None>
     <EntityDeploy Include="EntityFramework\WebsportPsModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WebsportPsModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="EntityFramework\WebSportModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebSportModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityFramework\WebSportModel.edmx.diagram">
+      <DependentUpon>WebSportModel.edmx</DependentUpon>
+    </None>
     <None Include="EntityFramework\WebsportPsModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WebsportPsModel.edmx</DependentUpon>

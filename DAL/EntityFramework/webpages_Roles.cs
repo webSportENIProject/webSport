@@ -17,13 +17,11 @@ namespace DAL.EntityFramework
         public webpages_Roles()
         {
             this.UserTable = new HashSet<UserTable>();
-            this.UserTable1 = new HashSet<UserTable>();
         }
     
         public int RoleId { get; set; }
         public string RoleName { get; set; }
     
         public virtual ICollection<UserTable> UserTable { get; set; }
-        public virtual ICollection<UserTable> UserTable1 { get; set; }
     }
 }

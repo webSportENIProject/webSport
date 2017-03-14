@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BddLoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="WebSportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="Id" />
@@ -145,7 +145,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BddLoginModelStoreContainer">
+        <EntityContainer Name="WebSportModelStoreContainer">
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personne" EntityType="Self.Personne" Schema="dbo" store:Type="Tables" />
@@ -175,48 +175,57 @@
             <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BddLoginModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="WebSportEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="UserTable" EntityType="BddLoginModel.UserTable" />
-          <EntitySet Name="webpages_Membership" EntityType="BddLoginModel.webpages_Membership" />
-          <EntitySet Name="webpages_OAuthMembership" EntityType="BddLoginModel.webpages_OAuthMembership" />
-          <EntitySet Name="webpages_Roles" EntityType="BddLoginModel.webpages_Roles" />
-          <AssociationSet Name="webpages_UsersInRoles" Association="BddLoginModel.webpages_UsersInRoles">
-            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
-            <End Role="UserTable" EntitySet="UserTable" />
-          </AssociationSet>
-          <AssociationSet Name="webpages_UsersInRoles1" Association="BddLoginModel.webpages_UsersInRoles1">
-            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
-            <End Role="UserTable" EntitySet="UserTable" />
-          </AssociationSet>
-          <EntitySet Name="Course" EntityType="BddLoginModel.CourseEntity" />
-          <EntitySet Name="Participant" EntityType="BddLoginModel.ParticipantEntity" />
-          <EntitySet Name="Personne" EntityType="BddLoginModel.PersonneEntity" />
-          <AssociationSet Name="FK_Competiteur_Course1" Association="BddLoginModel.FK_Competiteur_Course1">
-            <End Role="Course" EntitySet="Course" />
-            <End Role="Participant" EntitySet="Participant" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Competiteur_Personne1" Association="BddLoginModel.FK_Competiteur_Personne1">
-            <End Role="Personne" EntitySet="Personne" />
-            <End Role="Participant" EntitySet="Participant" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PersonneUserTable" Association="BddLoginModel.FK_PersonneUserTable">
-            <End Role="UserTable" EntitySet="UserTable" />
-            <End Role="Personne" EntitySet="Personne" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="WebSportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CourseEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Participant" Relationship="Self.FK_Competiteur_Course" FromRole="Course" ToRole="Participant" />
+        </EntityType>
+        <EntityType Name="ParticipantEntity">
+          <Key>
+            <PropertyRef Name="PersonneId" />
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="PersonneId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="EstCompetiteur" Type="Boolean" Nullable="false" />
+          <Property Name="EstOrganisateur" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Competiteur_Course" FromRole="Participant" ToRole="Course" />
+          <NavigationProperty Name="Personne" Relationship="Self.FK_Competiteur_Personne" FromRole="Participant" ToRole="Personne" />
+        </EntityType>
+        <EntityType Name="PersonneEntity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prenom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DateNaissance" Type="DateTime" Precision="3" />
+          <Property Name="UserTableId" Type="Int32" />
+          <NavigationProperty Name="Participant" Relationship="Self.FK_Competiteur_Personne" FromRole="Personne" ToRole="Participant" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK_PersonneUserTable" FromRole="Personne" ToRole="UserTable" />
+        </EntityType>
         <EntityType Name="UserTable">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="webpages_Roles" Relationship="BddLoginModel.webpages_UsersInRoles" FromRole="UserTable" ToRole="webpages_Roles" />
-          <NavigationProperty Name="webpages_Roles1" Relationship="BddLoginModel.webpages_UsersInRoles1" FromRole="UserTable" ToRole="webpages_Roles" />
-          <NavigationProperty Name="Personne" Relationship="BddLoginModel.FK_PersonneUserTable" FromRole="UserTable" ToRole="Personne" />
+          <Property Name="Name" Type="String" MaxLength="56" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personne" Relationship="Self.FK_PersonneUserTable" FromRole="UserTable" ToRole="Personne" />
+          <NavigationProperty Name="webpages_Roles" Relationship="Self.webpages_UsersInRoles" FromRole="UserTable" ToRole="webpages_Roles" />
         </EntityType>
         <EntityType Name="webpages_Membership">
           <Key>
@@ -228,9 +237,9 @@
           <Property Name="IsConfirmed" Type="Boolean" />
           <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
           <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
-          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
         </EntityType>
@@ -239,8 +248,8 @@
             <PropertyRef Name="Provider" />
             <PropertyRef Name="ProviderUserId" />
           </Key>
-          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Provider" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderUserId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="webpages_Roles">
@@ -248,59 +257,12 @@
             <PropertyRef Name="RoleId" />
           </Key>
           <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="UserTable" Relationship="BddLoginModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserTable" />
-          <NavigationProperty Name="UserTable1" Relationship="BddLoginModel.webpages_UsersInRoles1" FromRole="webpages_Roles" ToRole="UserTable" />
+          <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserTable" Relationship="Self.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserTable" />
         </EntityType>
-        <Association Name="webpages_UsersInRoles">
-          <End Type="BddLoginModel.webpages_Roles" Role="webpages_Roles" Multiplicity="*" />
-          <End Type="BddLoginModel.UserTable" Role="UserTable" Multiplicity="*" />
-        </Association>
-        <Association Name="webpages_UsersInRoles1">
-          <End Type="BddLoginModel.webpages_Roles" Role="webpages_Roles" Multiplicity="*" />
-          <End Type="BddLoginModel.UserTable" Role="UserTable" Multiplicity="*" />
-        </Association>
-        <EntityType Name="CourseEntity">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Titre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Participant" Relationship="BddLoginModel.FK_Competiteur_Course1" FromRole="Course" ToRole="Participant" />
-        </EntityType>
-        <EntityType Name="ParticipantEntity">
-          <Key>
-            <PropertyRef Name="PersonneId" />
-            <PropertyRef Name="CourseId" />
-          </Key>
-          <Property Name="PersonneId" Type="Int32" Nullable="false" />
-          <Property Name="CourseId" Type="Int32" Nullable="false" />
-          <Property Name="EstCompetiteur" Type="Boolean" Nullable="false" />
-          <Property Name="EstOrganisateur" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="BddLoginModel.FK_Competiteur_Course1" FromRole="Participant" ToRole="Course" />
-          <NavigationProperty Name="Personne" Relationship="BddLoginModel.FK_Competiteur_Personne1" FromRole="Participant" ToRole="Personne" />
-        </EntityType>
-        <EntityType Name="PersonneEntity">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nom" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Prenom" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Telephone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="DateNaissance" Type="DateTime" Precision="3" />
-          <Property Name="UserTableId" Type="Int32" />
-          <NavigationProperty Name="Participant" Relationship="BddLoginModel.FK_Competiteur_Personne1" FromRole="Personne" ToRole="Participant" />
-          <NavigationProperty Name="UserTable" Relationship="BddLoginModel.FK_PersonneUserTable" FromRole="Personne" ToRole="UserTable" />
-        </EntityType>
-        <Association Name="FK_Competiteur_Course1">
-          <End Type="BddLoginModel.CourseEntity" Role="Course" Multiplicity="1" />
-          <End Type="BddLoginModel.ParticipantEntity" Role="Participant" Multiplicity="*" />
+        <Association Name="FK_Competiteur_Course">
+          <End Role="Course" Type="WebSportModel.CourseEntity" Multiplicity="1" />
+          <End Role="Participant" Type="WebSportModel.ParticipantEntity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Course">
               <PropertyRef Name="Id" />
@@ -310,9 +272,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Competiteur_Personne1">
-          <End Type="BddLoginModel.PersonneEntity" Role="Personne" Multiplicity="1" />
-          <End Type="BddLoginModel.ParticipantEntity" Role="Participant" Multiplicity="*" />
+        <Association Name="FK_Competiteur_Personne">
+          <End Role="Personne" Type="WebSportModel.PersonneEntity" Multiplicity="1" />
+          <End Role="Participant" Type="WebSportModel.ParticipantEntity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personne">
               <PropertyRef Name="Id" />
@@ -323,8 +285,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PersonneUserTable">
-          <End Type="BddLoginModel.UserTable" Role="UserTable" Multiplicity="0..1" />
-          <End Type="BddLoginModel.PersonneEntity" Role="Personne" Multiplicity="*" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="Personne" Type="WebSportModel.PersonneEntity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserTable">
               <PropertyRef Name="Id" />
@@ -334,101 +296,129 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="*" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="WebSportEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Course" EntityType="WebSportModel.CourseEntity" />
+          <EntitySet Name="Participant" EntityType="WebSportModel.ParticipantEntity" />
+          <EntitySet Name="Personne" EntityType="WebSportModel.PersonneEntity" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" />
+          <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" />
+          <AssociationSet Name="FK_Competiteur_Course" Association="Self.FK_Competiteur_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competiteur_Personne" Association="Self.FK_Competiteur_Personne">
+            <End Role="Personne" EntitySet="Personne" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonneUserTable" Association="Self.FK_PersonneUserTable">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="Personne" EntitySet="Personne" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="Self.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserTable" EntitySet="UserTable" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BddLoginModelStoreContainer" CdmEntityContainer="WebSportEntities">
-    <EntitySetMapping Name="UserTable">
-      <EntityTypeMapping TypeName="IsTypeOf(BddLoginModel.UserTable)">
-        <MappingFragment StoreEntitySet="UserTable">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="webpages_Membership">
-      <EntityTypeMapping TypeName="IsTypeOf(BddLoginModel.webpages_Membership)">
-        <MappingFragment StoreEntitySet="webpages_Membership">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
-          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
-          <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
-          <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
-          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
-          <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
-          <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="webpages_OAuthMembership">
-      <EntityTypeMapping TypeName="IsTypeOf(BddLoginModel.webpages_OAuthMembership)">
-        <MappingFragment StoreEntitySet="webpages_OAuthMembership">
-          <ScalarProperty Name="Provider" ColumnName="Provider" />
-          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="webpages_Roles">
-      <EntityTypeMapping TypeName="IsTypeOf(BddLoginModel.webpages_Roles)">
-        <MappingFragment StoreEntitySet="webpages_Roles">
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="BddLoginModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
-      </AssociationSetMapping>
-          <AssociationSetMapping Name="webpages_UsersInRoles1" TypeName="BddLoginModel.webpages_UsersInRoles1" StoreEntitySet="webpages_UsersInRoles">
-            <EndProperty Name="UserTable">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="webpages_Roles">
-              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebSportModelStoreContainer" CdmEntityContainer="WebSportEntities2">
           <EntitySetMapping Name="Course">
-            <EntityTypeMapping TypeName="BddLoginModel.CourseEntity">
+            <EntityTypeMapping TypeName="WebSportModel.CourseEntity">
               <MappingFragment StoreEntitySet="Course">
-                <ScalarProperty Name="Ville" ColumnName="Ville" />
-                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
-                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Titre" ColumnName="Titre" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Participant">
-            <EntityTypeMapping TypeName="BddLoginModel.ParticipantEntity">
+            <EntityTypeMapping TypeName="WebSportModel.ParticipantEntity">
               <MappingFragment StoreEntitySet="Participant">
-                <ScalarProperty Name="EstOrganisateur" ColumnName="EstOrganisateur" />
-                <ScalarProperty Name="EstCompetiteur" ColumnName="EstCompetiteur" />
-                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
                 <ScalarProperty Name="PersonneId" ColumnName="PersonneId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="EstCompetiteur" ColumnName="EstCompetiteur" />
+                <ScalarProperty Name="EstOrganisateur" ColumnName="EstOrganisateur" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Personne">
-            <EntityTypeMapping TypeName="BddLoginModel.PersonneEntity">
+            <EntityTypeMapping TypeName="WebSportModel.PersonneEntity">
               <MappingFragment StoreEntitySet="Personne">
-                <ScalarProperty Name="UserTableId" ColumnName="UserTableId" />
-                <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
-                <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+                <ScalarProperty Name="UserTableId" ColumnName="UserTableId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+          <EntitySetMapping Name="UserTable">
+            <EntityTypeMapping TypeName="WebSportModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="WebSportModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="WebSportModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="WebSportModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="WebSportModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserTable">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -440,10 +430,10 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
-        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
