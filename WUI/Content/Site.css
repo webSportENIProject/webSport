@@ -6,3 +6,8 @@
   padding: 40px 15px;
 
 }
+
+.field-validation-error {		
+    color: #e80c4d;		
+    font-weight: bold;		
+ }
