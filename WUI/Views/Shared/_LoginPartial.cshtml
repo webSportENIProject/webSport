@@ -1,6 +1,6 @@
 ﻿@if (Request.IsAuthenticated)
 {
-    <li>@Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
+    <li>@Html.ActionLink("Mon compte", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
     <li>@Html.ActionLink("Se déconnecter", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "registerLogOff" })</li>
 }
 else {
