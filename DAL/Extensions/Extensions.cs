@@ -139,5 +139,21 @@ namespace DAL.Extensions
                 UserTableId = model.UserTable
             };
         }
+
+        public static Personne ToBO(this PersonneEntity entity)
+        {
+            if (entity == null) return null;
+
+            return new Personne
+            {
+                Id = entity.Id,
+                Nom = entity.Nom,
+                Prenom = entity.Prenom,
+                Email = entity.Email,
+                Phone = entity.Telephone,
+                DateNaissance = (DateTime)entity.DateNaissance,
+                UserTable = (int)entity.UserTableId
+            };
+        }
     }
 }

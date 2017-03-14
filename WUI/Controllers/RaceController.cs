@@ -1,4 +1,5 @@
 ﻿using BLL;
+using WebMatrix.WebData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,19 +34,6 @@ namespace WUI.Controllers
             var result = MgtRace.GetInstance().GetAllItems().ToModels();
             return View(result);
         }       
-
-        //
-        // GET: /Race/Details/5
-        public ActionResult Details(int id)
-        {
-            var result = MgtRace.GetInstance().GetRace(id).ToModel();
-            if (result == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(result);
-        }
 
         //
         // GET: /Race/Create
@@ -90,6 +78,18 @@ namespace WUI.Controllers
             {
                 return HttpNotFound();
             }
+
+            return View(result);
+        }
+
+        public ActionResult Register(int id = 0)
+        {
+            var result = MgtRace.GetInstance().GetRace(id).ToModel();
+            if (!WebSecurity.Initialized) {
+                WebSecurity.InitializeDatabaseConnection("SqlAdoCs", "UserTable", "Id", "Name", autoCreateTables: true);
+            }
+            int idUser = WebSecurity.CurrentUserId;
+            MgtRace.GetInstance().addInscription(id, idUser);
 
             return View(result);
         }

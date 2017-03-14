@@ -75,5 +75,10 @@ namespace BLL
             return true;
         }
 
+        public void addInscription(int idRace, int idUser) {
+            Personne personne = this._uow.PersonneRepo.getPersonneByUserId(idUser);
+            this._uow.ParticipantRepo.AddCompetiteur(idRace, personne.Id);
+        }
+
     }
 }

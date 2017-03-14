@@ -13,11 +13,11 @@ namespace Repository
     /// <summary>
     /// Classe contenant les méthodes spécifiques aux "Race"
     /// </summary>
-    public class PersonneRepository : GenericRepository<PersonneEntity>
+    public class ParticipantRepository : GenericRepository<ParticipantEntity>
     {
         #region Constructor
 
-        public PersonneRepository(WebSportEntities context)
+        public ParticipantRepository(WebSportEntities context)
             : base(context)
         {
         }
@@ -26,21 +26,25 @@ namespace Repository
 
         #region Public methods
 
-        public int Add(Personne element)
+        public Boolean AddCompetiteur(int idRace, int idPersonne)
         {
+            ParticipantEntity entity = new ParticipantEntity()
+            {
+                PersonneId = idPersonne,
+                CourseId = idRace,
+                EstCompetiteur = true,
+                EstOrganisateur = false
+            };
+
             try
             {
-                var result = base.Add(element.ToDataEntity());
-                return result.Id;
+                var result = base.Add(entity);
+                return true;
             }
             catch
             {
-                return 0;
+                return false;
             }
-        }
-
-        public Personne getPersonneByUserId(int userId) {
-            return base.Where(x => x.UserTableId == userId).SingleOrDefault().ToBO();
         }
 
         #endregion
