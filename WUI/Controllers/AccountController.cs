@@ -49,10 +49,9 @@ namespace WUI.Controllers
         }
 
         //
-        // POST: /Account/LogOff
+        // GET: /Account/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
