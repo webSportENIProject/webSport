@@ -5,11 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b4baff9f34404351a109dc39d6782cb9" Name="Diagramme1">
-        <EntityTypeShape EntityType="BddLoginModel.RaceEntity" Width="1.5" PointX="0.625" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BddLoginModel.ContributorEntity" Width="1.875" PointX="2.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BddLoginModel.PersonEntity" Width="1.5" PointX="5.625" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="BddLoginModel.FK_Competiteur_Course" ManuallyRouted="false" />
-        <AssociationConnector Association="BddLoginModel.FK_Competiteur_Personne" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BddLoginModel.UserTable" Width="1.5" PointX="2.75" PointY="0.625" />
+        <EntityTypeShape EntityType="BddLoginModel.webpages_Membership" Width="1.5" PointX="5.5" PointY="0.5" />
+        <EntityTypeShape EntityType="BddLoginModel.webpages_OAuthMembership" Width="1.5" PointX="0.5" PointY="3.5" />
+        <EntityTypeShape EntityType="BddLoginModel.webpages_Roles" Width="1.5" PointX="0.5" PointY="0.625" />
+        <AssociationConnector Association="BddLoginModel.webpages_UsersInRoles" />
+        <AssociationConnector Association="BddLoginModel.webpages_UsersInRoles1" />
+        <EntityTypeShape EntityType="BddLoginModel.CourseEntity" Width="1.5" PointX="5" PointY="9.375" />
+        <EntityTypeShape EntityType="BddLoginModel.ParticipantEntity" Width="1.5" PointX="7.25" PointY="5.5" />
+        <EntityTypeShape EntityType="BddLoginModel.PersonneEntity" Width="1.5" PointX="5" PointY="5.25" />
+        <AssociationConnector Association="BddLoginModel.FK_Competiteur_Course1" />
+        <AssociationConnector Association="BddLoginModel.FK_Competiteur_Personne1" />
+        <AssociationConnector Association="BddLoginModel.FK_PersonneUserTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

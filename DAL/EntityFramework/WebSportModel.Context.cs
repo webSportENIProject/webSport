@@ -18,7 +18,6 @@ namespace DAL.EntityFramework
         public WebSportEntities()
             : base("name=WebSportEntities")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,8 +25,12 @@ namespace DAL.EntityFramework
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<RaceEntity> RaceEntities { get; set; }
-        public DbSet<ContributorEntity> ContributorEntities { get; set; }
-        public DbSet<PersonEntity> PersonEntities { get; set; }
+        public DbSet<UserTable> UserTable { get; set; }
+        public DbSet<webpages_Membership> webpages_Membership { get; set; }
+        public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
+        public DbSet<webpages_Roles> webpages_Roles { get; set; }
+        public DbSet<CourseEntity> Course { get; set; }
+        public DbSet<ParticipantEntity> Participant { get; set; }
+        public DbSet<PersonneEntity> Personne { get; set; }
     }
 }

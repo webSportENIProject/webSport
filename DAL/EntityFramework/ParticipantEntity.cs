@@ -12,14 +12,14 @@ namespace DAL.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class ContributorEntity
+    public partial class ParticipantEntity
     {
-        public int PersonId { get; set; }
-        public int RaceId { get; set; }
-        public bool IsCompetitor { get; set; }
-        public bool IsOrganiser { get; set; }
+        public int PersonneId { get; set; }
+        public int CourseId { get; set; }
+        public bool EstCompetiteur { get; set; }
+        public bool EstOrganisateur { get; set; }
     
-        public virtual RaceEntity Race { get; set; }
-        public virtual PersonEntity Person { get; set; }
+        public virtual CourseEntity Course { get; set; }
+        public virtual PersonneEntity Personne { get; set; }
     }
 }

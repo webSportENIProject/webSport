@@ -12,20 +12,20 @@ namespace DAL.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class RaceEntity
+    public partial class UserTable
     {
-        public RaceEntity()
+        public UserTable()
         {
-            this.Contributors = new HashSet<ContributorEntity>();
+            this.webpages_Roles = new HashSet<webpages_Roles>();
+            this.webpages_Roles1 = new HashSet<webpages_Roles>();
+            this.Personne = new HashSet<PersonneEntity>();
         }
     
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public System.DateTime DateStart { get; set; }
-        public System.DateTime DateEnd { get; set; }
-        public string Town { get; set; }
+        public string Name { get; set; }
     
-        public virtual ICollection<ContributorEntity> Contributors { get; set; }
+        public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
+        public virtual ICollection<webpages_Roles> webpages_Roles1 { get; set; }
+        public virtual ICollection<PersonneEntity> Personne { get; set; }
     }
 }

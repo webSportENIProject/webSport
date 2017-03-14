@@ -12,20 +12,10 @@ namespace DAL.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class PersonEntity
+    public partial class webpages_OAuthMembership
     {
-        public PersonEntity()
-        {
-            this.Contributors = new HashSet<ContributorEntity>();
-        }
-    
-        public int Id { get; set; }
-        public string Lastname { get; set; }
-        public string Firstname { get; set; }
-        public string Mail { get; set; }
-        public string Phone { get; set; }
-        public Nullable<System.DateTime> BirthDate { get; set; }
-    
-        public virtual ICollection<ContributorEntity> Contributors { get; set; }
+        public string Provider { get; set; }
+        public string ProviderUserId { get; set; }
+        public int UserId { get; set; }
     }
 }
