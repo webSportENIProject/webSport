@@ -10,12 +10,5 @@ namespace WUI.Models
     {
         Kilometers = 0,
         Miles = 1
-    }
-
-    public enum SortType
-    {
-        DEFAULT, // Tri par date de début
-        BY_TITLE,
-        BY_TOWN
-    }
+    }       
 }

@@ -15,83 +15,24 @@ namespace WUI.Controllers
     // Sauf si une méthode lève la condition avec : [AllowAnonymous]
     [Authorize]
     public class RaceController : Controller
-    {
-        private MgtRace serviceRace;
+    {        
 
         /// <summary>
         /// Constructeur
         /// </summary>
         public RaceController()
-        {
-            serviceRace = MgtRace.GetInstance();
+        {           
         }
 
         //
         // GET: /Race/
         // Tous les utilisateurs peuvent visionnés la liste
         [AllowAnonymous]
-        public ActionResult Index(SortType sortType = SortType.DEFAULT)
+        public ActionResult Index()
         {
-            List<BO.Race> result;
-
-            switch (sortType)
-            {
-                case SortType.BY_TITLE:
-                    // On passe le delegate en paramètres
-                    var service = new MgtRace(TrierParTitre);
-                    result = service.SortByTitle();
-                    break;
-
-                case SortType.BY_TOWN:
-                    // On passe l'expression lambda en paramètres
-                    result = serviceRace.SortByTown((BO.Race r1, BO.Race r2) =>
-                    {
-                        return r1.Town.CompareTo(r2.Town);
-                    });
-                    break;
-
-                case SortType.DEFAULT:
-                default:
-                    result = serviceRace.SortByDateStart();
-                    break;
-            }
-
-            // #### CHARGEMENT DES DONNEES EN ASYNCHRONE ####
-            // Si on rend l'action Index asynchrone, avec :
-            // => public async Task<ActionResult> Index(SortType sortType = SortType.DEFAULT) { CODE }
-            // On va pouvoir charger les éléments en BDD en asynchrone via la ligne ci-dessous :
-            //result = await serviceRace.GetAllRaceAsync();
-
-            // Pour pouvoir charger les données en asynchrone et faire une animation visuelle,
-            // il faudra créer une nouvelle action 'LoadRace()' qui fasse uniquement le chargement asynchrone
-            // des données et l'appeler avec Ajax (jQuery) :
-            // $.ajax(
-            //      url: '/Race/LoadRace'
-            //      beforeSend: function () { // lancer l'animation visuel }
-            // ).success(function (data) {
-            //      // Mettre les données dans la liste grâce à 'data'
-            // }).error(function (data) {
-            //      // Afficher une erreur (pop-up) ou laisser la liste vide : aucun résultat trouvé
-            // }).complete(function (data) {
-            //      // Arrêter l'animation
-            // });
-            // #### CHARGEMENT DES DONNEES EN ASYNCHRONE ####
-
-            return View(result.ToModels(true));
-        }
-
-        public int TrierParTitre(BO.Race r1, BO.Race r2)
-        {
-            return r1.Title.CompareTo(r2.Title);
-        }
-
-        [HttpGet]
-        public JsonResult Autocomplete(string term)
-        {
-            var result = serviceRace.GetRace(term).ToModels();
-
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+            var result = MgtRace.GetInstance().GetAllItems().ToModels();
+            return View(result);
+        }       
 
         //
         // GET: /Race/Details/5
@@ -124,13 +65,8 @@ namespace WUI.Controllers
         {
             try
             {
-                // Met en évidence le ValidationSummary(false) dans la vue
-                //ModelState.AddModelError(string.Empty, "Erreur visble via le ValidationSummary(true) mais pas par le ValidationSummary(false)");
-
-                if (ModelState.IsValid
-                    && serviceRace.AddRace(race.ToBo()))
+                if (ModelState.IsValid && MgtRace.GetInstance().AddRace(race.ToBo()))
                 {
-                    //MgtRace.GetInstance()
                     return RedirectToAction("Index");
                 }
                 else
@@ -166,7 +102,7 @@ namespace WUI.Controllers
         {
             try
             {
-                var result = serviceRace.UpdateRace(race.ToBo());
+                var result = MgtRace.GetInstance().UpdateRace(race.ToBo());
                 if (result)
                 {
                     return RedirectToAction("Index");
@@ -205,7 +141,7 @@ namespace WUI.Controllers
         {
             try
             {
-                var result = serviceRace.RemoveRace(id);
+                var result = MgtRace.GetInstance().RemoveRace(id);
                 if (result)
                 {
                     return RedirectToAction("Index");
