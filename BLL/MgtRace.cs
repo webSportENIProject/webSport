@@ -35,7 +35,7 @@ namespace BLL
 
         #region Constructeur
 
-        public MgtRace()
+        private MgtRace()
         {
             // Récupération des données via la DAL (informations stockées dans un fichier XML)
             //_listRace = XmlRace.GetInstance().GetRace();

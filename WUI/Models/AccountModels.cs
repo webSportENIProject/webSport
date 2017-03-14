@@ -86,6 +86,29 @@ namespace WUI.Models
         [Display(Name = "Confirmer le mot de passe ")]
         [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne correspondent pas.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nom")]
+        public string Nom { get; set; }
+
+        [Required]
+        [Display(Name = "Prenom")]
+        public string Prenom { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [RegularExpression("^0[1-68][0-9]{8}$", ErrorMessage = "La saisie ne correspond pas à un numéro de téléphone")]
+        [Display(Name = "Telephone")]
+        public string Telephone { get; set; }
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Date de naissance")]
+        public DateTime Naissance { get; set; }
     }
 
     public class ExternalLogin

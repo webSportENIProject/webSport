@@ -14,6 +14,31 @@
 
     <fieldset>
         <legend>Formulaire d’inscription</legend>
+        <h2>Informations personelles</h2>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Nom)
+                @Html.TextBoxFor(m => m.Nom)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Prenom)
+                @Html.TextBoxFor(m => m.Prenom)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Telephone)
+                @Html.TextBoxFor(m => m.Telephone)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Naissance)
+                @Html.TextBoxFor(m => m.Naissance)
+            </li>
+        </ol>
+
+        <h2>Informations de connexion</h2>
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
@@ -27,6 +52,7 @@
                 @Html.LabelFor(m => m.ConfirmPassword)
                 @Html.PasswordFor(m => m.ConfirmPassword)
             </li>
+            
         </ol>
         <input type="submit" value="S'inscrire" />
     </fieldset>

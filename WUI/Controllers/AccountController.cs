@@ -10,6 +10,9 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using WUI.Filters;
 using WUI.Models;
+using BO;
+using BLL;
+using WUI.Extensions;
 
 namespace WUI.Controllers
 {
@@ -80,6 +83,17 @@ namespace WUI.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    int id = WebSecurity.GetUserId(model.UserName);
+                    PersonneModel personModel = new PersonneModel() {
+                        Nom = model.Nom,
+                        Prenom = model.Prenom,
+                        Email = model.Email,
+                        Phone = model.Telephone,
+                        DateNaissance = model.Naissance
+                    };
+                    Personne personne = personModel.ToBo();
+                    personne.UserTable = id;
+                    MgtPersonne.GetInstance().AddPersonne(personne);
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }

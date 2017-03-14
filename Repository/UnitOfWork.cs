@@ -47,6 +47,17 @@ namespace Repository
             }
         }
 
+        private PersonneRepository _personneRepo;
+        public PersonneRepository PersonneRepo
+        {
+            get
+            {
+                if (_personneRepo == null)
+                    _personneRepo = new PersonneRepository(this.context);
+                return _personneRepo;
+            }
+        }
+
         // Etc... on liste les repositories
 
         #endregion

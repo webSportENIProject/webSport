@@ -207,5 +207,21 @@ namespace WUI.Extensions
 
             return result;
         }
+
+        public static Personne ToBo(this PersonneModel model)
+        {
+            if (model == null) return null;
+
+            return new Personne
+            {
+                Id = model.Id,
+                Nom = model.Nom,
+                Prenom = model.Prenom,
+                Email = model.Email,
+                Phone = model.Phone,
+                DateNaissance = (DateTime)model.DateNaissance
+            };
+        }
+
     }
 }
