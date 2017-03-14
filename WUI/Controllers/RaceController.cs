@@ -37,6 +37,7 @@ namespace WUI.Controllers
 
         //
         // GET: /Race/Create
+        [Authorize(Roles="Administrateur")]
         public ActionResult Create()
         {
             return View();
@@ -71,6 +72,7 @@ namespace WUI.Controllers
 
         //
         // GET: /Race/Edit/5
+        [Authorize(Roles = "Administrateur")]
         public ActionResult Edit(int id = 0)
         {
             var result = MgtRace.GetInstance().GetRace(id).ToModel();
@@ -120,7 +122,7 @@ namespace WUI.Controllers
 
         //
         // GET: /Race/Delete/5
-
+        [Authorize(Roles = "Administrateur")]
         public ActionResult Delete(int id)
         {
             var result = MgtRace.GetInstance().GetRace(id).ToModel();

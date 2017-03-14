@@ -20,6 +20,8 @@ namespace WUI.Models
         [RegularExpression("^0[1-68][0-9]{8}$", ErrorMessage="La saisie ne correspond pas à un numéro de téléphone")]
         public string Phone { get; set; }
 
+        public int UserTable { get; set; }
+
         public DateTime? DateNaissance { get; set; }
 
         public virtual ICollection<DisplayConfigurationModel> DisplayConfigurations { get; set; }
