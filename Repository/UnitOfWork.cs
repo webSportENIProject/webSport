@@ -36,13 +36,13 @@ namespace Repository
             }
         }
 
-        private GenericRepository<ContributorEntity> _contributorRepo;
-        public GenericRepository<ContributorEntity> ContributorRepo
+        private GenericRepository<ParticipantEntity> _contributorRepo;
+        public GenericRepository<ParticipantEntity> ContributorRepo
         {
             get
             {
                 if (_contributorRepo == null)
-                    _contributorRepo = new GenericRepository<ContributorEntity>(this.context);
+                    _contributorRepo = new GenericRepository<ParticipantEntity>(this.context);
                 return _contributorRepo;
             }
         }

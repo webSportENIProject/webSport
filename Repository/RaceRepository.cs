@@ -13,7 +13,7 @@ namespace Repository
     /// <summary>
     /// Classe contenant les méthodes spécifiques aux "Race"
     /// </summary>
-    public class RaceRepository : GenericRepository<RaceEntity>
+    public class RaceRepository : GenericRepository<CourseEntity>
     {
         #region Constructor
 
@@ -45,7 +45,7 @@ namespace Repository
             return race != null ? race.ToBo() : null;
         }
 
-        private RaceEntity GetByIdPrivate(int id)
+        private CourseEntity GetByIdPrivate(int id)
         {
             return base.Where(x => x.Id == id).SingleOrDefault();
         }
@@ -53,11 +53,11 @@ namespace Repository
         public void Update(Race element)
         {
             var raceToUpdate = this.GetByIdPrivate(element.Id);
-            raceToUpdate.Title = element.Title;
+            raceToUpdate.Titre = element.Title;
             raceToUpdate.Description = element.Description;
             raceToUpdate.DateStart = element.DateStart;
             raceToUpdate.DateEnd = element.DateEnd;
-            raceToUpdate.Town = element.Town;
+            raceToUpdate.Ville = element.Town;
             base.Update(raceToUpdate);
         }
 

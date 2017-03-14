@@ -62,18 +62,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbHelper\DbFactory.cs" />
-    <Compile Include="DbRace.cs" />
     <Compile Include="DbHelper\DbTools.cs" />
-    <Compile Include="EntityFramework\ContributorEntity.cs">
+    <Compile Include="EntityFramework\CourseEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\GetRaceById_Result.cs">
       <DependentUpon>WebsportPsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\PersonEntity.cs">
+    <Compile Include="EntityFramework\ParticipantEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\RaceEntity.cs">
+    <Compile Include="EntityFramework\PersonneEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\UserTable.cs">
@@ -137,7 +136,6 @@
   <ItemGroup>
     <Content Include="DLL\Mono.Security.dll" />
     <Content Include="DLL\Npgsql.dll" />
-    <Content Include="EntityFramework\WebSportModel.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
