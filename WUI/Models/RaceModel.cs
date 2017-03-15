@@ -43,7 +43,7 @@ namespace WUI.Models
         public string Town { get; set; }
 
 
-        public List<CompetitorModel> Competitors { get; set; }
+        public List<ParticipantModel> Participants { get; set; }
 
         public List<OrganizerModel> Organisers { get; set; }
 

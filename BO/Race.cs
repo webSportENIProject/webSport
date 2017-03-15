@@ -24,7 +24,7 @@ namespace BO
         public string Town { get; set; }
 
 
-        public virtual List<Competitor> Competitors { get; set; }
+        public virtual List<Participant> Participants { get; set; }
 
         public virtual List<Organizer> Organisers { get; set; }
 

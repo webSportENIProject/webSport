@@ -28,7 +28,7 @@ namespace DAL
         private const string ATTR_XMLNS = "http://www.eni-ecole.fr/websport";
 
         private const string NODE_RACE = "race";
-        private const string NODE_COMPETITOR = "competitor";
+        private const string NODE_PARTICIPANT = "participant";
         private const string NODE_ORGANISER = "organiser";
 
         private const string NODE_ID = "id";

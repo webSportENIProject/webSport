@@ -5,16 +5,14 @@ using WUI.Extensions;
 
 namespace WUI.Controllers
 {
-    public class CompetitorController : Controller
+    public class ParticipantController : Controller
     {
         //
         // GET: /Competitor/
         [HttpGet]
         public ActionResult Index()
         {
-            MgtCompetitor service = new MgtCompetitor();
-            var result = service.GetCompetitor().ToModels();
-
+            var result = MgtRace.GetInstance().GetAllItems().ToModels();
             return View(result);
         }
     }

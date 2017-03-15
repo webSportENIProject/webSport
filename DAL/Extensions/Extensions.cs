@@ -73,26 +73,23 @@ namespace DAL.Extensions
 
         #region Competitor
 
-        public static List<Competitor> ToCompetitorBos(this List<ParticipantEntity> bos)
+        public static List<Participant> ToParticipantBos(this List<ParticipantEntity> bos)
         {
             return bos != null
-                ? bos.Where(x => x != null).Select(x => x.ToCompetitorBo()).ToList()
+                ? bos.Where(x => x != null).Select(x => x.ToParticipantBo()).ToList()
                 : null;
         }
 
-        public static Competitor ToCompetitorBo(this ParticipantEntity bo)
+        public static Participant ToParticipantBo(this ParticipantEntity bo)
         {
             if (bo == null) return null;
 
-            return new Competitor
+            return new Participant
             {
-                Id = bo.PersonneId,
-                Nom = bo.Personne.Nom,
-                Prenom = bo.Personne.Prenom,
-                DateNaissance = bo.Personne.DateNaissance.HasValue ? bo.Personne.DateNaissance.Value : DateTime.MinValue,
-                Email = bo.Personne.Email,
-                Phone = bo.Personne.Telephone,
-                Race = bo.Course.ToBo()
+                IdPersonne = bo.PersonneId,
+                IdCourse = bo.CourseId,
+                EstCompetiteur = bo.EstCompetiteur,
+                EstOrganisateur = bo.EstOrganisateur
             };
         }
 
