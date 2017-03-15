@@ -3,3 +3,20 @@
 }
 
 Bienvenue sur le site du marathon
+
+<div id="map"></div>
+
+<script type="text/javascript">
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmQ54LQucf9hRGkuQ1kGJM9EIFMr5vtT8&callback=initMap">
+</script>

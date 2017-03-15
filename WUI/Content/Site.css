@@ -11,3 +11,9 @@
     color: #e80c4d;		
     font-weight: bold;		
  }
+
+#map { 
+    width: 700px;
+    height: 700px; 
+
+}
