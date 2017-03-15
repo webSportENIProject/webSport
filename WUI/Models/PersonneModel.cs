@@ -23,7 +23,5 @@ namespace WUI.Models
         public int UserTable { get; set; }
 
         public DateTime? DateNaissance { get; set; }
-
-        public virtual ICollection<DisplayConfigurationModel> DisplayConfigurations { get; set; }
     }
 }

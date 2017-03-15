@@ -8,7 +8,7 @@ namespace WUI.Controllers
     public class ParticipantController : Controller
     {
         //
-        // GET: /Competitor/
+        // GET: /Participant/
         [HttpGet]
         public ActionResult Index()
         {

@@ -33,8 +33,7 @@ namespace DAL.Extensions
                 DateEnd = bo.DateEnd,
                 Town = bo.Ville,
 
-                Organisers = withJoin && bo.Participant != null ? bo.Participant.Where(x => x.EstOrganisateur).Select(x => x.ToOrganiserBo()).ToList() : null,
-                Competitors = withJoin && bo.Participant != null ? bo.Participant.Where(x => x.EstCompetiteur).Select(x => x.ToCompetitorBo()).ToList() : null
+                Participants = withJoin && bo.Participant != null ? bo.Participant.Where(x => x.EstCompetiteur).Select(x => x.ToParticipantBo()).ToList() : null
             };
         }
 
@@ -71,7 +70,7 @@ namespace DAL.Extensions
 
         #endregion
 
-        #region Competitor
+        #region Participant
 
         public static List<Participant> ToParticipantBos(this List<ParticipantEntity> bos)
         {
@@ -90,32 +89,6 @@ namespace DAL.Extensions
                 IdCourse = bo.CourseId,
                 EstCompetiteur = bo.EstCompetiteur,
                 EstOrganisateur = bo.EstOrganisateur
-            };
-        }
-
-        #endregion
-
-        #region Organizer
-
-        public static List<Organizer> ToOrganiserBos(this List<ParticipantEntity> bos)
-        {
-            return bos != null
-                ? bos.Where(x => x != null).Select(x => x.ToOrganiserBo()).ToList()
-                : null;
-        }
-
-        public static Organizer ToOrganiserBo(this ParticipantEntity bo)
-        {
-            if (bo == null) return null;
-
-            return new Organizer
-            {
-                Id = bo.PersonneId,
-                Nom = bo.Personne.Nom,
-                Prenom = bo.Personne.Prenom,
-                DateNaissance = bo.Personne.DateNaissance.HasValue ? bo.Personne.DateNaissance.Value : DateTime.MinValue,
-                Email = bo.Personne.Email,
-                Phone = bo.Personne.Telephone
             };
         }
 

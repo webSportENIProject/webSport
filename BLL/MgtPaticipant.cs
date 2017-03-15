@@ -37,9 +37,11 @@ namespace BLL
             this._uow.ParticipantRepo.AddCompetiteur(participant.IdCourse, participant.IdPersonne);
         }
 
+        //GetById
 
-            // UPDATE
 
-            // DELETE
-        }
-    }
+        // UPDATE
+
+        // DELETE
+     }
+}

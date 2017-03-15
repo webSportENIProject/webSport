@@ -31,29 +31,25 @@ namespace WUI.Extensions
 
         #endregion
 
-        #region Competitor
+        #region Participant
 
-        public static List<CompetitorModel> ToModels(this List<Competitor> bos)
+        public static List<ParticipantModel> ToModels(this List<Participant> bos)
         {
             return bos != null
                 ? bos.Where(x => x != null).Select(x => x.ToModel()).ToList()
                 : null;
         }
 
-        public static CompetitorModel ToModel(this Competitor bo)
+        public static ParticipantModel ToModel(this Participant bo)
         {
             if (bo == null) return null;
 
-            return new CompetitorModel
+            return new ParticipantModel
             {   
-                Id = bo.Id,
-                Nom = bo.Nom,
-                Prenom = bo.Prenom,
-                DateNaissance = bo.DateNaissance,
-                Email = bo.Email,
-                Phone = bo.Phone,
-                Race = bo.Race.ToModel(),
-                DisplayConfigurations = bo.DisplayConfigurations.Select(x => x.ToModel()).ToList()
+                PersonneId = bo.IdPersonne,
+                CourseId = bo.IdCourse,
+                EstCompetiteur = bo.EstCompetiteur,
+                EstOrganisateur = bo.EstOrganisateur
             };
         }
 
@@ -81,8 +77,7 @@ namespace WUI.Extensions
                 DateEnd = bo.DateEnd,
                 Town = bo.Town,
 
-                Organisers = withJoin && bo.Organisers != null ? bo.Organisers.Select(x => x.ToModel()).ToList() : null,
-                Competitors = withJoin && bo.Competitors != null ? bo.Competitors.Select(x => x.ToModel()).ToList() : null,
+                Participants = withJoin && bo.Participants != null ? bo.Participants.Select(x => x.ToModel()).ToList() : null,
                 //Pois = bo.Pois.Select(x => x.ToModel()).ToList(),
             };
         }
@@ -98,35 +93,7 @@ namespace WUI.Extensions
                 Description = model.Description,
                 DateStart = model.DateStart,
                 DateEnd = model.DateEnd,
-                Town = model.Town,
-            };
-        }
-
-        #endregion
-
-        #region DisplayConfiguration
-
-        public static List<DisplayConfigurationModel> ToModels(this List<DisplayConfiguration> bos)
-        {
-            return bos != null
-                ? bos.Where(x => x != null).Select(x => x.ToModel()).ToList()
-                : null;
-        }
-
-        public static DisplayConfigurationModel ToModel(this DisplayConfiguration bo)
-        {
-            if (bo == null) return null;
-
-            return new DisplayConfigurationModel
-            {
-                Id = bo.Id,
-                PersonneId = bo.PersonneId,
-                DeviceName = bo.DeviceName,
-                SpeedAvg = bo.SpeedAvg,
-                SpeedMax = bo.SpeedMax,
-                UnitDistance = bo.UnitDistance.ToModel(),
-
-                Person = bo.Person.ToModel()
+                Town = model.Town
             };
         }
 
@@ -144,25 +111,7 @@ namespace WUI.Extensions
                 Prenom = bo.Prenom,
                 DateNaissance = bo.DateNaissance,
                 Email = bo.Email,
-                Phone = bo.Phone,
-
-                //DisplayConfigurations = bo.DisplayConfigurations.Select(x => x.ToModel()).ToList()
-            };
-        }
-
-        public static OrganizerModel ToModel(this Organizer bo)
-        {
-            if (bo == null) return null;
-
-            return new OrganizerModel
-            {
-                Id = bo.Id,
-                Nom = bo.Nom,
-                Prenom = bo.Prenom,
-                DateNaissance = bo.DateNaissance,
-                Email = bo.Email,
-                Phone = bo.Phone,
-                DisplayConfigurations = bo.DisplayConfigurations.Select(x => x.ToModel()).ToList()
+                Phone = bo.Phone
             };
         }
 

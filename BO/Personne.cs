@@ -35,24 +35,9 @@ namespace BO
             }
         }
 
-        [NonSerialized]
-        private ICollection<DisplayConfiguration> _displayConfigurations;
-        public virtual ICollection<DisplayConfiguration> DisplayConfigurations
-        {
-            get
-            {
-                return _displayConfigurations;
-            }
-            set
-            {
-                _displayConfigurations = value;
-            }
-        }
-
-
         public Personne()
         {
-            DisplayConfigurations = new HashSet<DisplayConfiguration>();
+
         }
 
         public Personne(string email)

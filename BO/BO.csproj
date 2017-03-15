@@ -41,10 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
-    <Compile Include="Competitor.cs" />
-    <Compile Include="DisplayConfiguration.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Organizer.cs" />
+    <Compile Include="Participant.cs" />
     <Compile Include="Personne.cs" />
     <Compile Include="Poi.cs" />
     <Compile Include="Point.cs" />

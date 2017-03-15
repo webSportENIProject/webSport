@@ -171,8 +171,7 @@
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\CompetitorController.cs" />
-    <Compile Include="Controllers\DisplayConfigurationController.cs" />
+    <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
@@ -184,11 +183,9 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Attributes\CompareDateAttribute.cs" />
     <Compile Include="Models\CategoryModel.cs" />
-    <Compile Include="Models\CompetitorModel.cs" />
     <Compile Include="Models\CoordGpsModel.cs" />
-    <Compile Include="Models\DisplayConfigurationModel.cs" />
     <Compile Include="Models\Enums.cs" />
-    <Compile Include="Models\OrganizerModel.cs" />
+    <Compile Include="Models\ParticipantModel.cs" />
     <Compile Include="Models\PersonneModel.cs" />
     <Compile Include="Models\PoiModel.cs" />
     <Compile Include="Models\PointModel.cs" />
@@ -197,9 +194,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="App_Data\Xml\Race.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <Content Include="Content\Bootstrap\bootstrap-theme.css" />
     <Content Include="Content\Bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\Bootstrap\bootstrap.css" />
@@ -276,11 +270,6 @@
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\Bootstrap\npm.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="App_Data\Xml\Race.dtd" />
-    <EmbeddedResource Include="App_Data\Xml\Race.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <Content Include="Areas\Administration\Views\Web.config" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Administration\Index.cshtml" />
@@ -341,7 +330,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Competitor\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -349,11 +337,6 @@
     <Content Include="Views\Race\Create.cshtml" />
     <Content Include="Views\Race\Edit.cshtml" />
     <Content Include="Views\Race\Delete.cshtml" />
-    <Content Include="Views\DisplayConfiguration\Index.cshtml" />
-    <Content Include="Views\DisplayConfiguration\Details.cshtml" />
-    <Content Include="Views\DisplayConfiguration\Create.cshtml" />
-    <Content Include="Views\DisplayConfiguration\Edit.cshtml" />
-    <Content Include="Views\DisplayConfiguration\Delete.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\Page404.cshtml" />
     <Content Include="Views\Race\Register.cshtml" />
@@ -362,6 +345,7 @@
     <Folder Include="App_Data\Autres\" />
     <Folder Include="App_Data\Json\" />
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Views\Participant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

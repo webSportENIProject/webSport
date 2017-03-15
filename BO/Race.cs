@@ -26,7 +26,6 @@ namespace BO
 
         public virtual List<Participant> Participants { get; set; }
 
-        public virtual List<Organizer> Organisers { get; set; }
 
         public virtual List<Poi> Pois { get; set; }
 

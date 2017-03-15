@@ -45,8 +45,6 @@ namespace WUI.Models
 
         public List<ParticipantModel> Participants { get; set; }
 
-        public List<OrganizerModel> Organisers { get; set; }
-
         public List<PoiModel> Pois { get; set; }
 
     }
