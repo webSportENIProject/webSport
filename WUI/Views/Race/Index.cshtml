@@ -59,6 +59,11 @@
             </div>
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 @Html.ActionLink("S'inscrire", "Register", new { id = item.Id })
+                @if (User.IsInRole("Administrateur"))
+                {
+                    @Html.ActionLink("Modifier", "Edit", new { id = item.Id })                                        
+                    @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                }
             </div> 
         </div>
     }
