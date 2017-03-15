@@ -10,10 +10,13 @@
 }
 
 <h2>Liste des courses</h2>
-<!--<p>
-    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-    @Html.ActionLink("Créer une nouvelle course", "Create")
-</p>-->
+@if (User.IsInRole("Administrateur"))
+{
+    <p>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        @Html.ActionLink("Créer une nouvelle course", "Create")
+    </p>
+}
 <div class="row row-bold">
     <div class="col-xs- col-sm-2 col-md-2 col-lg-2">
         @Html.DisplayNameFor(model => model.Title)
