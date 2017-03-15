@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebSportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebSportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,6 +15,7 @@
           <Property Name="DateStart" Type="datetime" Nullable="false" />
           <Property Name="DateEnd" Type="datetime" Nullable="false" />
           <Property Name="Ville" Type="varchar" MaxLength="100" />
+          <Property Name="MaxParticipants" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Participant">
           <Key>
@@ -175,8 +176,7 @@
             <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebSportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -191,6 +191,7 @@
           <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Participant" Relationship="Self.FK_Competiteur_Course" FromRole="Course" ToRole="Participant" />
+          <Property Name="MaxParticipants" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ParticipantEntity">
           <Key>
@@ -334,6 +335,7 @@
           <EntitySetMapping Name="Course">
             <EntityTypeMapping TypeName="WebSportModel.CourseEntity">
               <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="MaxParticipants" ColumnName="MaxParticipants" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Titre" ColumnName="Titre" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

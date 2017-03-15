@@ -76,6 +76,7 @@ namespace WUI.Extensions
                 DateStart = bo.DateStart,
                 DateEnd = bo.DateEnd,
                 Town = bo.Town,
+                MaxParticipants = bo.MaxParticipants,
 
                 Participants = withJoin && bo.Participants != null ? bo.Participants.Select(x => x.ToModel()).ToList() : null,
                 //Pois = bo.Pois.Select(x => x.ToModel()).ToList(),
@@ -93,7 +94,8 @@ namespace WUI.Extensions
                 Description = model.Description,
                 DateStart = model.DateStart,
                 DateEnd = model.DateEnd,
-                Town = model.Town
+                Town = model.Town,
+                MaxParticipants = model.MaxParticipants
             };
         }
 

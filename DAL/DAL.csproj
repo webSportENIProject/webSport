@@ -66,9 +66,6 @@
     <Compile Include="EntityFramework\CourseEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\GetRaceById_Result.cs">
-      <DependentUpon>WebsportPsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityFramework\ParticipantEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
@@ -101,21 +98,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WebSportModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebsportPsModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebsportPsModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebsportPsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebsportPsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityFramework\WebsportPsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebsportPsModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,29 +132,12 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="EntityFramework\WebsportPsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebsportPsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <EntityDeploy Include="EntityFramework\WebSportModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>WebSportModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="EntityFramework\WebSportModel.edmx.diagram">
       <DependentUpon>WebSportModel.edmx</DependentUpon>
-    </None>
-    <None Include="EntityFramework\WebsportPsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebsportPsModel.edmx</DependentUpon>
-      <LastGenOutput>WebsportPsModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="EntityFramework\WebsportPsModel.edmx.diagram">
-      <DependentUpon>WebsportPsModel.edmx</DependentUpon>
-    </None>
-    <None Include="EntityFramework\WebsportPsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebsportPsModel.edmx</DependentUpon>
-      <LastGenOutput>WebsportPsModel.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

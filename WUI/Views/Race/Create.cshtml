@@ -60,6 +60,14 @@
             @Html.ValidationMessageFor(model => model.Town)
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaxParticipants)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.MaxParticipants, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MaxParticipants)
+        </div>
+
        <button type="submit" value="Créer la course" class="btn btn-default">Créer la course</button>
 }
 

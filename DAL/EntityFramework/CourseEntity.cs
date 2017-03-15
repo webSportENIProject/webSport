@@ -25,6 +25,7 @@ namespace DAL.EntityFramework
         public System.DateTime DateStart { get; set; }
         public System.DateTime DateEnd { get; set; }
         public string Ville { get; set; }
+        public int MaxParticipants { get; set; }
     
         public virtual ICollection<ParticipantEntity> Participant { get; set; }
     }

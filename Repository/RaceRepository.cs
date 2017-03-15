@@ -58,6 +58,7 @@ namespace Repository
             raceToUpdate.DateStart = element.DateStart;
             raceToUpdate.DateEnd = element.DateEnd;
             raceToUpdate.Ville = element.Town;
+            raceToUpdate.MaxParticipants = element.MaxParticipants;
             base.Update(raceToUpdate);
         }
 

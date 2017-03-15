@@ -32,6 +32,7 @@ namespace DAL.Extensions
                 DateStart = bo.DateStart,
                 DateEnd = bo.DateEnd,
                 Town = bo.Ville,
+                MaxParticipants = bo.MaxParticipants,
 
                 Participants = withJoin && bo.Participant != null ? bo.Participant.Where(x => x.EstCompetiteur).Select(x => x.ToParticipantBo()).ToList() : null
             };
@@ -49,24 +50,9 @@ namespace DAL.Extensions
                 DateStart = model.DateStart,
                 DateEnd = model.DateEnd,
                 Ville = model.Town,
+                MaxParticipants = model.MaxParticipants,
             };
-        }
-
-
-        public static Race ToBo(this GetRaceById_Result entity)
-        {
-            if (entity == null) return null;
-
-            return new Race
-            {
-                Id = entity.CId,
-                Title = entity.CTitre,
-                Description = entity.CDescription,
-                DateStart = entity.CDateStart,
-                DateEnd = entity.CDateEnd,
-                Town = entity.CVille
-            };
-        }
+        }      
 
         #endregion
 

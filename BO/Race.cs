@@ -23,6 +23,7 @@ namespace BO
 
         public string Town { get; set; }
 
+        public int MaxParticipants { get; set; }
 
         public virtual List<Participant> Participants { get; set; }
 
