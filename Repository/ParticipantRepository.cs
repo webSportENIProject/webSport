@@ -47,6 +47,22 @@ namespace Repository
             }
         }
 
+        public List<Participant> GetAllItems()
+        {
+            return base.GetAll().ToParticipantBos();
+        }
+
+        //GET BY ID PERSONNE
+        public List<Participant> GetAllItemsByIdPersonne(int id)
+        {
+            var participants = this.GetByIdPersonne(id);
+            return participants.ToParticipantBos();
+        }
+        public List<ParticipantEntity> GetByIdPersonne(int id)
+        {
+            return base.Where(x => x.PersonneId == id).ToList();
+        }
+
         #endregion
     }
 }

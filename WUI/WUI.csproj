@@ -340,12 +340,12 @@
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\Page404.cshtml" />
     <Content Include="Views\Race\Register.cshtml" />
+    <Content Include="Views\Participant\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />
     <Folder Include="App_Data\Json\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Views\Participant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

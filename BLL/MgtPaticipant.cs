@@ -37,8 +37,17 @@ namespace BLL
             this._uow.ParticipantRepo.AddCompetiteur(participant.IdCourse, participant.IdPersonne);
         }
 
-        //GetById
+        //GET
+        public List<Participant> GetAll()
+        {
+            return this._uow.ParticipantRepo.GetAllItems();
+        }
 
+        //GET BY ID
+        public List<Participant> GetAllById(int id)
+        {
+            return this._uow.ParticipantRepo.GetAllItemsByIdPersonne(id);
+        }
 
         // UPDATE
 

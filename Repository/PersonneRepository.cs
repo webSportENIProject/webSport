@@ -39,7 +39,12 @@ namespace Repository
             }
         }
 
-        public Personne getPersonneByUserId(int userId) {
+        public Personne getPersonneByUserId(int id) {
+            return base.Where(x => x.Id == id).SingleOrDefault().ToBO();
+        }
+
+        public Personne GetByIdUserTable(int userId)
+        {
             return base.Where(x => x.UserTableId == userId).SingleOrDefault().ToBO();
         }
 
