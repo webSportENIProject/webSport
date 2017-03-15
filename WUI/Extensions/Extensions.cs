@@ -174,5 +174,19 @@ namespace WUI.Extensions
             };
         }
 
+        public static Mail ToBo(this MailModel model)
+        {
+            if (model == null) return null;
+
+            return new Mail
+            {
+                Id = model.Id,
+                Nom = model.Nom,
+                Email = model.Email,
+                Titre = model.Titre,
+                Message = model.Message
+            };
+        }
+
     }
 }

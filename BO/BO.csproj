@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Mail.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="Personne.cs" />
     <Compile Include="Poi.cs" />

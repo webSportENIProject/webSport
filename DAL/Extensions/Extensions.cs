@@ -80,6 +80,7 @@ namespace DAL.Extensions
 
         #endregion
 
+        #region Personne
         public static PersonneEntity ToDataEntity(this BO.Personne model)
         {
             if (model == null) return null;
@@ -111,5 +112,36 @@ namespace DAL.Extensions
                 UserTable = (int)entity.UserTableId
             };
         }
+        #endregion
+
+        #region Mail
+        public static MailEntity ToDataEntity(this BO.Mail model)
+        {
+            if (model == null) return null;
+
+            return new MailEntity
+            {
+                Id = model.Id,
+                Nom = model.Nom,
+                Email = model.Email,
+                Titre = model.Titre,
+                Message = model.Message
+            };
+        }
+
+        public static Mail ToBO(this MailEntity entity)
+        {
+            if (entity == null) return null;
+
+            return new Mail
+            {
+                Id = entity.Id,
+                Nom = entity.Nom,
+                Email = entity.Email,
+                Titre = entity.Titre,
+                Message = entity.Message
+            };
+        }
+        #endregion
     }
 }

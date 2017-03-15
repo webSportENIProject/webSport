@@ -16,6 +16,7 @@
         <AssociationConnector Association="WebSportModel.FK_Competiteur_Personne" ManuallyRouted="false" />
         <AssociationConnector Association="WebSportModel.FK_PersonneUserTable" ManuallyRouted="false" />
         <AssociationConnector Association="WebSportModel.webpages_UsersInRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebSportModel.MailEntity" Width="1.5" PointX="3" PointY="5.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

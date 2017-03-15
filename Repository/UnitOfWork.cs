@@ -58,6 +58,17 @@ namespace Repository
             }
         }
 
+        private MailRepository _mailRepo;
+        public MailRepository MailRepo
+        {
+            get
+            {
+                if (_mailRepo == null)
+                    _mailRepo = new MailRepository(this.context);
+                return _mailRepo;
+            }
+        }
+
         // Etc... on liste les repositories
 
         #endregion

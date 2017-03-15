@@ -1,8 +1,12 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
+using WUI.Extensions;
+using WUI.Models;
 
 namespace WUI.Controllers
 {
@@ -27,6 +31,18 @@ namespace WUI.Controllers
             ViewBag.Message = "Votre page de contact.";
 
             return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact(MailModel mail)
+        {
+            if (ModelState.IsValid)
+            {
+                MgtMail.GetInstance().AddMail(mail.ToBo());
+            }
+            return RedirectToAction("Index");
         }
     }
 }

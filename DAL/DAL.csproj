@@ -66,6 +66,9 @@
     <Compile Include="EntityFramework\CourseEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\MailEntity.cs">
+      <DependentUpon>WebSportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\ParticipantEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
