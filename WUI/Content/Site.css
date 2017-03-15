@@ -12,8 +12,8 @@
     font-weight: bold;		
  }
 
-#map { 
-    width: 700px;
-    height: 700px; 
+#map, #mapid { 
+   width: 600px; 
+   height: 400px;
 
 }
