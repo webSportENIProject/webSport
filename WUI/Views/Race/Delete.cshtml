@@ -4,11 +4,7 @@
     ViewBag.Title = "Suppression";
 }
 
-<h2>Delete</h2>
-
 <h3>Êtes-vous sur de vouloir supprimer cet élément ?</h3>
-<fieldset>
-    <legend>RaceModel</legend>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.Title)
@@ -37,12 +33,12 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.DateEnd)
     </div>
-</fieldset>
+
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
 
     <p>
-        <input type="submit" value="Delete" /> |
+        <button type="submit" value="Delete" class="btn btn-default">Delete</button> |
         @Html.ActionLink("Retour à la liste", "Index")
     </p>
 }
