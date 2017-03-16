@@ -7,11 +7,39 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    /// <summary>
-    /// Classe mère pour sauvegarder une position 
-    /// </summary>
-    public abstract class Point : Position
+
+    public class Point 
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
+
+        public string Titre { get; set; }
+
+        public int Ordre { get; set; }
+
+        public float Longitude { get; set; }
+
+        public float Latitude { get; set; }
+
+        public int CourseId { get; set; }
+
+        public int TypePointId { get; set; }
+
+
+        public virtual Race Course { get; set; }
+        public virtual TypePoint TypePoint { get; set; }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj.GetType().Equals(typeof(Point)))
+            {
+                return Id == ((Point)obj).Id;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

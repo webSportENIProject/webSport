@@ -45,11 +45,10 @@
     <Compile Include="Mail.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="Personne.cs" />
-    <Compile Include="Poi.cs" />
     <Compile Include="Point.cs" />
-    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
+    <Compile Include="TypePoint.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

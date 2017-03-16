@@ -9,7 +9,7 @@ namespace BO
     /// Course
     /// </summary>
     [Serializable]
-    public class Race : IComparable<Race>
+    public class Race 
     {
         public int Id { get; set; }
 
@@ -27,18 +27,6 @@ namespace BO
 
         public virtual List<Participant> Participants { get; set; }
 
-
-        public virtual List<Poi> Pois { get; set; }
-
-
-        public int CompareTo(Race otherRace)
-        {
-            if (otherRace == null)
-            {
-                return 1;
-            }
-
-            return this.DateStart.CompareTo(otherRace.DateStart);
-        }
+        public virtual List<Point> points { get; set; }
     }
 }
