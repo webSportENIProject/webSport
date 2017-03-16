@@ -22,6 +22,8 @@ namespace WUI.Models
 
         public int UserTable { get; set; }
 
+        public string distance { get; set; }
+
         public DateTime? DateNaissance { get; set; }
     }
 }

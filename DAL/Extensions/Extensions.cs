@@ -93,7 +93,9 @@ namespace DAL.Extensions
                 Email = model.Email,
                 Telephone = model.Phone,
                 DateNaissance = model.DateNaissance,
-                UserTableId = model.UserTable
+                UserTableId = model.UserTable,
+                kms = model.kms,
+                miles = model.miles
             };
         }
 
@@ -109,7 +111,9 @@ namespace DAL.Extensions
                 Email = entity.Email,
                 Phone = entity.Telephone,
                 DateNaissance = (DateTime)entity.DateNaissance,
-                UserTable = (int)entity.UserTableId
+                UserTable = (int)entity.UserTableId,
+                kms = entity.kms,
+                miles = entity.miles
             };
         }
         #endregion

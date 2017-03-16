@@ -48,6 +48,8 @@
           <Property Name="Telephone" Type="varchar" MaxLength="10" />
           <Property Name="DateNaissance" Type="datetime" />
           <Property Name="UserTableId" Type="int" />
+          <Property Name="kms" Type="bit" Nullable="false" />
+          <Property Name="miles" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Point">
           <Key>
@@ -283,6 +285,8 @@
           <Property Name="UserTableId" Type="Int32" />
           <NavigationProperty Name="Participant" Relationship="Self.FK_Competiteur_Personne" FromRole="Personne" ToRole="Participant" />
           <NavigationProperty Name="UserTable" Relationship="Self.FK_PersonneUserTable" FromRole="Personne" ToRole="UserTable" />
+          <Property Name="kms" Type="Boolean" Nullable="false" />
+          <Property Name="miles" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTable">
           <Key>
@@ -366,7 +370,7 @@
           <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="*" />
           <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="WebSportEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WebSportEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Course" EntityType="WebSportModel.CourseEntity" />
           <EntitySet Name="Participant" EntityType="WebSportModel.ParticipantEntity" />
           <EntitySet Name="Personne" EntityType="WebSportModel.PersonneEntity" />
@@ -463,7 +467,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="WebSportModelStoreContainer" CdmEntityContainer="WebSportEntities2">
+        <EntityContainerMapping StorageEntityContainer="WebSportModelStoreContainer" CdmEntityContainer="WebSportEntities">
           <EntitySetMapping Name="Course">
             <EntityTypeMapping TypeName="WebSportModel.CourseEntity">
               <MappingFragment StoreEntitySet="Course">
@@ -490,6 +494,8 @@
           <EntitySetMapping Name="Personne">
             <EntityTypeMapping TypeName="WebSportModel.PersonneEntity">
               <MappingFragment StoreEntitySet="Personne">
+                <ScalarProperty Name="miles" ColumnName="miles" />
+                <ScalarProperty Name="kms" ColumnName="kms" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
                 <ScalarProperty Name="Prenom" ColumnName="Prenom" />

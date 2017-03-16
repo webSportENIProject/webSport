@@ -26,6 +26,8 @@ namespace DAL.EntityFramework
         public string Telephone { get; set; }
         public Nullable<System.DateTime> DateNaissance { get; set; }
         public Nullable<int> UserTableId { get; set; }
+        public bool kms { get; set; }
+        public bool miles { get; set; }
     
         public virtual ICollection<ParticipantEntity> Participant { get; set; }
         public virtual UserTable UserTable { get; set; }

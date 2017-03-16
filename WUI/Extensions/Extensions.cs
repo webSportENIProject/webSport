@@ -105,6 +105,13 @@ namespace WUI.Extensions
         public static PersonneModel ToModel(this Personne bo)
         {
             if (bo == null) return null;
+            String distance = "";
+            if (bo.kms) {
+                distance = "Kms";
+            }
+            else if(bo.miles){
+                distance = "Miles";
+            }
 
             return new PersonneModel
             {
@@ -113,7 +120,8 @@ namespace WUI.Extensions
                 Prenom = bo.Prenom,
                 DateNaissance = bo.DateNaissance,
                 Email = bo.Email,
-                Phone = bo.Phone
+                Phone = bo.Phone,
+                distance = distance
             };
         }        
 
@@ -140,6 +148,18 @@ namespace WUI.Extensions
         {
             if (model == null) return null;
 
+            bool kms = false;
+            bool miles = false;
+
+            if (model.distance.Equals("Kms"))
+            {
+                kms = true;
+            }
+            else if (model.distance.Equals("Miles"))
+            {
+                miles = true;
+            }
+
             return new Personne
             {
                 Id = model.Id,
@@ -147,6 +167,8 @@ namespace WUI.Extensions
                 Prenom = model.Prenom,
                 Email = model.Email,
                 Phone = model.Phone,
+                miles = miles,
+                kms = kms,
                 DateNaissance = (DateTime)model.DateNaissance
             };
         }

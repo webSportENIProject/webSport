@@ -56,6 +56,8 @@ namespace Repository
             personneToUpdate.Email = element.Email;
             personneToUpdate.Telephone = element.Phone;
             personneToUpdate.DateNaissance = element.DateNaissance;
+            personneToUpdate.kms = element.kms;
+            personneToUpdate.miles = element.miles;
             base.Update(personneToUpdate);
         }
 

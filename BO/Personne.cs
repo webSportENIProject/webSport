@@ -21,6 +21,10 @@ namespace BO
 
         public int UserTable { get; set; }
 
+        public bool kms { get; set; }
+
+        public bool miles { get; set; }
+
         [NonSerialized]
         private DateTime? _dateNaissance;
         public DateTime DateNaissance
@@ -55,7 +59,9 @@ namespace BO
                        && Nom == ((Personne)obj).Nom
                        && Prenom == ((Personne)obj).Prenom
                        && Phone == ((Personne)obj).Phone
-                       && DateNaissance == ((Personne)obj).DateNaissance;
+                       && DateNaissance == ((Personne)obj).DateNaissance
+                       && kms == ((Personne)obj).kms
+                       && miles == ((Personne)obj).miles;
             }
             else
             {
