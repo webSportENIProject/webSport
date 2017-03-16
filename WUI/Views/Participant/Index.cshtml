@@ -10,54 +10,57 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Town)
+            </th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
 
-<div class="row row-bold">
-    <div class="col-xs- col-sm-2 col-md-2 col-lg-2">
-        @Html.DisplayNameFor(model => model.Title)
-    </div>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        @Html.DisplayNameFor(model => model.DateStart)
-    </div>
-    <div class="col-xs-2 col-sm-1 col-md-2 col-lg-2">
-        @Html.DisplayNameFor(model => model.DateEnd)
-    </div>
-    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-        @Html.DisplayNameFor(model => model.Town)
-    </div>
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">&nbsp;</div> 
-</div>
-
-
-@if (Model != null)
-{
-    foreach (var item in Model)
-    {
-        <div class="row">
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                @Html.DisplayFor(modelItem => item.Title)
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                @Html.DisplayFor(modelItem => item.Description)
-            </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                @Html.DisplayFor(modelItem => item.DateStart)
-            </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                @Html.DisplayFor(modelItem => item.DateEnd)
-            </div>
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                @Html.DisplayFor(modelItem => item.Town)
-            </div>
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                @Html.ActionLink("Se désinscrire", "Unsubscribe", new { idRace = item.Id })
-            </div> 
-        </div>
-    }
-}
-
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEnd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Town)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Se désinscrire", "Unsubscribe", new { idRace = item.Id })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 
 @section scripts {
     @Scripts.Render("~/bundles/Race/js")

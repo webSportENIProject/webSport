@@ -1,15 +1,5 @@
-﻿.category-table-style {
-    font-weight: normal;
-}
-
-.category-table-style > th {
-    font-weight: bold;
-}
-
-.category-table-style > .row-style {
-    color: black;
-}
-
-.category-table-style > .alternate-row-style {
-    color: darkgray;
+﻿
+/*Style du tableau des catégories -> un fond qui varie une ligne sur deux*/
+.category-table-style .alternate-row-style {
+    background-color: #c5c5c5;
 }
