@@ -1,4 +1,7 @@
-﻿<li>@Html.ActionLink("Courses", "Index", "Race")</li>
-<li>@Html.ActionLink("Catégories", "Index", "Category")</li>
-<li>@Html.ActionLink("Mes Inscriptions", "Index", "Participant")</li>
+﻿    
+    <li>@Html.ActionLink("Courses", "Index", "Race")</li>
+    <li>@Html.ActionLink("Catégories", "Index", "Category")</li>
 
+@if (Request.IsAuthenticated) {
+    <li>@Html.ActionLink("Mes Inscriptions", "Index", "Participant")</li>
+}
