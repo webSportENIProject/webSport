@@ -54,6 +54,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titre" Type="text" Nullable="false" />
           <Property Name="Longitude" Type="float" Nullable="false" />
           <Property Name="Latitude" Type="float" Nullable="false" />
           <Property Name="CourseId" Type="int" Nullable="false" />
@@ -64,7 +65,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="typePoint" Type="text" Nullable="false" />
+          <Property Name="Libelle" Type="text" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTable">
           <Key>
@@ -399,7 +400,7 @@
             <End Role="TypePoint" EntitySet="TypePoint" />
             <End Role="Point" EntitySet="Point" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="MailEntity">
           <Key>
             <PropertyRef Name="Id" />
@@ -415,6 +416,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Longitude" Type="Double" Nullable="false" />
           <Property Name="Latitude" Type="Double" Nullable="false" />
           <Property Name="CourseId" Type="Int32" Nullable="false" />
@@ -427,7 +429,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="typePoint1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Libelle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Point" Relationship="WebSportModel.FK_Point_TypePoint" FromRole="TypePoint" ToRole="Point" />
         </EntityType>
         <Association Name="FK_Point_Course">
@@ -454,7 +456,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -564,6 +566,7 @@
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -571,7 +574,7 @@
           <EntitySetMapping Name="TypePoint">
             <EntityTypeMapping TypeName="WebSportModel.TypePoint">
               <MappingFragment StoreEntitySet="TypePoint">
-                <ScalarProperty Name="typePoint1" ColumnName="typePoint" />
+                <ScalarProperty Name="Libelle" ColumnName="Libelle" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

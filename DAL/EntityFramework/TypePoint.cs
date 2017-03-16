@@ -20,7 +20,7 @@ namespace DAL.EntityFramework
         }
     
         public int Id { get; set; }
-        public string typePoint1 { get; set; }
+        public string Libelle { get; set; }
     
         public virtual ICollection<Point> Point { get; set; }
     }
