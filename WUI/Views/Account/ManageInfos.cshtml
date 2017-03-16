@@ -1,0 +1,51 @@
+﻿@model WUI.Models.PersonneModel
+@{
+    ViewBag.Title = "Gérer mes informations";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+</hgroup>
+
+<p class="message-success">@ViewBag.StatusMessage</p>
+
+<p>Vous êtes connecté en tant que <strong>@User.Identity.Name</strong>.</p>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nom)
+        @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Prenom)
+        @Html.TextBoxFor(m => m.Prenom, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Phone)
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.DateNaissance)
+        @Html.TextBoxFor(m => m.DateNaissance, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m => m.Id);
+
+    <button type="submit" value="modifier infos" class="btn btn-default">Modifier mes informations</button>
+}
+
+@section Scripts {
+
+}

@@ -48,6 +48,17 @@ namespace Repository
             return base.Where(x => x.UserTableId == userId).SingleOrDefault().ToBO();
         }
 
+        public void Update(Personne element)
+        {
+            PersonneEntity personneToUpdate = base.Where(x => x.Id == element.Id).SingleOrDefault();
+            personneToUpdate.Nom = element.Nom;
+            personneToUpdate.Prenom = element.Prenom;
+            personneToUpdate.Email = element.Email;
+            personneToUpdate.Telephone = element.Phone;
+            personneToUpdate.DateNaissance = element.DateNaissance;
+            base.Update(personneToUpdate);
+        }
+
         #endregion
     }
 }

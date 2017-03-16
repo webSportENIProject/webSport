@@ -51,7 +51,11 @@ namespace BO
             if (obj.GetType().Equals(typeof(Personne)))
             {
                 return Id == ((Personne)obj).Id
-                       && Email == ((Personne)obj).Email;
+                       && Email == ((Personne)obj).Email
+                       && Nom == ((Personne)obj).Nom
+                       && Prenom == ((Personne)obj).Prenom
+                       && Phone == ((Personne)obj).Phone
+                       && DateNaissance == ((Personne)obj).DateNaissance;
             }
             else
             {

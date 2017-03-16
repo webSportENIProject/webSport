@@ -43,8 +43,15 @@ namespace BLL
             return this._uow.PersonneRepo.GetByIdUserTable(id);
         }
 
-        // UPDATE
+        public Personne GetPersonneById(int id)
+        {
+            return this._uow.PersonneRepo.getPersonneByUserId(id);
+        }
 
+        // UPDATE
+        public void UpdatePersonne(Personne personne) {
+            this._uow.PersonneRepo.Update(personne);
+        }
         // DELETE
     }
 }

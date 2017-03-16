@@ -138,7 +138,35 @@ namespace WUI.Controllers
         //
         // GET: /Account/Manage
 
-        public ActionResult Manage(ManageMessageId? message)
+        public ActionResult ManageInfos(ManageMessageId? message)
+        {
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("SqlAdoCs", "UserTable", "Id", "Name", autoCreateTables: true);
+            }
+            int idUser = WebSecurity.CurrentUserId;
+            Personne user = MgtPersonne.GetInstance().GetPersonneByIdUserTable(idUser);
+
+            return View(user.ToModel());
+        }
+
+        //
+        // POST: /Account/Manage
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ManageInfos(PersonneModel model)
+        {
+            Personne user = MgtPersonne.GetInstance().GetPersonneById(model.Id);
+            if (!user.Equals(model.ToBo())) {
+                MgtPersonne.GetInstance().UpdatePersonne(model.ToBo());
+            }
+
+            // Si nous sommes arrivés là, quelque chose a échoué, réafficher le formulaire
+            return View(model);
+        }
+
+        public ActionResult ManagePassword(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Votre mot de passe a été modifié."
@@ -147,15 +175,13 @@ namespace WUI.Controllers
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
+
             return View();
         }
 
-        //
-        // POST: /Account/Manage
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model)
+        public ActionResult ManagePassword(LocalPasswordModel model)
         {
             bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.HasLocalPassword = hasLocalAccount;
