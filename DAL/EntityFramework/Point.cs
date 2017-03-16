@@ -15,6 +15,7 @@ namespace DAL.EntityFramework
     public partial class Point
     {
         public int Id { get; set; }
+        public string Titre { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
         public int CourseId { get; set; }
