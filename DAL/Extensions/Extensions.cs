@@ -143,5 +143,71 @@ namespace DAL.Extensions
             };
         }
         #endregion
+
+        #region Point
+
+        public static List<Point> ToBos(this List<PointEntity> bos, bool withJoinTypeCourse = false, bool withJoinRace = false)
+        {
+            return bos != null
+                ? bos.Where(x => x != null).Select(x => x.ToBo(withJoinTypeCourse, withJoinRace)).ToList()
+                : null;
+        }
+
+        public static Point ToBo(this PointEntity bo, bool withJoinTypeCourse = false, bool withJoinRace = false)
+        {
+            if (bo == null) return null;
+
+            return new Point
+            {
+                Id = bo.Id,
+                Titre = bo.Titre,
+                Ordre = bo.Ordre,
+                Longitude = bo.Longitude,
+                Latitude = bo.Latitude
+            };
+        }
+
+        public static PointEntity ToDataEntity(this Point model)
+        {
+            if (model == null) return null;
+
+            return new PointEntity
+            {
+                Id = model.Id,
+                Titre = model.Titre,
+                Ordre = model.Ordre,
+                Longitude = model.Longitude,
+                Latitude = model.Latitude
+            };
+        }
+
+        #endregion
+
+        #region TypePoint
+        public static TypePoint ToBo(this TypePointEntity bo)
+        {
+            if (bo == null) return null;
+
+            return new TypePoint
+            {
+                Id = bo.Id,
+                Libelle = bo.Libelle
+            };
+        }
+
+        public static TypePointEntity ToDataEntity(this TypePoint model)
+        {
+            if (model == null) return null;
+
+            return new TypePointEntity
+            {
+                Id = model.Id,
+                Libelle = model.Libelle
+            };
+        }
+
+        #endregion
+
+
     }
 }

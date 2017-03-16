@@ -12,16 +12,16 @@ namespace DAL.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class TypePoint
+    public partial class TypePointEntity
     {
-        public TypePoint()
+        public TypePointEntity()
         {
-            this.Point = new HashSet<Point>();
+            this.Point = new HashSet<PointEntity>();
         }
     
         public int Id { get; set; }
         public string Libelle { get; set; }
     
-        public virtual ICollection<Point> Point { get; set; }
+        public virtual ICollection<PointEntity> Point { get; set; }
     }
 }

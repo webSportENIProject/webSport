@@ -75,10 +75,10 @@
     <Compile Include="EntityFramework\PersonneEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\Point.cs">
+    <Compile Include="EntityFramework\PointEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\TypePoint.cs">
+    <Compile Include="EntityFramework\TypePointEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\UserTable.cs">

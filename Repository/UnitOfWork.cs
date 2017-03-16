@@ -69,6 +69,17 @@ namespace Repository
             }
         }
 
+        private PointRepository _pointRepo;
+        public PointRepository PointRepo
+        {
+            get
+            {
+                if (_pointRepo == null)
+                    _pointRepo = new PointRepository(this.context);
+                return _pointRepo;
+            }
+        }
+
         // Etc... on liste les repositories
 
         #endregion

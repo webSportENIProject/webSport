@@ -391,8 +391,8 @@
             <End Role="UserTable" EntitySet="UserTable" />
           </AssociationSet>
           <EntitySet Name="Mail" EntityType="WebSportModel.MailEntity" />
-          <EntitySet Name="Point" EntityType="WebSportModel.Point" />
-          <EntitySet Name="TypePoint" EntityType="WebSportModel.TypePoint" />
+          <EntitySet Name="Point" EntityType="WebSportModel.PointEntity" />
+          <EntitySet Name="TypePoint" EntityType="WebSportModel.TypePointEntity" />
           <AssociationSet Name="FK_Point_Course" Association="WebSportModel.FK_Point_Course">
             <End Role="CourseEntity" EntitySet="Course" />
             <End Role="Point" EntitySet="Point" />
@@ -412,7 +412,7 @@
           <Property Name="Titre" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
           <Property Name="Message" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="Point">
+        <EntityType Name="PointEntity">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -426,7 +426,7 @@
           <NavigationProperty Name="Course" Relationship="WebSportModel.FK_Point_Course" FromRole="Point" ToRole="CourseEntity" />
           <NavigationProperty Name="TypePoint" Relationship="WebSportModel.FK_Point_TypePoint" FromRole="Point" ToRole="TypePoint" />
         </EntityType>
-        <EntityType Name="TypePoint">
+        <EntityType Name="TypePointEntity">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -436,7 +436,7 @@
         </EntityType>
         <Association Name="FK_Point_Course">
           <End Type="WebSportModel.CourseEntity" Role="CourseEntity" Multiplicity="1" />
-          <End Type="WebSportModel.Point" Role="Point" Multiplicity="*" />
+          <End Type="WebSportModel.PointEntity" Role="Point" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CourseEntity">
               <PropertyRef Name="Id" />
@@ -447,8 +447,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Point_TypePoint">
-          <End Type="WebSportModel.TypePoint" Role="TypePoint" Multiplicity="1" />
-          <End Type="WebSportModel.Point" Role="Point" Multiplicity="*" />
+          <End Type="WebSportModel.TypePointEntity" Role="TypePoint" Multiplicity="1" />
+          <End Type="WebSportModel.PointEntity" Role="Point" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TypePoint">
               <PropertyRef Name="Id" />
@@ -562,7 +562,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Point">
-            <EntityTypeMapping TypeName="WebSportModel.Point">
+            <EntityTypeMapping TypeName="WebSportModel.PointEntity">
               <MappingFragment StoreEntitySet="Point">
                 <ScalarProperty Name="TypePointId" ColumnName="TypePointId" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
@@ -575,7 +575,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TypePoint">
-            <EntityTypeMapping TypeName="WebSportModel.TypePoint">
+            <EntityTypeMapping TypeName="WebSportModel.TypePointEntity">
               <MappingFragment StoreEntitySet="TypePoint">
                 <ScalarProperty Name="Libelle" ColumnName="Libelle" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

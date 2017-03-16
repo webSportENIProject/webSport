@@ -17,7 +17,7 @@ namespace DAL.EntityFramework
         public CourseEntity()
         {
             this.Participant = new HashSet<ParticipantEntity>();
-            this.Point = new HashSet<Point>();
+            this.Point = new HashSet<PointEntity>();
         }
     
         public int Id { get; set; }
@@ -29,6 +29,6 @@ namespace DAL.EntityFramework
         public int MaxParticipants { get; set; }
     
         public virtual ICollection<ParticipantEntity> Participant { get; set; }
-        public virtual ICollection<Point> Point { get; set; }
+        public virtual ICollection<PointEntity> Point { get; set; }
     }
 }

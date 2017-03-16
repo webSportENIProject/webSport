@@ -12,7 +12,7 @@ namespace DAL.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Point
+    public partial class PointEntity
     {
         public int Id { get; set; }
         public string Titre { get; set; }
@@ -23,6 +23,6 @@ namespace DAL.EntityFramework
         public int TypePointId { get; set; }
     
         public virtual CourseEntity Course { get; set; }
-        public virtual TypePoint TypePoint { get; set; }
+        public virtual TypePointEntity TypePoint { get; set; }
     }
 }
