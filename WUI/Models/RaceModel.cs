@@ -42,7 +42,7 @@ namespace WUI.Models
         [Required(ErrorMessage = "La {0} est requise")]
         public string Town { get; set; }
 
-        [Display(Name = "Nombre maximun de participants")]
+        [Display(Name = "Nb max Participants")]
         [Required(ErrorMessage = "Le {0} est requise")]
         public int MaxParticipants { get; set; }
 

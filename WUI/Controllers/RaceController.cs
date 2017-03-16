@@ -31,7 +31,7 @@ namespace WUI.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var result = MgtRace.GetInstance().GetAllItems().ToModels();
+            List<RaceModel> result = MgtRace.GetInstance().GetAllItemsWithParticipants().ToModels(true);
             return View(result);
         }       
 

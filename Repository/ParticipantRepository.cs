@@ -55,12 +55,13 @@ namespace Repository
         //GET BY ID PERSONNE
         public List<Participant> GetAllItemsByIdPersonne(int id)
         {
-            var participants = this.GetByIdPersonne(id);
-            return participants.ToParticipantBos();
+            return base.Where(x => x.PersonneId == id).ToList().ToParticipantBos();
         }
-        public List<ParticipantEntity> GetByIdPersonne(int id)
+
+        //GET BY ID RACE
+        public List<Participant> GetAllItemsByIdRace(int idRace)
         {
-            return base.Where(x => x.PersonneId == id).ToList();
+            return base.Where(x => x.CourseId == idRace).ToList().ToParticipantBos();
         }
 
         //REMOVE

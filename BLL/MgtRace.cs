@@ -47,9 +47,20 @@ namespace BLL
 
         public List<Race> GetAllItems()
         {
-            return this._uow.RaceRepo.GetAllItems();
+            List <Race> races = this._uow.RaceRepo.GetAllItems();
+            return races;
         }
-             
+
+        public List<Race> GetAllItemsWithParticipants()
+        {
+            List<Race> races = this._uow.RaceRepo.GetAllItems();
+            foreach (Race item in races)
+            {
+                item.Participants = this._uow.ParticipantRepo.GetAllItemsByIdRace(item.Id);
+            }
+            return races;
+        }
+
 
         public Race GetRace(int id)
         {           
