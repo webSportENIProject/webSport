@@ -10,6 +10,19 @@
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
     color: #7f7777 !important;
 }
+.vertical {
+    background-image: url("../images/logo.png");
+    background-size: 110px 140px;
+    border-right: medium solid;
+    border-left: medium solid;
+    position: fixed;
+    top: 50px;
+    height: 120px;
+    width: 130px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
 
 /*Hover sur les éléments du menu*/
 .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
