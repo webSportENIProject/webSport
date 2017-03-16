@@ -8,8 +8,16 @@ namespace WUI.Controllers
 {
     public class TypePointController : Controller
     {
+
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        public TypePointController()
+        {
+        }
+
         //
-        // GET: /TypePoin/
+        // GET: /TypePoint/
 
         public ActionResult Index()
         {

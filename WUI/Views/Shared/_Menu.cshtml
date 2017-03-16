@@ -1,6 +1,10 @@
-﻿    
-    <li>@Html.ActionLink("Courses", "Index", "Race")</li>
-    <li>@Html.ActionLink("Catégories", "Index", "Category")</li>
+﻿<li>@Html.ActionLink("Courses", "Index", "Race")</li>
+<li>@Html.ActionLink("Catégories", "Index", "Category")</li>
+
+@if (User.IsInRole("Administrateur"))
+{
+    <li>@Html.ActionLink("Créer un type de Point", "Index", "TypePoint")</li>
+}
 
 @if (Request.IsAuthenticated) {
     <li>@Html.ActionLink("Mes Inscriptions", "Index", "Participant")</li>

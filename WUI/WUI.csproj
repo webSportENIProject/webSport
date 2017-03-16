@@ -177,7 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
-    <Compile Include="Controllers\TypePoinController.cs" />
+    <Compile Include="Controllers\TypePointController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -352,6 +352,7 @@
     <Folder Include="App_Data\Autres\" />
     <Folder Include="App_Data\Json\" />
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Views\TypePoint\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
