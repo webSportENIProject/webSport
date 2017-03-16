@@ -12,23 +12,15 @@ namespace DAL.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class CourseEntity
+    public partial class Point
     {
-        public CourseEntity()
-        {
-            this.Participant = new HashSet<ParticipantEntity>();
-            this.Point = new HashSet<Point>();
-        }
-    
         public int Id { get; set; }
-        public string Titre { get; set; }
-        public string Description { get; set; }
-        public System.DateTime DateStart { get; set; }
-        public System.DateTime DateEnd { get; set; }
-        public string Ville { get; set; }
-        public int MaxParticipants { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
+        public int CourseId { get; set; }
+        public int TypePointId { get; set; }
     
-        public virtual ICollection<ParticipantEntity> Participant { get; set; }
-        public virtual ICollection<Point> Point { get; set; }
+        public virtual CourseEntity Course { get; set; }
+        public virtual TypePoint TypePoint { get; set; }
     }
 }

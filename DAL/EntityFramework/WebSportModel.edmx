@@ -49,6 +49,23 @@
           <Property Name="DateNaissance" Type="datetime" />
           <Property Name="UserTableId" Type="int" />
         </EntityType>
+        <EntityType Name="Point">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="TypePointId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypePoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typePoint" Type="text" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserTable">
           <Key>
             <PropertyRef Name="Id" />
@@ -132,6 +149,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Point_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Point" Type="Self.Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Point">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Point_TypePoint">
+          <End Role="TypePoint" Type="Self.TypePoint" Multiplicity="1" />
+          <End Role="Point" Type="Self.Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePoint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Point">
+              <PropertyRef Name="TypePointId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_RoleId">
           <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
           <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
@@ -161,6 +202,8 @@
           <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personne" EntityType="Self.Personne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Point" EntityType="Self.Point" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypePoint" EntityType="Self.TypePoint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" Schema="dbo" store:Type="Tables" />
@@ -177,6 +220,14 @@
           <AssociationSet Name="FK_PersonneUserTable" Association="Self.FK_PersonneUserTable">
             <End Role="UserTable" EntitySet="UserTable" />
             <End Role="Personne" EntitySet="Personne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Point_Course" Association="Self.FK_Point_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Point" EntitySet="Point" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Point_TypePoint" Association="Self.FK_Point_TypePoint">
+            <End Role="TypePoint" EntitySet="TypePoint" />
+            <End Role="Point" EntitySet="Point" />
           </AssociationSet>
           <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
             <End Role="webpages_Roles" EntitySet="webpages_Roles" />
@@ -203,6 +254,7 @@
           <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Participant" Relationship="Self.FK_Competiteur_Course" FromRole="Course" ToRole="Participant" />
           <Property Name="MaxParticipants" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Point" Relationship="WebSportModel.FK_Point_Course" FromRole="CourseEntity" ToRole="Point" />
         </EntityType>
         <EntityType Name="ParticipantEntity">
           <Key>
@@ -337,6 +389,16 @@
             <End Role="UserTable" EntitySet="UserTable" />
           </AssociationSet>
           <EntitySet Name="Mail" EntityType="WebSportModel.MailEntity" />
+          <EntitySet Name="Point" EntityType="WebSportModel.Point" />
+          <EntitySet Name="TypePoint" EntityType="WebSportModel.TypePoint" />
+          <AssociationSet Name="FK_Point_Course" Association="WebSportModel.FK_Point_Course">
+            <End Role="CourseEntity" EntitySet="Course" />
+            <End Role="Point" EntitySet="Point" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Point_TypePoint" Association="WebSportModel.FK_Point_TypePoint">
+            <End Role="TypePoint" EntitySet="TypePoint" />
+            <End Role="Point" EntitySet="Point" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="MailEntity">
           <Key>
@@ -348,6 +410,50 @@
           <Property Name="Titre" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
           <Property Name="Message" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
         </EntityType>
+        <EntityType Name="Point">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="TypePointId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="WebSportModel.FK_Point_Course" FromRole="Point" ToRole="CourseEntity" />
+          <NavigationProperty Name="TypePoint" Relationship="WebSportModel.FK_Point_TypePoint" FromRole="Point" ToRole="TypePoint" />
+        </EntityType>
+        <EntityType Name="TypePoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typePoint1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Point" Relationship="WebSportModel.FK_Point_TypePoint" FromRole="TypePoint" ToRole="Point" />
+        </EntityType>
+        <Association Name="FK_Point_Course">
+          <End Type="WebSportModel.CourseEntity" Role="CourseEntity" Multiplicity="1" />
+          <End Type="WebSportModel.Point" Role="Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Point">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Point_TypePoint">
+          <End Type="WebSportModel.TypePoint" Role="TypePoint" Multiplicity="1" />
+          <End Type="WebSportModel.Point" Role="Point" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypePoint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Point">
+              <PropertyRef Name="TypePointId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -447,6 +553,25 @@
                 <ScalarProperty Name="Titre" ColumnName="Titre" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Point">
+            <EntityTypeMapping TypeName="WebSportModel.Point">
+              <MappingFragment StoreEntitySet="Point">
+                <ScalarProperty Name="TypePointId" ColumnName="TypePointId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypePoint">
+            <EntityTypeMapping TypeName="WebSportModel.TypePoint">
+              <MappingFragment StoreEntitySet="TypePoint">
+                <ScalarProperty Name="typePoint1" ColumnName="typePoint" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

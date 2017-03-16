@@ -33,5 +33,7 @@ namespace DAL.EntityFramework
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public DbSet<webpages_Roles> webpages_Roles { get; set; }
         public DbSet<MailEntity> Mail { get; set; }
+        public DbSet<Point> Point { get; set; }
+        public DbSet<TypePoint> TypePoint { get; set; }
     }
 }
