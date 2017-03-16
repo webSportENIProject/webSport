@@ -7,6 +7,19 @@
     border-color: #09751b !important;
 }
 
+.navbar-inverse .navbar-brand {
+    color: #ded9d9 !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ded9d9 !important;
+}
+
+/*Hover sur les éléments du menu*/
+.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
+    color: #fff !important;
+}
+
 /***************************************BLOC CENTRAL*************************************************/
 /*Classe de notre bloc central*/
 .starter-template {
@@ -36,7 +49,7 @@ footer{
     width: 100%;
 }
 .footer-content {
-    margin-left: 58px;
+    margin-left: 10px;
 }
 .footer-content p{
     margin: 10px !important;
