@@ -1,4 +1,14 @@
-﻿/*Classe de notre bloc central*/
+﻿
+/***************************************HEADER*************************************************/
+/*Menu*/
+.navbar-inverse{
+    background-image: none !important;
+    background-color: #00582c !important;
+    border-color: #09751b !important;
+}
+
+/***************************************BLOC CENTRAL*************************************************/
+/*Classe de notre bloc central*/
 .starter-template {
   padding: 65px 15px;
 }
@@ -13,15 +23,15 @@
 #map, #mapid { 
    width: 600px; 
    height: 400px;
-
 }
 
+/***************************************FOOTER*************************************************/
 /*Design du footer*/
 footer{
     position: fixed;
     bottom: 0;
-    background-color: #222;
-    border-color: #080808;
+    background-color: #00582c;
+    border-color: #09751b;
     color: #fff;
     width: 100%;
 }
@@ -30,4 +40,8 @@ footer{
 }
 .footer-content p{
     margin: 10px !important;
+}
+
+footer a:hover {
+    color: #46d8e0 !important;
 }
