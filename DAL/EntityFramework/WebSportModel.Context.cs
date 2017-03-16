@@ -35,5 +35,6 @@ namespace DAL.EntityFramework
         public DbSet<MailEntity> Mail { get; set; }
         public DbSet<PointEntity> Point { get; set; }
         public DbSet<TypePointEntity> TypePoint { get; set; }
+        public DbSet<Resultat> Resultat { get; set; }
     }
 }

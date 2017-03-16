@@ -18,6 +18,7 @@ namespace DAL.EntityFramework
         {
             this.Participant = new HashSet<ParticipantEntity>();
             this.Point = new HashSet<PointEntity>();
+            this.Resultat = new HashSet<Resultat>();
         }
     
         public int Id { get; set; }
@@ -30,5 +31,6 @@ namespace DAL.EntityFramework
     
         public virtual ICollection<ParticipantEntity> Participant { get; set; }
         public virtual ICollection<PointEntity> Point { get; set; }
+        public virtual ICollection<Resultat> Resultat { get; set; }
     }
 }

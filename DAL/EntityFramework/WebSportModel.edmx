@@ -63,6 +63,16 @@
           <Property Name="CourseId" Type="int" Nullable="false" />
           <Property Name="TypePointId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Resultat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPoint" Type="int" Nullable="false" />
+          <Property Name="idCourse" Type="int" Nullable="false" />
+          <Property Name="idPersonne" Type="int" Nullable="false" />
+          <Property Name="temps" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="TypePoint">
           <Key>
             <PropertyRef Name="Id" />
@@ -177,6 +187,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Resultat_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="Resultat" Type="Self.Resultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Resultat">
+              <PropertyRef Name="idCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resultat_Personne">
+          <End Role="Personne" Type="Self.Personne" Multiplicity="1" />
+          <End Role="Resultat" Type="Self.Resultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Resultat">
+              <PropertyRef Name="idPersonne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resultat_Point">
+          <End Role="Point" Type="Self.Point" Multiplicity="1" />
+          <End Role="Resultat" Type="Self.Resultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Point">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Resultat">
+              <PropertyRef Name="idPoint" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_RoleId">
           <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
           <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
@@ -207,6 +253,7 @@
           <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personne" EntityType="Self.Personne" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Point" EntityType="Self.Point" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resultat" EntityType="Self.Resultat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypePoint" EntityType="Self.TypePoint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
@@ -232,6 +279,18 @@
           <AssociationSet Name="FK_Point_TypePoint" Association="Self.FK_Point_TypePoint">
             <End Role="TypePoint" EntitySet="TypePoint" />
             <End Role="Point" EntitySet="Point" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resultat_Course" Association="Self.FK_Resultat_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Resultat" EntitySet="Resultat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resultat_Personne" Association="Self.FK_Resultat_Personne">
+            <End Role="Personne" EntitySet="Personne" />
+            <End Role="Resultat" EntitySet="Resultat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resultat_Point" Association="Self.FK_Resultat_Point">
+            <End Role="Point" EntitySet="Point" />
+            <End Role="Resultat" EntitySet="Resultat" />
           </AssociationSet>
           <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
             <End Role="webpages_Roles" EntitySet="webpages_Roles" />
@@ -259,6 +318,7 @@
           <NavigationProperty Name="Participant" Relationship="Self.FK_Competiteur_Course" FromRole="Course" ToRole="Participant" />
           <Property Name="MaxParticipants" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Point" Relationship="WebSportModel.FK_Point_Course" FromRole="CourseEntity" ToRole="Point" />
+          <NavigationProperty Name="Resultat" Relationship="WebSportModel.FK_Resultat_Course" FromRole="CourseEntity" ToRole="Resultat" />
         </EntityType>
         <EntityType Name="ParticipantEntity">
           <Key>
@@ -287,6 +347,7 @@
           <NavigationProperty Name="UserTable" Relationship="Self.FK_PersonneUserTable" FromRole="Personne" ToRole="UserTable" />
           <Property Name="kms" Type="Boolean" Nullable="false" />
           <Property Name="miles" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Resultat" Relationship="WebSportModel.FK_Resultat_Personne" FromRole="PersonneEntity" ToRole="Resultat" />
         </EntityType>
         <EntityType Name="UserTable">
           <Key>
@@ -405,6 +466,19 @@
             <End Role="TypePoint" EntitySet="TypePoint" />
             <End Role="Point" EntitySet="Point" />
           </AssociationSet>
+          <EntitySet Name="Resultat" EntityType="WebSportModel.Resultat" />
+          <AssociationSet Name="FK_Resultat_Course" Association="WebSportModel.FK_Resultat_Course">
+            <End Role="CourseEntity" EntitySet="Course" />
+            <End Role="Resultat" EntitySet="Resultat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resultat_Personne" Association="WebSportModel.FK_Resultat_Personne">
+            <End Role="PersonneEntity" EntitySet="Personne" />
+            <End Role="Resultat" EntitySet="Resultat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Resultat_Point" Association="WebSportModel.FK_Resultat_Point">
+            <End Role="PointEntity" EntitySet="Point" />
+            <End Role="Resultat" EntitySet="Resultat" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="MailEntity">
           <Key>
@@ -429,6 +503,7 @@
           <Property Name="TypePointId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="WebSportModel.FK_Point_Course" FromRole="Point" ToRole="CourseEntity" />
           <NavigationProperty Name="TypePoint" Relationship="WebSportModel.FK_Point_TypePoint" FromRole="Point" ToRole="TypePoint" />
+          <NavigationProperty Name="Resultat" Relationship="WebSportModel.FK_Resultat_Point" FromRole="PointEntity" ToRole="Resultat" />
         </EntityType>
         <EntityType Name="TypePointEntity">
           <Key>
@@ -459,6 +534,55 @@
             </Principal>
             <Dependent Role="Point">
               <PropertyRef Name="TypePointId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Resultat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPoint" Type="Int32" Nullable="false" />
+          <Property Name="idCourse" Type="Int32" Nullable="false" />
+          <Property Name="idPersonne" Type="Int32" Nullable="false" />
+          <Property Name="temps" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Course" Relationship="WebSportModel.FK_Resultat_Course" FromRole="Resultat" ToRole="CourseEntity" />
+          <NavigationProperty Name="Personne" Relationship="WebSportModel.FK_Resultat_Personne" FromRole="Resultat" ToRole="PersonneEntity" />
+          <NavigationProperty Name="Point" Relationship="WebSportModel.FK_Resultat_Point" FromRole="Resultat" ToRole="PointEntity" />
+        </EntityType>
+        <Association Name="FK_Resultat_Course">
+          <End Type="WebSportModel.CourseEntity" Role="CourseEntity" Multiplicity="1" />
+          <End Type="WebSportModel.Resultat" Role="Resultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Resultat">
+              <PropertyRef Name="idCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resultat_Personne">
+          <End Type="WebSportModel.PersonneEntity" Role="PersonneEntity" Multiplicity="1" />
+          <End Type="WebSportModel.Resultat" Role="Resultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonneEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Resultat">
+              <PropertyRef Name="idPersonne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Resultat_Point">
+          <End Type="WebSportModel.PointEntity" Role="PointEntity" Multiplicity="1" />
+          <End Type="WebSportModel.Resultat" Role="Resultat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PointEntity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Resultat">
+              <PropertyRef Name="idPoint" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -585,6 +709,17 @@
               <MappingFragment StoreEntitySet="TypePoint">
                 <ScalarProperty Name="Libelle" ColumnName="Libelle" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resultat">
+            <EntityTypeMapping TypeName="WebSportModel.Resultat">
+              <MappingFragment StoreEntitySet="Resultat">
+                <ScalarProperty Name="temps" ColumnName="temps" />
+                <ScalarProperty Name="idPersonne" ColumnName="idPersonne" />
+                <ScalarProperty Name="idCourse" ColumnName="idCourse" />
+                <ScalarProperty Name="idPoint" ColumnName="idPoint" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,23 +12,16 @@ namespace DAL.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class PointEntity
+    public partial class Resultat
     {
-        public PointEntity()
-        {
-            this.Resultat = new HashSet<Resultat>();
-        }
-    
-        public int Id { get; set; }
-        public string Titre { get; set; }
-        public int Ordre { get; set; }
-        public double Longitude { get; set; }
-        public double Latitude { get; set; }
-        public int CourseId { get; set; }
-        public int TypePointId { get; set; }
+        public int id { get; set; }
+        public int idPoint { get; set; }
+        public int idCourse { get; set; }
+        public int idPersonne { get; set; }
+        public System.DateTime temps { get; set; }
     
         public virtual CourseEntity Course { get; set; }
-        public virtual TypePointEntity TypePoint { get; set; }
-        public virtual ICollection<Resultat> Resultat { get; set; }
+        public virtual PersonneEntity Personne { get; set; }
+        public virtual PointEntity Point { get; set; }
     }
 }
