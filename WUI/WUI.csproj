@@ -173,9 +173,9 @@
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />

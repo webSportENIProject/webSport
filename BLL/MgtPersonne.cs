@@ -36,7 +36,7 @@ namespace BLL
         {
             this._uow.PersonneRepo.Add(personne);
         }
-
+            // UPDATE
         //GET
         public Personne GetPersonneByIdUserTable(int id)
         {

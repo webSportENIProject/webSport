@@ -92,6 +92,8 @@ namespace WUI.Controllers
             }
             int idUser = WebSecurity.CurrentUserId;
             MgtRace.GetInstance().addInscription(id, idUser);
+            MailUtil mail = new MailUtil();
+           // mail.sendMailInscription(id, idUser);
 
             return View(result);
         }
