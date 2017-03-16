@@ -3,8 +3,8 @@
 /*Menu*/
 .navbar-inverse{
     background-image: none !important;
-    background-color: #00582c !important;
-    border-color: #09751b !important;
+    background-color: #8c0a0a !important;
+    border-color: #3a0202 !important;
 }
 
 .navbar-inverse .navbar-brand {
@@ -43,8 +43,8 @@
 footer{
     position: fixed;
     bottom: 0;
-    background-color: #00582c;
-    border-color: #09751b;
+    background-color: #8c0a0a;
+    border-color: #3a0202;
     color: #fff;
     width: 100%;
 }
