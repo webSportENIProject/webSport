@@ -466,7 +466,7 @@
             <End Role="TypePoint" EntitySet="TypePoint" />
             <End Role="Point" EntitySet="Point" />
           </AssociationSet>
-          <EntitySet Name="Resultat" EntityType="WebSportModel.Resultat" />
+          <EntitySet Name="Resultat" EntityType="WebSportModel.ResultatEntity" />
           <AssociationSet Name="FK_Resultat_Course" Association="WebSportModel.FK_Resultat_Course">
             <End Role="CourseEntity" EntitySet="Course" />
             <End Role="Resultat" EntitySet="Resultat" />
@@ -537,7 +537,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Resultat">
+        <EntityType Name="ResultatEntity">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -552,7 +552,7 @@
         </EntityType>
         <Association Name="FK_Resultat_Course">
           <End Type="WebSportModel.CourseEntity" Role="CourseEntity" Multiplicity="1" />
-          <End Type="WebSportModel.Resultat" Role="Resultat" Multiplicity="*" />
+          <End Type="WebSportModel.ResultatEntity" Role="Resultat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CourseEntity">
               <PropertyRef Name="Id" />
@@ -564,7 +564,7 @@
         </Association>
         <Association Name="FK_Resultat_Personne">
           <End Type="WebSportModel.PersonneEntity" Role="PersonneEntity" Multiplicity="1" />
-          <End Type="WebSportModel.Resultat" Role="Resultat" Multiplicity="*" />
+          <End Type="WebSportModel.ResultatEntity" Role="Resultat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PersonneEntity">
               <PropertyRef Name="Id" />
@@ -576,7 +576,7 @@
         </Association>
         <Association Name="FK_Resultat_Point">
           <End Type="WebSportModel.PointEntity" Role="PointEntity" Multiplicity="1" />
-          <End Type="WebSportModel.Resultat" Role="Resultat" Multiplicity="*" />
+          <End Type="WebSportModel.ResultatEntity" Role="Resultat" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PointEntity">
               <PropertyRef Name="Id" />
@@ -713,7 +713,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Resultat">
-            <EntityTypeMapping TypeName="WebSportModel.Resultat">
+            <EntityTypeMapping TypeName="WebSportModel.ResultatEntity">
               <MappingFragment StoreEntitySet="Resultat">
                 <ScalarProperty Name="temps" ColumnName="temps" />
                 <ScalarProperty Name="idPersonne" ColumnName="idPersonne" />

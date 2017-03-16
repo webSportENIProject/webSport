@@ -17,7 +17,7 @@ namespace DAL.EntityFramework
         public PersonneEntity()
         {
             this.Participant = new HashSet<ParticipantEntity>();
-            this.Resultat = new HashSet<Resultat>();
+            this.Resultat = new HashSet<ResultatEntity>();
         }
     
         public int Id { get; set; }
@@ -32,6 +32,6 @@ namespace DAL.EntityFramework
     
         public virtual ICollection<ParticipantEntity> Participant { get; set; }
         public virtual UserTable UserTable { get; set; }
-        public virtual ICollection<Resultat> Resultat { get; set; }
+        public virtual ICollection<ResultatEntity> Resultat { get; set; }
     }
 }

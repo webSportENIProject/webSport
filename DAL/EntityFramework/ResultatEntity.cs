@@ -12,7 +12,7 @@ namespace DAL.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Resultat
+    public partial class ResultatEntity
     {
         public int id { get; set; }
         public int idPoint { get; set; }

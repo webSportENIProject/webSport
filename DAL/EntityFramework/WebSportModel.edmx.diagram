@@ -21,7 +21,7 @@
         <EntityTypeShape EntityType="WebSportModel.TypePointEntity" Width="1.5" PointX="5.25" PointY="8.75" />
         <AssociationConnector Association="WebSportModel.FK_Point_Course" />
         <AssociationConnector Association="WebSportModel.FK_Point_TypePoint" />
-        <EntityTypeShape EntityType="WebSportModel.Resultat" Width="1.5" PointX="10.75" PointY="4.25" />
+        <EntityTypeShape EntityType="WebSportModel.ResultatEntity" Width="1.5" PointX="10.75" PointY="4.25" />
         <AssociationConnector Association="WebSportModel.FK_Resultat_Course" />
         <AssociationConnector Association="WebSportModel.FK_Resultat_Personne" />
         <AssociationConnector Association="WebSportModel.FK_Resultat_Point" />
