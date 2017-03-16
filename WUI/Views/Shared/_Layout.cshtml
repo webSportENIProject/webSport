@@ -11,42 +11,40 @@
         @RenderSection("css", required: false)
         @Scripts.Render("~/bundles/modernizr")
     </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Accueil", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        @Html.Partial("_Menu")
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Accueil", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    @Html.Partial("_Menu")
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    @Html.Partial("_LoginPartial")
-                </ul>
+            <div class="starter-template">
+                @RenderBody()
             </div>
         </div>
-    </nav>
 
-    <div class="container">
-        <div class="starter-template">
-            @RenderBody()
-        </div>
-    </div>
-
-    <div class="container">
         @Html.Partial("_Footer")
-    </div>
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryui")
         @Scripts.Render("~/bundles/bootstrap/js")
         @RenderSection("scripts", required: false)
-</body>
+    </body>
 </html>

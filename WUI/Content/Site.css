@@ -1,19 +1,33 @@
-﻿body {
-  padding-top: 50px;
-}
-
+﻿/*Classe de notre bloc central*/
 .starter-template {
-  padding: 40px 15px;
-
+  padding: 65px 15px;
 }
 
+/*Message d'erreur*/
 .field-validation-error {		
     color: #e80c4d;		
     font-weight: bold;		
  }
 
+/*Gestion de la taille et de la hauteur de la MAP*/
 #map, #mapid { 
    width: 600px; 
    height: 400px;
 
+}
+
+/*Design du footer*/
+footer{
+    position: fixed;
+    bottom: 0;
+    background-color: #222;
+    border-color: #080808;
+    color: #fff;
+    width: 100%;
+}
+.footer-content {
+    margin-left: 58px;
+}
+.footer-content p{
+    margin: 10px !important;
 }
