@@ -3,21 +3,17 @@
 /*Menu*/
 .navbar-inverse{
     background-image: none !important;
-    background-color: #8c0a0a !important;
-    border-color: #3a0202 !important;
+    background-color: #f3f1f1 !important;
+    border-color: #dedede !important;
 }
 
-.navbar-inverse .navbar-brand {
-    color: #ded9d9 !important;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-    color: #ded9d9 !important;
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    color: #7f7777 !important;
 }
 
 /*Hover sur les éléments du menu*/
 .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover {
-    color: #fff !important;
+    color: #020202 !important;
 }
 
 /***************************************BLOC CENTRAL*************************************************/
@@ -43,9 +39,9 @@
 footer{
     position: fixed;
     bottom: 0;
-    background-color: #8c0a0a;
-    border-color: #3a0202;
-    color: #fff;
+    background-color: #f3f1f1;
+    border-color: #dedede;
+    color: #020202;
     width: 100%;
 }
 .footer-content {
@@ -55,10 +51,9 @@ footer{
     margin: 10px !important;
 }
 
-footer a:hover {
-    color: #46d8e0 !important;
-}
-
 footer a{
-    color: #5db0f7 !important;
+    color: #7f7777 !important;
+}
+footer a:hover {
+    color: #020202 !important;
 }
