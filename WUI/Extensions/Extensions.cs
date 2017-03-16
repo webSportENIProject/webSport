@@ -187,5 +187,32 @@ namespace WUI.Extensions
             };
         }
 
+        #region TypePoint       
+
+        public static TypePointModel ToModel(this TypePoint bo, bool withJoin = false)
+        {
+            if (bo == null) return null;
+
+            return new TypePointModel
+            {
+                Id = bo.Id,
+                Libelle = bo.Libelle,
+            };
+        }
+
+        public static TypePoint ToBo(this TypePointModel model)
+        {
+            if (model == null) return null;
+
+            return new TypePoint
+            {
+                Id = model.Id,
+                Libelle = model.Libelle,
+            };
+        }
+
+        #endregion
+
+
     }
 }

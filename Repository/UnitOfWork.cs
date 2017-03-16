@@ -80,6 +80,17 @@ namespace Repository
             }
         }
 
+        private TypePointRepository _typePointRepo;
+        public TypePointRepository TypePointRepo
+        {
+            get
+            {
+                if (_typePointRepo == null)
+                    _typePointRepo = new TypePointRepository(this.context);
+                return _typePointRepo;
+            }
+        }
+
         // Etc... on liste les repositories
 
         #endregion

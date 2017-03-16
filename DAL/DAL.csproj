@@ -78,6 +78,9 @@
     <Compile Include="EntityFramework\PointEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\ResultatEntity.cs">
+      <DependentUpon>WebSportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\TypePointEntity.cs">
       <DependentUpon>WebSportModel.tt</DependentUpon>
     </Compile>

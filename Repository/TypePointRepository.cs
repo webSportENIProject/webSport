@@ -55,13 +55,7 @@ namespace Repository
             var typePointToUpdate = this.GetByIdPrivate(element.Id);
             typePointToUpdate.Libelle = element.Libelle;            
             base.Update(typePointToUpdate);
-        }
-
-        public void Remove(int id)
-        {
-            var pointToDelete = this.GetByIdPrivate(id);
-            base.Remove(pointToDelete);
-        }           
+        }              
 
         #endregion
     }    
