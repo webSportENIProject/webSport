@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WUI.Controllers
 {
-    public class TypePoinController : Controller
+    public class TypePointController : Controller
     {
         //
         // GET: /TypePoin/
