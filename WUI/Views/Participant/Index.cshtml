@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.Town)
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                @Html.ActionLink("Se désinscrire", "Unsubscribe", new { id = item.Id })
+                @Html.ActionLink("Se désinscrire", "Unsubscribe", new { idRace = item.Id })
             </div> 
         </div>
     }

@@ -63,6 +63,13 @@ namespace Repository
             return base.Where(x => x.PersonneId == id).ToList();
         }
 
+        //REMOVE
+        public void Remove(int idPersonne, int idRace)
+        {
+            var participantToDelete = base.Where(x => x.PersonneId == idPersonne && x.CourseId == idRace).SingleOrDefault();
+            base.Remove(participantToDelete);
+        }
+
         #endregion
     }
 }

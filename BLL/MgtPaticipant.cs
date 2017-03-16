@@ -52,5 +52,15 @@ namespace BLL
         // UPDATE
 
         // DELETE
+        public bool RemoveParticipant(int idPersonne, int idRace)
+        {
+            if ((idPersonne < 1 && idRace < 1) || (idPersonne < 1 || idRace < 1)) return false;
+
+            this._uow.ParticipantRepo.Remove(idPersonne, idRace);
+            this._uow.Save();
+
+            return true;
+        }
+
      }
 }

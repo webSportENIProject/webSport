@@ -40,5 +40,22 @@ namespace WUI.Controllers
             //On retourne la vue corespondante avec la liste des inscriptions en paramètre
             return View(coursesInscrit);
         }
+
+        public ActionResult Unsubscribe(int idRace = 0)
+        {
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("SqlAdoCs", "UserTable", "Id", "Name", autoCreateTables: true);
+            }
+            //Récupération de la personne par son id UserTable
+            int idUser = WebSecurity.CurrentUserId;
+            var personne = MgtPersonne.GetInstance().GetPersonneByIdUserTable(idUser).ToModel();
+            int idPersonne = personne.Id;
+
+            //Suppression en base de l'inscription avec id de la personne et id de la course en paramètres
+            MgtParticipant.GetInstance().RemoveParticipant(idPersonne, idRace);
+
+            return RedirectToAction("Index", "Participant");
+        }
     }
 }
