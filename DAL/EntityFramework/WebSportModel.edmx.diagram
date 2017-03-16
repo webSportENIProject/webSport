@@ -17,7 +17,7 @@
         <AssociationConnector Association="WebSportModel.FK_PersonneUserTable" ManuallyRouted="false" />
         <AssociationConnector Association="WebSportModel.webpages_UsersInRoles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WebSportModel.MailEntity" Width="1.5" PointX="3" PointY="5.125" />
-        <EntityTypeShape EntityType="WebSportModel.Point" Width="1.5" PointX="7.5" PointY="7.25" />
+        <EntityTypeShape EntityType="WebSportModel.Point" Width="1.5" PointX="7.5" PointY="7.125" />
         <EntityTypeShape EntityType="WebSportModel.TypePoint" Width="1.5" PointX="5.25" PointY="8.75" />
         <AssociationConnector Association="WebSportModel.FK_Point_Course" />
         <AssociationConnector Association="WebSportModel.FK_Point_TypePoint" />

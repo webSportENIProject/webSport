@@ -13,10 +13,10 @@ namespace DAL.EntityFramework
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WebSportEntities : DbContext
+    public partial class WebSportEntities2 : DbContext
     {
-        public WebSportEntities()
-            : base("name=WebSportEntities")
+        public WebSportEntities2()
+            : base("name=WebSportEntities2")
         {
         }
     

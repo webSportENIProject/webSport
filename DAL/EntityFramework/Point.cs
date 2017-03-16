@@ -16,6 +16,7 @@ namespace DAL.EntityFramework
     {
         public int Id { get; set; }
         public string Titre { get; set; }
+        public int Ordre { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }
         public int CourseId { get; set; }
