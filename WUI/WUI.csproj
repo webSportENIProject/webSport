@@ -349,6 +349,8 @@
     <Content Include="Views\Participant\Index.cshtml" />
     <Content Include="Views\Account\ManageInfos.cshtml" />
     <Content Include="Views\TypePoint\Index.cshtml" />
+    <Content Include="Views\TypePoint\Create.cshtml" />
+    <Content Include="Views\TypePoint\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />

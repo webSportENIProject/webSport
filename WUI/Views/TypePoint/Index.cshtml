@@ -13,7 +13,7 @@
 
     <p>
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-      
+        @Html.ActionLink("Créer une nouveau type de point", "Create")
     </p>
 
 <table class="table">
@@ -36,8 +36,7 @@
                     </td>
                    
                     <td>                        
-                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id })
-                        @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })                        
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id })                                               
                     </td>
                 </tr>
             }

@@ -1,0 +1,41 @@
+﻿@model WUI.Models.TypePointModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section css {
+    
+}
+
+<h2>Création d'un type de point</h2>
+
+@using (Html.BeginForm("Create", "TypePoint", FormMethod.Post))
+{
+    // Génère un token dans le cookie d'authentification afin de contrer les
+    // attaques de type Cross-site Request forgery
+    @Html.AntiForgeryToken();
+    
+    // Grâce à la propriété "true", on affiche uniquement les erreurs
+    // n'étant pas rattachées à la propriété du model (ici RaceModel)
+    @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Libelle)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Libelle, new { @class="form-control", size = "30" })
+            @Html.ValidationMessageFor(model => model.Libelle)
+        </div>        
+
+       <button type="submit" value="Créer" class="btn btn-default">Créer</button>
+}
+
+
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+
+}
