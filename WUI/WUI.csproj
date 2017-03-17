@@ -348,12 +348,12 @@
     <Content Include="Views\Race\Register.cshtml" />
     <Content Include="Views\Participant\Index.cshtml" />
     <Content Include="Views\Account\ManageInfos.cshtml" />
+    <Content Include="Views\TypePoint\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />
     <Folder Include="App_Data\Json\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Views\TypePoint\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

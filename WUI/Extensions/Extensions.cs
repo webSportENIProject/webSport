@@ -189,7 +189,14 @@ namespace WUI.Extensions
 
         #region TypePoint       
 
-        public static TypePointModel ToModel(this TypePoint bo, bool withJoin = false)
+        public static List<TypePointModel> ToModels(this List<TypePoint> bos)
+        {
+            return bos != null
+                ? bos.Where(x => x != null).Select(x => x.ToModel()).ToList()
+                : null;
+        }
+
+        public static TypePointModel ToModel(this TypePoint bo)
         {
             if (bo == null) return null;
 

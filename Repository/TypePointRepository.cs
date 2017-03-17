@@ -55,7 +55,12 @@ namespace Repository
             var typePointToUpdate = this.GetByIdPrivate(element.Id);
             typePointToUpdate.Libelle = element.Libelle;            
             base.Update(typePointToUpdate);
-        }              
+        }
+
+        public List<TypePoint> GetAllItems()
+        {
+            return base.GetAll().ToBos();
+        }
 
         #endregion
     }    

@@ -188,6 +188,14 @@ namespace DAL.Extensions
         #endregion
 
         #region TypePoint
+
+        public static List<TypePoint> ToBos(this List<TypePointEntity> bos)
+        {
+            return bos != null
+                ? bos.Where(x => x != null).Select(x => x.ToBo()).ToList()
+                : null;
+        }
+
         public static TypePoint ToBo(this TypePointEntity bo)
         {
             if (bo == null) return null;

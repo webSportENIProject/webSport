@@ -44,7 +44,13 @@ namespace BLL
             return false;
         }
 
-        public TypePoint GetPoint(int id)
+        public List<TypePoint> GetAllItems()
+        {
+            List<TypePoint> races = this._uow.TypePointRepo.GetAllItems();
+            return races;
+        }
+
+        public TypePoint GetTypePoint(int id)
         {
             return this._uow.TypePointRepo.GetById(id);
         }

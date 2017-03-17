@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BLL;
+using WUI.Extensions;
+using WUI.Models;
 
 namespace WUI.Controllers
 {
@@ -16,13 +19,14 @@ namespace WUI.Controllers
         {
         }
 
-        //
         // GET: /TypePoint/
-
+        [Authorize(Roles = "Administrateur")]
         public ActionResult Index()
         {
-            return View();
+            List<TypePointModel> result = MgtTypePoint.GetInstance().GetAllItems().ToModels();
+            return View(result);
         }
+
 
     }
 }

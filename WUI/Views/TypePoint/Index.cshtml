@@ -1,0 +1,51 @@
+﻿@using WUI.Models
+@model IEnumerable<TypePointModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section css {
+
+}
+
+<h2>Liste des différens type de points</h2>
+
+    <p>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      
+    </p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Libelle)
+            </th>
+            <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Libelle)
+                    </td>
+                   
+                    <td>                        
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id })
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })                        
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+@section scripts {
+
+}

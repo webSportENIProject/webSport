@@ -3,7 +3,7 @@
 
 @if (User.IsInRole("Administrateur"))
 {
-    <li>@Html.ActionLink("Créer un type de Point", "Index", "TypePoint")</li>
+    <li>@Html.ActionLink("Type de Point", "Index", "TypePoint")</li>
 }
 
 @if (Request.IsAuthenticated) {
