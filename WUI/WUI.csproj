@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\PointController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Controllers\ResultatController.cs" />
     <Compile Include="Controllers\TypePointController.cs" />
