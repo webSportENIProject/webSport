@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BO;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -10,8 +12,33 @@ namespace WUI.Models
     /// <summary>
     /// Classe mère pour sauvegarder une position 
     /// </summary>
-    public abstract class PointModel : PositionModel
+    public class PointModel
     {
-        public Guid Id { get; set; }
+        [Display(Name = "Identifiant")]
+        public int Id { get; set; }
+
+        [Display(Name = "Titre")]
+        [Required(ErrorMessage = "Le {0} est requis")]
+        public string Titre { get; set; }
+
+        [Display(Name = "Ordre")]
+        [Required(ErrorMessage = "L' {0} est requis")]
+        public int Ordre { get; set; }
+
+        [Display(Name = "Longitude")]
+        [Required(ErrorMessage = "La {0} est requise")]
+        public double Longitude { get; set; }
+
+        [Display(Name = "Latitude")]
+        [Required(ErrorMessage = "La {0} est requise")]
+        public double Latitude { get; set; }
+
+        [Display(Name = "Course")]
+        [Required(ErrorMessage = "La {0} est requise")]
+        public String LibelleCourse { get; set; }
+
+        [Display(Name = "Type de point")]
+        [Required(ErrorMessage = "Le {0} est requis")]
+        public String LibelleTypePoint { get; set; }
     }
 }

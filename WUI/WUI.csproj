@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\PointController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Controllers\TypePointController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
@@ -193,7 +194,6 @@
     <Compile Include="Models\PersonneModel.cs" />
     <Compile Include="Models\PoiModel.cs" />
     <Compile Include="Models\PointModel.cs" />
-    <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\RaceModel.cs" />
     <Compile Include="Models\TypePointModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -348,6 +348,7 @@
     <Content Include="Views\Race\Register.cshtml" />
     <Content Include="Views\Participant\Index.cshtml" />
     <Content Include="Views\Account\ManageInfos.cshtml" />
+    <Content Include="Views\Point\Index.cshtml" />
     <Content Include="Views\TypePoint\Index.cshtml" />
     <Content Include="Views\TypePoint\Create.cshtml" />
     <Content Include="Views\TypePoint\Edit.cshtml" />

@@ -47,6 +47,7 @@ namespace Repository
             }
         }
 
+        //GET ALL
         public List<Participant> GetAllItems()
         {
             return base.GetAll().ToParticipantBos();

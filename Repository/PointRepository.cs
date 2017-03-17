@@ -26,6 +26,7 @@ namespace Repository
 
         #region Public methods
 
+        //CREATE
         public int Add(Point element)
         {
             try
@@ -39,6 +40,7 @@ namespace Repository
             }
         }
 
+        //GET BY ID
         public Point GetById(int id)
         {
             var point = this.GetByIdPrivate(id);
@@ -50,6 +52,7 @@ namespace Repository
             return base.Where(x => x.Id == id).SingleOrDefault();
         }
 
+        //UPDATE
         public void Update(Point element)
         {
             var pointToUpdate = this.GetByIdPrivate(element.Id);
@@ -60,12 +63,14 @@ namespace Repository
             base.Update(pointToUpdate);
         }
 
+        //DELETE
         public void Remove(int id)
         {
             var pointToDelete = this.GetByIdPrivate(id);
             base.Remove(pointToDelete);
         }
 
+        //GET ALL
         public List<Point> GetAllItems()
         {
             return base.GetAll().ToBos();

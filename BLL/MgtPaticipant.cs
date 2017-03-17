@@ -37,7 +37,7 @@ namespace BLL
             this._uow.ParticipantRepo.AddCompetiteur(participant.IdCourse, participant.IdPersonne);
         }
 
-        //GET
+        //GET ALL
         public List<Participant> GetAll()
         {
             return this._uow.ParticipantRepo.GetAllItems();
