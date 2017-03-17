@@ -91,7 +91,7 @@ namespace WUI.Controllers
                     TimeSpan span = model.temps.Subtract(debut);
                     model.tempsPoint = formatTemps(span);
                 }
-                model.Point = MgtPoint.GetInstance().GetPoint(model.idPoint).ToModel();
+                model.Point = MgtPoint.GetInstance().GetPointById(model.idPoint).ToModel();
                 models.Add(model);
             }
             models.OrderBy(x => x.Point.Ordre);
