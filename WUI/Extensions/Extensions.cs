@@ -242,10 +242,8 @@ namespace WUI.Extensions
                 Ordre = bo.Ordre,
                 Longitude = bo.Longitude,
                 Latitude = bo.Latitude,
-                LibelleCourse = bo.Course.Title,
-                LibelleTypePoint = bo.TypePoint.Libelle,
-                IdTypePoint = bo.TypePoint.Id,
-                IdCourse = bo.Course.Id
+                IdTypePoint = bo.TypePointId,
+                IdCourse = bo.CourseId
             };
         }
 
@@ -267,6 +265,29 @@ namespace WUI.Extensions
 
         #endregion
 
+        public static ResultatModel ToModel(this Resultat bo)
+        {
+            if (bo == null) return null;
 
+            return new ResultatModel
+            {
+                id = bo.id,
+                idCourse = bo.idCourse,
+                idPersonne = bo.idPersonne,
+                idPoint = bo.idPoint,
+                temps = bo.temps
+            };
+        }
+
+        public static List<ResultatModel> ToModels(this List<Resultat> bos)
+        {
+            List<ResultatModel> models = new List<ResultatModel>();
+
+            foreach (Resultat bo in bos) {
+                models.Add(bo.ToModel());
+            }
+
+            return models;
+        }
     }
 }

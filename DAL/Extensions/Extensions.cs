@@ -170,7 +170,6 @@ namespace DAL.Extensions
                 Latitude = bo.Latitude,
                 CourseId = bo.CourseId,
                 TypePointId = bo.TypePointId
-
             };
         }
 

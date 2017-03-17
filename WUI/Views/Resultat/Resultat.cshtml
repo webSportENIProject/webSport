@@ -1,0 +1,46 @@
+﻿@using WUI.Models
+@model ResultatView
+
+@{
+    ViewBag.Title = "Resultat";
+}
+
+@section css {
+    @Styles.Render("~/Content/Race/css")
+}
+
+<h2>Resultat de la course @Html.DisplayTextFor(m => m.Course.Title)</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.resultats.First().Point.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.resultats.First().temps)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model.resultats)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Point.Titre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tempsPoint)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/Race/js")
+}

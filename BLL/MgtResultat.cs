@@ -76,9 +76,10 @@ namespace BLL
             return this._uow.ResultatRepo.GetById(id);
         }
 
-        public List<Resultat> GetAllByCourseAndPersonne(int idCourse, int idPersonne)
+        public List<Resultat> GetAllByCourseAndPersonne(int idCourse, int userId)
         {
-            return this._uow.ResultatRepo.GetAllByCourseAndPersonne(idCourse, idPersonne);
+            Personne personne = MgtPersonne.GetInstance().GetPersonneByIdUserTable(userId);
+            return this._uow.ResultatRepo.GetAllByCourseAndPersonne(idCourse, personne.Id);
         }
 
     }

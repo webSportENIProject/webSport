@@ -68,10 +68,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idPoint" Type="int" Nullable="false" />
           <Property Name="idCourse" Type="int" Nullable="false" />
           <Property Name="idPersonne" Type="int" Nullable="false" />
-          <Property Name="temps" Type="date" Nullable="false" />
+          <Property Name="idPoint" Type="int" Nullable="false" />
+          <Property Name="temps" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TypePoint">
           <Key>
@@ -545,7 +545,7 @@
           <Property Name="idPoint" Type="Int32" Nullable="false" />
           <Property Name="idCourse" Type="Int32" Nullable="false" />
           <Property Name="idPersonne" Type="Int32" Nullable="false" />
-          <Property Name="temps" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="temps" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Course" Relationship="WebSportModel.FK_Resultat_Course" FromRole="Resultat" ToRole="CourseEntity" />
           <NavigationProperty Name="Personne" Relationship="WebSportModel.FK_Resultat_Personne" FromRole="Resultat" ToRole="PersonneEntity" />
           <NavigationProperty Name="Point" Relationship="WebSportModel.FK_Resultat_Point" FromRole="Resultat" ToRole="PointEntity" />

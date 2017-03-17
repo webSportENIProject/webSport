@@ -192,6 +192,8 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ParticipantModel.cs" />
+    <Compile Include="Models\ResultatView.cs" />
+    <Compile Include="Models\ResultatModel.cs" />
     <Compile Include="Models\PersonneModel.cs" />
     <Compile Include="Models\PoiModel.cs" />
     <Compile Include="Models\PointModel.cs" />
@@ -355,11 +357,13 @@
     <Content Include="Views\Point\Index.cshtml" />
     <Content Include="Views\Point\Create.cshtml" />
     <Content Include="Views\Resultat\Import.cshtml" />
+    <Content Include="Views\Resultat\Resultat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />
     <Folder Include="App_Data\Json\" />
     <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="UploadedFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

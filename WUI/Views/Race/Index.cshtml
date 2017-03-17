@@ -93,8 +93,8 @@
                     <td>
                         @Html.ActionLink("S'inscrire", "Register", new { id = item.Id })
                         @if (User.IsInRole("Administrateur"))
-                    {
-                            @Html.ActionLink("Modifier", "Edit", new { id = item.Id })
+                        {
+                            @Html.ActionLink("Modifier", "Edit", new { id = item.Id })<br/>
                             @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
                         }
                     </td>

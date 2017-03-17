@@ -54,7 +54,11 @@
                         @Html.DisplayFor(modelItem => item.Town)
                     </td>
                     <td>
-                        @Html.ActionLink("Se désinscrire", "Unsubscribe", new { idRace = item.Id })
+                        @Html.ActionLink("Se désinscrire", "Unsubscribe", new { idRace = item.Id })<br/>
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("Mon résultat", "Resultat", "Resultat", new { id = item.Id }, null)
+                        }
                     </td>
                 </tr>
             }
