@@ -52,6 +52,7 @@
     <Compile Include="PersonneRepository.cs" />
     <Compile Include="ParticipantRepository.cs" />
     <Compile Include="RaceRepository.cs" />
+    <Compile Include="ResultatRepository.cs" />
     <Compile Include="TypePointRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>

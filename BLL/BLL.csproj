@@ -46,7 +46,7 @@
     <Compile Include="MgtPersonne.cs" />
     <Compile Include="MgtCategory.cs" />
     <Compile Include="MgtRace.cs" />
-    <Compile Include="MgtPoint.cs" />
+    <Compile Include="MgtResultat.cs" />
     <Compile Include="MgtTypePoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

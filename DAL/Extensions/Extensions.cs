@@ -226,5 +226,43 @@ namespace DAL.Extensions
         #endregion
 
 
+        public static List<Resultat> ToBos(this List<ResultatEntity> entities)
+        {
+            List<Resultat> resultats = new List<Resultat>();
+
+            foreach (ResultatEntity entity in entities) {
+                resultats.Add(entity.ToBo());
+            }
+
+            return resultats;
+        }
+
+        public static Resultat ToBo(this ResultatEntity entity)
+        {
+            if (entity == null) return null;
+
+            return new Resultat
+            {
+                id = entity.id,
+                idCourse = entity.idCourse,
+                idPersonne = entity.idPersonne,
+                idPoint = entity.idPoint,
+                temps = entity.temps
+            };
+        }
+
+        public static ResultatEntity ToDataEntity(this Resultat bo)
+        {
+            if (bo == null) return null;
+
+            return new ResultatEntity
+            {
+                id = bo.id,
+                idCourse = bo.idCourse,
+                idPersonne = bo.idPersonne,
+                idPoint = bo.idPoint,
+                temps = bo.temps
+            };
+        }
     }
 }

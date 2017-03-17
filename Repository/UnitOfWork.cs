@@ -91,6 +91,17 @@ namespace Repository
             }
         }
 
+        private ResultatRepository _resultatRepo;
+        public ResultatRepository ResultatRepo
+        {
+            get
+            {
+                if (_resultatRepo == null)
+                    _resultatRepo = new ResultatRepository(this.context);
+                return _resultatRepo;
+            }
+        }
+
         // Etc... on liste les repositories
 
         #endregion

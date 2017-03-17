@@ -176,8 +176,8 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
-    <Compile Include="Controllers\PointController.cs" />
     <Compile Include="Controllers\RaceController.cs" />
+    <Compile Include="Controllers\ResultatController.cs" />
     <Compile Include="Controllers\TypePointController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -352,6 +352,7 @@
     <Content Include="Views\TypePoint\Create.cshtml" />
     <Content Include="Views\TypePoint\Edit.cshtml" />
     <Content Include="Views\Point\Index.cshtml" />
+    <Content Include="Views\Resultat\Import.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />
