@@ -1,0 +1,81 @@
+﻿@model WUI.Models.PointModel
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Modification d'un point</h2>
+
+@using (Html.BeginForm("Update", "Point", FormMethod.Post))
+{
+    // Génère un token dans le cookie d'authentification afin de contrer les
+    // attaques de type Cross-site Request forgery
+    @Html.AntiForgeryToken();
+    
+    // Grâce à la propriété "true", on affiche uniquement les erreurs
+    // n'étant pas rattachées à la propriété du model (ici RaceModel)
+    @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titre)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Titre, new { @class="form-control", size = "30" })
+            @Html.ValidationMessageFor(model => model.Titre)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ordre)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Ordre, new { @class="form-control", type = "int", size = "30" })
+            @Html.ValidationMessageFor(model => model.Ordre)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Longitude)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Longitude, new { @class="form-control", type="int", size = "30" })
+            @Html.ValidationMessageFor(model => model.Longitude)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Latitude)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.Latitude, new { @class="form-control", type="int", size = "30" })
+            @Html.ValidationMessageFor(model => model.Latitude)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LibelleCourse)
+        </div> 
+        <div class="form-group">
+           @Html.DropDownListFor(model => model.IdCourse, new SelectList(Model.ListCourseOptions,
+                               "Id", "Title"))
+           @Html.ValidationMessageFor(model => model.IdCourse)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LibelleTypePoint)
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(model => model.IdTypePoint, new SelectList(Model.ListTypePointOptions,
+                               "Id", "Libelle"))
+            @Html.ValidationMessageFor(model => model.IdTypePoint)
+        </div>
+
+       <button type="submit" value="Modifier le point" class="btn btn-default">Modifier le point</button>
+}
+
+
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>
+
+@section Scripts {
+
+}

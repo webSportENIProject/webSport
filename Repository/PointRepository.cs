@@ -60,8 +60,8 @@ namespace Repository
             pointToUpdate.Ordre = element.Ordre;
             pointToUpdate.Longitude = element.Longitude;
             pointToUpdate.Latitude = element.Latitude;
-            pointToUpdate.CourseId = element.Course.Id;
-            pointToUpdate.TypePointId = element.TypePoint.Id;
+            pointToUpdate.CourseId = element.CourseId;
+            pointToUpdate.TypePointId = element.TypePointId;
             base.Update(pointToUpdate);
         }
 

@@ -66,7 +66,7 @@ namespace BLL
         }
 
         //GET BY ID
-        public Point GetPoint(int id)
+        public Point GetPointById(int id)
         {
             return this._uow.PointRepo.GetById(id);
         }

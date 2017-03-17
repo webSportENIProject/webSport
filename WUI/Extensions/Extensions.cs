@@ -234,8 +234,7 @@ namespace WUI.Extensions
         public static PointModel ToModel(this Point bo)
         {
             if (bo == null) return null;
-
-            return new PointModel
+            PointModel model = new PointModel
             {
                 Id = bo.Id,
                 Titre = bo.Titre,
@@ -245,6 +244,16 @@ namespace WUI.Extensions
                 IdTypePoint = bo.TypePointId,
                 IdCourse = bo.CourseId
             };
+            if (bo.Course != null)
+            {
+                model.LibelleCourse = bo.Course.Title;
+            }
+            if (bo.TypePoint != null)
+            {
+                model.LibelleTypePoint = bo.TypePoint.Libelle;
+            }
+            
+            return model;
         }
 
         public static Point ToBo(this PointModel model)
