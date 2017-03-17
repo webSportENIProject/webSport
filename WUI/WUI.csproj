@@ -352,6 +352,7 @@
     <Content Include="Views\TypePoint\Create.cshtml" />
     <Content Include="Views\TypePoint\Edit.cshtml" />
     <Content Include="Views\Point\Index.cshtml" />
+    <Content Include="Views\Point\Create.cshtml" />
     <Content Include="Views\Resultat\Import.cshtml" />
   </ItemGroup>
   <ItemGroup>

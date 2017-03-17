@@ -1,6 +1,7 @@
 ﻿using BO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
@@ -34,11 +35,20 @@ namespace WUI.Models
         public double Latitude { get; set; }
 
         [Display(Name = "Course")]
-        [Required(ErrorMessage = "La {0} est requise")]
         public String LibelleCourse { get; set; }
 
         [Display(Name = "Type de point")]
-        [Required(ErrorMessage = "Le {0} est requis")]
         public String LibelleTypePoint { get; set; }
+
+
+        public IEnumerable<TypePoint> ListTypePointOptions;
+
+        [DisplayName("Sélectionnez")]
+        public int IdTypePoint { get; set; }
+
+        public IEnumerable<Race> ListCourseOptions;
+
+        [DisplayName("Sélectionnez")]
+        public int IdCourse { get; set; }
     }
 }

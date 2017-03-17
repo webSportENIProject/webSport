@@ -44,6 +44,7 @@ namespace BLL
             return false;
         }
 
+        //GET ALL
         public List<Point> GetAllItems()
         {
             List<Point> points = this._uow.PointRepo.GetAllItems();
@@ -64,11 +65,13 @@ namespace BLL
             return points;
         }
 
+        //GET BY ID
         public Point GetPoint(int id)
         {
             return this._uow.PointRepo.GetById(id);
         }
 
+        //UPDATE
         public bool UpdatePoint(Point point)
         {
             if (point == null || point.Id < 1) return false;

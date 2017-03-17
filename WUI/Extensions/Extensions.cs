@@ -101,7 +101,7 @@ namespace WUI.Extensions
 
         #endregion
 
-
+        #region Personne
         public static PersonneModel ToModel(this Personne bo)
         {
             if (bo == null) return null;
@@ -172,7 +172,9 @@ namespace WUI.Extensions
                 DateNaissance = (DateTime)model.DateNaissance
             };
         }
+        #endregion
 
+        #region Mail
         public static Mail ToBo(this MailModel model)
         {
             if (model == null) return null;
@@ -186,6 +188,7 @@ namespace WUI.Extensions
                 Message = model.Message
             };
         }
+        #endregion
 
         #region TypePoint       
 
@@ -240,7 +243,9 @@ namespace WUI.Extensions
                 Longitude = bo.Longitude,
                 Latitude = bo.Latitude,
                 LibelleCourse = bo.Course.Title,
-                LibelleTypePoint = bo.TypePoint.Libelle
+                LibelleTypePoint = bo.TypePoint.Libelle,
+                IdTypePoint = bo.TypePoint.Id,
+                IdCourse = bo.Course.Id
             };
         }
 
@@ -254,7 +259,9 @@ namespace WUI.Extensions
                 Titre = model.Titre,
                 Ordre = model.Ordre,
                 Longitude = model.Longitude,
-                Latitude = model.Latitude
+                Latitude = model.Latitude,
+                TypePointId = model.IdTypePoint,
+                CourseId = model.IdCourse
             };
         }
 

@@ -4,7 +4,7 @@
 @if (User.IsInRole("Administrateur"))
 {
     <li>@Html.ActionLink("Liste des points", "Index", "Point")</li>
-    <li>@Html.ActionLink("Importer les résultat", "Import", "Resultat")</li>
+    <li>@Html.ActionLink("Importer les résultats", "Import", "Resultat")</li>
 }
 
 @if (User.IsInRole("Administrateur"))
