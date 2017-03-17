@@ -1,0 +1,78 @@
+﻿@using WUI.Models
+@model IEnumerable<PointModel>
+
+@{
+    ViewBag.Title = "Liste des points (utilisés pour configurer le pacours de la course)";
+}
+
+@section css {
+    @Styles.Render("~/Content/Race/css")
+}
+
+<h2>@ViewBag.Title</h2>
+<p>
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    @Html.ActionLink("Créer un nouveau point", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ordre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LibelleCourse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LibelleTypePoint)
+            </th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ordre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Longitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Latitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LibelleCourse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LibelleTypePoint)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modifier", "Update", new { idPoint = item.Id }) /
+                        @Html.ActionLink("Supprimer", "Delete", new { idPoint = item.Id })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    @Scripts.Render("~/bundles/Race/js")
+}

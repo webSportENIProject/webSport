@@ -348,10 +348,10 @@
     <Content Include="Views\Race\Register.cshtml" />
     <Content Include="Views\Participant\Index.cshtml" />
     <Content Include="Views\Account\ManageInfos.cshtml" />
-    <Content Include="Views\Point\Index.cshtml" />
     <Content Include="Views\TypePoint\Index.cshtml" />
     <Content Include="Views\TypePoint\Create.cshtml" />
     <Content Include="Views\TypePoint\Edit.cshtml" />
+    <Content Include="Views\Point\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />

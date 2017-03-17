@@ -60,6 +60,8 @@ namespace Repository
             pointToUpdate.Ordre = element.Ordre;
             pointToUpdate.Longitude = element.Longitude;
             pointToUpdate.Latitude = element.Latitude;
+            pointToUpdate.CourseId = element.Course.Id;
+            pointToUpdate.TypePointId = element.TypePoint.Id;
             base.Update(pointToUpdate);
         }
 
@@ -74,8 +76,7 @@ namespace Repository
         public List<Point> GetAllItems()
         {
             return base.GetAll().ToBos();
-        }           
-
+        }
         #endregion
     }
 }
