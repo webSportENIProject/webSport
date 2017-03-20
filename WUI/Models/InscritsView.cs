@@ -12,5 +12,11 @@ namespace WUI.Models
         public List<PersonneModel> personnes { get; set; }
         public RaceModel Course { get; set; }
         public int nbInscrits { get; set; }
+        public int TA20 { get; set; }
+        public int TA21_30 { get; set; }
+        public int TA31_40 { get; set; }
+        public int TA41_50 { get; set; }
+        public int TA51_60 { get; set; }
+        public int TA61 { get; set; }
     }
 }

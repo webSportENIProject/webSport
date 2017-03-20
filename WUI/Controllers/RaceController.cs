@@ -204,13 +204,49 @@ namespace WUI.Controllers
             List<Participant> partipants = MgtParticipant.GetInstance().GetAllByIdCourse(id);
             List<PersonneModel> personnes = new List<PersonneModel>();
 
+            int Nb20 = 0;
+            int Nb21_30 = 0;
+            int Nb31_40 = 0;
+            int Nb41_50 = 0;
+            int Nb51_60 = 0;
+            int Nb61 = 0;
+
             foreach (Participant part in partipants) {
-                personnes.Add(MgtPersonne.GetInstance().GetPersonneById(part.IdPersonne).ToModel());
+                PersonneModel model = MgtPersonne.GetInstance().GetPersonneById(part.IdPersonne).ToModel();
+                if (model.DateNaissance != null) {
+                    int age = DateTime.Now.Year - model.DateNaissance.Value.Year;
+                    if (age <= 20) {
+                        Nb20++;
+                    }else if (age <= 30) {
+                        Nb21_30++;
+                    }
+                    else if (age <= 40) {
+                        Nb31_40++;
+                    }
+                    else if (age <= 50) {
+                        Nb41_50++;
+                    }
+                    else if (age <= 60) {
+                        Nb51_60++;
+                    }
+                    else {
+                        Nb61++;
+                    }
+                }
+                
+                personnes.Add(model);
             }
 
             view.Course = MgtRace.GetInstance().GetRace(id).ToModel();
             view.personnes = personnes;
             view.nbInscrits = personnes.Count;
+
+            view.TA20 = Nb20;
+            view.TA21_30 = Nb21_30;
+            view.TA31_40 = Nb31_40;
+            view.TA41_50 = Nb41_50;
+            view.TA51_60 = Nb51_60;
+            view.TA61 = Nb61;
 
             return View(view);
         }

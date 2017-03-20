@@ -1,11 +1,45 @@
 ﻿@using WUI.Models
 @model InscritsView
+
 @{
     ViewBag.Title = "Inscrits";
 }
 
 @section css {
     @Styles.Render("~/Content/Race/css")
+}
+
+@section ScriptsHeader {
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Tranche d\'age');
+      data.addColumn('number', 'Poucentage');
+      var TA20 =  @Model.TA20 / @Model.nbInscrits / 100;
+      var TA21_30 =  @Model.TA21_30 / @Model.nbInscrits / 100;
+      var TA31_40 =  @Model.TA31_40 / @Model.nbInscrits / 100;
+      var TA41_50 =  @Model.TA41_50 / @Model.nbInscrits / 100;
+      var TA51_60 =  @Model.TA51_60 / @Model.nbInscrits / 100;
+      var TA61 =  @Model.TA61 / @Model.nbInscrits / 100;
+        data.addRows([
+        ['-20', TA20],
+        ['21-30', TA21_30],
+        ['31-40', TA31_40],
+        ['41-50', TA41_50],
+		['51-60', TA51_60],
+		['61+', TA61]
+      ]);
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('myPieChart'));
+      chart.draw(data, null);
+    }
+    </script>
 }
 
 <h2>Liste des inscrits à la course @Html.DisplayTextFor(m => m.Course.Title)</h2>
@@ -58,6 +92,6 @@
     @Html.ActionLink("Retour à la liste des courses", "Index")
 </div>
 
-@section Scripts {
+<h2>Poucentage d'inscription par rapport à la tranche d'âge</h2>
 
-}
+<div id="myPieChart" style="width: 100%; min-height: 250px;" />
