@@ -114,7 +114,7 @@ namespace WUI.Controllers
                 nbParticpant = MgtParticipant.GetInstance().GetAllByIdCourse(id).Count;
             }
             String message = "";
-            if (maxParticipant > 0 && nbParticpant < maxParticipant) {
+            if (maxParticipant == 0 || nbParticpant < maxParticipant) {
                 MgtRace.GetInstance().addInscription(id, idUser);
                 message = "Vous êtes bien inscrit à la course " + model.Title + " qui commenceras le " + model.DateStart + " " +
                     "à " + model.Town + ".Un email récapitulatif vous a été envoyer.";
