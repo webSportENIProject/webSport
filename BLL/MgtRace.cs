@@ -90,6 +90,13 @@ namespace BLL
         {
             if (id < 1) return false;
 
+            //Suppression des resultats
+            this._uow.ResultatRepo.RemoveAllResultatByCourse(id);
+            //Suppression des points
+            this._uow.PointRepo.RemoveAllPointByCourse(id);
+            //Suppression des participation
+            this._uow.ParticipantRepo.RemoveAllParticipationByCourse(id);
+            //Suppresion de la course
             this._uow.RaceRepo.Remove(id);
             this._uow.Save();
 

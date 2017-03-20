@@ -72,6 +72,15 @@ namespace Repository
             base.Remove(pointToDelete);
         }
 
+        public void RemoveAllPointByCourse(int idCourse)
+        {
+            List<PointEntity> entities = base.Where(x => x.CourseId == idCourse).ToList();
+            foreach (PointEntity entity in entities)
+            {
+                base.Remove(entity);
+            }
+        }
+
         //GET ALL
         public List<Point> GetAllItems()
         {

@@ -77,6 +77,15 @@ namespace Repository
             base.Remove(resultatToDelete);
         }
 
+        public void RemoveAllResultatByCourse(int idCourse)
+        {
+            List<ResultatEntity> entities = base.Where(x => x.idCourse == idCourse).ToList();
+            foreach (ResultatEntity entity in entities)
+            {
+                base.Remove(entity);
+            }
+        }
+
         #endregion
     }
 }
