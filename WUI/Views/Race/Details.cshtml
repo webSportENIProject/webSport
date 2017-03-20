@@ -79,7 +79,8 @@
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(points[i]["Latitude"], points[i]["Longitude"]),
                     map: map,
-                    title: points[i][0]
+                    title: points[i]["Ordre"].toString(),
+                    label: points[i]["Ordre"].toString(),
                 });
 
                 var content = "Titre : " + points[i]["Titre"] + "<br/>" + "Catégorie : " + points[i]["LibelleTypePoint"];
