@@ -86,6 +86,15 @@ namespace Repository
             }
         }
 
+        public void RemoveAllResultatByIdPersonne(int idPersonne)
+        {
+            List<ResultatEntity> entities = base.Where(x => x.idPersonne == idPersonne).ToList();
+            foreach (ResultatEntity entity in entities)
+            {
+                base.Remove(entity);
+            }
+        }
+
         #endregion
     }
 }

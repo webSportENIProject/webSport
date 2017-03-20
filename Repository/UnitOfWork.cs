@@ -111,6 +111,28 @@ namespace Repository
             }
         }
 
+        private UserTableRepository _usertableRepo;
+        public UserTableRepository UserTableRepo
+        {
+            get
+            {
+                if (_usertableRepo == null)
+                    _usertableRepo = new UserTableRepository(this.context);
+                return _usertableRepo;
+            }
+        }
+
+        private MembershipRepository _membershipRepo;
+        public MembershipRepository MembershipRepo
+        {
+            get
+            {
+                if (_membershipRepo == null)
+                    _membershipRepo = new MembershipRepository(this.context);
+                return _membershipRepo;
+            }
+        }
+
         // Etc... on liste les repositories
 
         #endregion

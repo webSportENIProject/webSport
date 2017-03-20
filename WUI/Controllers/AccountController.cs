@@ -59,6 +59,25 @@ namespace WUI.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(FormCollection collection)
+        {
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("SqlAdoCs", "UserTable", "Id", "Name", autoCreateTables: true);
+            }
+            int idUser = WebSecurity.CurrentUserId;
+            MgtPersonne.GetInstance().RemovePersonne(idUser);
+
+            return LogOff();
+        }
+
         //
         // GET: /Account/Register
 

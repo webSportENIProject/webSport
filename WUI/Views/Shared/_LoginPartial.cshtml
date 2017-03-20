@@ -6,6 +6,11 @@
             <li>@Html.ActionLink("Mes informations", "ManageInfos", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
             <li>@Html.ActionLink("Mes Inscriptions", "Index", "Participant")</li>
             <li>@Html.ActionLink("Changer Mots de Passe", "ManagePassword", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
+            @if (!User.IsInRole("Administrateur"))
+            {
+                <li>@Html.ActionLink("Supprimer mon compte", "Delete", "Account")</li>
+            }
+            
         </ul>
     </li>
     <li>@Html.ActionLink("Se déconnecter", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "registerLogOff" })</li>

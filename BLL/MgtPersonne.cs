@@ -53,5 +53,16 @@ namespace BLL
             this._uow.PersonneRepo.Update(personne);
         }
         // DELETE
+        public void RemovePersonne(int idUser)
+        {
+            Personne personne = this._uow.PersonneRepo.GetByIdUserTable(idUser);
+            //Supprimer inscription, resultat, usertable, table password
+            this._uow.ResultatRepo.RemoveAllResultatByIdPersonne(personne.Id);
+            this._uow.ParticipantRepo.RemoveAllParticipationByIdPersonne(personne.Id);
+            this._uow.PersonneRepo.RemoveByIdUserTable(idUser);
+            this._uow.MembershipRepo.Remove(idUser);
+            this._uow.UserTableRepo.Remove(idUser);
+            this._uow.Save();
+        }
     }
 }

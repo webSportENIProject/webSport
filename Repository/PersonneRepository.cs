@@ -61,6 +61,11 @@ namespace Repository
             base.Update(personneToUpdate);
         }
 
+        public void RemoveByIdUserTable(int userId) {
+            PersonneEntity entity = base.Where(x => x.UserTableId == userId).SingleOrDefault();
+            base.Remove(entity);
+        }
+
         #endregion
     }
 }

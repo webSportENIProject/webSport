@@ -79,6 +79,15 @@ namespace Repository
             }
         }
 
+        public void RemoveAllParticipationByIdPersonne(int idPersonne)
+        {
+            List<ParticipantEntity> entities = base.Where(x => x.PersonneId == idPersonne).ToList();
+            foreach (ParticipantEntity entity in entities)
+            {
+                base.Remove(entity);
+            }
+        }
+
 
         //GET BY ID RACE
         public bool isInscrit(int idRace, int idPersonne)

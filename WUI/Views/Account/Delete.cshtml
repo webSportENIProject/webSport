@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Supprimer son compte";
+}
+
+<hgroup class="title">
+    <h1>Voulez-vous vraiment supprimer votre compte ?</h1>
+</hgroup>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <p>Vous perdrez tout vos inscriptions et tous vos résultat !</p>  
+
+     <button type="submit" value="Confirmer" class="btn btn-default">Confirmer</button>
+}
+
+@section Scripts {
+
+}

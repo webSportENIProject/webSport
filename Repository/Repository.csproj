@@ -52,6 +52,8 @@
     <Compile Include="PersonneRepository.cs" />
     <Compile Include="ParticipantRepository.cs" />
     <Compile Include="RaceRepository.cs" />
+    <Compile Include="MembershipRepository.cs" />
+    <Compile Include="UserTableRepository.cs" />
     <Compile Include="ResultatRepository.cs" />
     <Compile Include="TypePointRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
