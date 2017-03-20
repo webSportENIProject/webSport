@@ -70,6 +70,9 @@ namespace BLL
         public Race GetRaceWithPoints(int id) {
             Race race = GetRace(id);
             race.Points = this._uow.PointRepo.GetAllItemsByIdRace(id);
+            foreach (Point item in race.Points) {
+                item.TypePoint = this._uow.TypePointRepo.GetById(item.TypePointId);
+            }
             return race;
         }
 

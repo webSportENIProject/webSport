@@ -65,13 +65,6 @@
             console.log(result);
             points = result; 
         }
-            //IdPoint - Latitude - Longitude - Image/TypePoint - Description
-         /*points = [
-            ['0', 47.21806, -1.55278, 'cat1', 'Départ de la course'],
-            ['1', 47.31806, -1.45278, 'cat1', 'Virage 1'],
-            ['2', 47.41806, -1.75278, 'cat2', 'Virage 2'],
-            ['3', 47.41806, -1.55278, 'cat2', 'Fin de la courese']
-        ];*/
 
         function initialize() {
             var map = new google.maps.Map(
@@ -89,7 +82,7 @@
                     title: points[i][0]
                 });
 
-                var content = points[i]["Titre"] + "- Lat" + points[i]["Latitude"] + "-Long " + points[i]["Longitude"];
+                var content = "Titre : " + points[i]["Titre"] + "<br/>" + "Catégorie : " + points[i]["LibelleTypePoint"];
 
                 var infowindow = new google.maps.InfoWindow();
 
