@@ -49,6 +49,11 @@ namespace BLL
             return this._uow.ParticipantRepo.GetAllItemsByIdPersonne(id);
         }
 
+        public List<Participant> GetAllByIdCourse(int idCourse)
+        {
+            return this._uow.ParticipantRepo.GetAllItemsByIdRace(idCourse);
+        }
+
         // UPDATE
 
         // DELETE

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using WUI.Extensions;
 using WUI.Models;
+using BO;
 
 namespace WUI.Controllers
 {
@@ -159,6 +160,25 @@ namespace WUI.Controllers
             {
                 return View();
             }
+        }
+
+        [Authorize(Roles = "Administrateur")]
+        public ActionResult Inscrits(int id = 0)
+        {
+            InscritsView view = new InscritsView();
+
+            List<Participant> partipants = MgtParticipant.GetInstance().GetAllByIdCourse(id);
+            List<PersonneModel> personnes = new List<PersonneModel>();
+
+            foreach (Participant part in partipants) {
+                personnes.Add(MgtPersonne.GetInstance().GetPersonneById(part.IdPersonne).ToModel());
+            }
+
+            view.Course = MgtRace.GetInstance().GetRace(id).ToModel();
+            view.personnes = personnes;
+            view.nbInscrits = personnes.Count;
+
+            return View(view);
         }
 
 

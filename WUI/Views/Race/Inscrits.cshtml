@@ -1,0 +1,63 @@
+﻿@using WUI.Models
+@model InscritsView
+@{
+    ViewBag.Title = "Inscrits";
+}
+
+@section css {
+    @Styles.Render("~/Content/Race/css")
+}
+
+<h2>Liste des inscrits à la course @Html.DisplayTextFor(m => m.Course.Title)</h2>
+<h3>Du @Html.DisplayTextFor(m => m.Course.DateStart)</h3>
+
+<p>
+    Nombre d'inscrit : @Html.DisplayTextFor(m => m.nbInscrits) 
+    @if(Model.Course.MaxParticipants > 0){
+        <text>sur</text>
+        @Html.DisplayTextFor(m => m.Course.MaxParticipants)
+    } 
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.personnes.First().Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personnes.First().Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personnes.First().Email)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model.personnes)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Retour à la liste des courses", "Index")
+</div>
+
+@section Scripts {
+
+}

@@ -192,6 +192,7 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\MailModel.cs" />
     <Compile Include="Models\ParticipantModel.cs" />
+    <Compile Include="Models\InscritsView.cs" />
     <Compile Include="Models\ResultatView.cs" />
     <Compile Include="Models\ResultatModel.cs" />
     <Compile Include="Models\PersonneModel.cs" />
@@ -359,6 +360,7 @@
     <Content Include="Views\Resultat\Import.cshtml" />
     <Content Include="Views\Point\Update.cshtml" />
     <Content Include="Views\Resultat\Resultat.cshtml" />
+    <Content Include="Views\Race\Inscrits.cshtml" />
     <Content Include="Views\Race\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
