@@ -150,14 +150,14 @@ namespace DAL.Extensions
 
         #region Point
 
-        public static List<Point> ToBos(this List<PointEntity> bos)
+        public static List<Point> ToBos(this List<PointEntity> bos, bool withJoinCourse = false)
         {
             return bos != null
-                ? bos.Where(x => x != null).Select(x => x.ToBo()).ToList()
+                ? bos.Where(x => x != null).Select(x => x.ToBo(withJoinCourse)).ToList()
                 : null;
         }
 
-        public static Point ToBo(this PointEntity bo)
+        public static Point ToBo(this PointEntity bo, bool withJoinCourse = false)
         {
             if (bo == null) return null;
 
@@ -169,7 +169,9 @@ namespace DAL.Extensions
                 Longitude = bo.Longitude,
                 Latitude = bo.Latitude,
                 CourseId = bo.CourseId,
-                TypePointId = bo.TypePointId
+                TypePointId = bo.TypePointId,
+
+                Course = withJoinCourse && bo.Course != null ? bo.Course.ToBo() : null
             };
         }
 

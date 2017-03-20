@@ -53,7 +53,7 @@ namespace BLL
 
         public List<Race> GetAllItemsWithParticipants()
         {
-            List<Race> races = this._uow.RaceRepo.GetAllItems();
+            List<Race> races = GetAllItems();
             foreach (Race item in races)
             {
                 item.Participants = this._uow.ParticipantRepo.GetAllItemsByIdRace(item.Id);
@@ -66,6 +66,13 @@ namespace BLL
         {           
             return this._uow.RaceRepo.GetById(id);
         }
+
+        public Race GetRaceWithPoints(int id) {
+            Race race = GetRace(id);
+            race.Points = this._uow.PointRepo.GetAllItemsByIdRace(id);
+            return race;
+        }
+
 
         public bool UpdateRace(Race race)
         {

@@ -85,10 +85,9 @@
                     </td>
 
                     <td>
-                        @if (!item.inscrit) {
-                            @Html.ActionLink("S'inscrire", "Register", new { id = item.Id }) <br />
-                        } 
-                        
+                        @if (!item.Inscrit) {
+                            @Html.ActionLink("S'inscrire", "Register", new { id = item.Id })
+                        }
                         @Html.ActionLink("+Infos", "Details", new { id = item.Id })
 
                         @if (User.IsInRole("Administrateur"))

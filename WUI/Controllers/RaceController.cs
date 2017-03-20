@@ -44,7 +44,7 @@ namespace WUI.Controllers
                 Personne user = MgtPersonne.GetInstance().GetPersonneByIdUserTable(idUser);
                 for (int i = 0; i < result.Count; i++) {
                     bool inscrit = MgtParticipant.GetInstance().isIncrit(result.ElementAt(i).Id, user.Id);
-                    result.ElementAt(i).inscrit = inscrit;
+                    result.ElementAt(i).Inscrit = inscrit;
                 }
             }
             
@@ -264,6 +264,18 @@ namespace WUI.Controllers
  		
              return View(result);		
          }
+
+        // GET: /Race/Points/5
+        [AllowAnonymous]
+        public JsonResult Points(int id)
+        {
+            RaceModel result = MgtRace.GetInstance().GetRaceWithPoints(id).ToModel(false, true);
+            if (result == null)
+            {
+                return Json("");
+            }
+            return Json(result.Points, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

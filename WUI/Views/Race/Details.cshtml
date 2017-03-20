@@ -48,19 +48,30 @@
 <div id="mapid"></div>
 
 @section scripts {
-    @Scripts.Render("~/bundles/Race/js")
-
     <script type="text/javascript">
         var geocoder;
         var map;
 
+
+        $.ajax({
+            url: "@Url.Action("Points", "Race", new {id= @Model.Id })",
+            dataType: "json",
+            success: populateTable
+        });
+
+        var points;
+
+        function populateTable(result) {
+            console.log(result);
+            points = result; 
+        }
             //IdPoint - Latitude - Longitude - Image/TypePoint - Description
-        var beaches = [
+         /*points = [
             ['0', 47.21806, -1.55278, 'cat1', 'Départ de la course'],
             ['1', 47.31806, -1.45278, 'cat1', 'Virage 1'],
             ['2', 47.41806, -1.75278, 'cat2', 'Virage 2'],
             ['3', 47.41806, -1.55278, 'cat2', 'Fin de la courese']
-        ];
+        ];*/
 
         function initialize() {
             var map = new google.maps.Map(
@@ -71,14 +82,14 @@
               });
 
             //Dessin des markers
-            for (i = 0; i < beaches.length; i++) {
+            for (i = 0; i < points.length; i++) {
                 marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(beaches[i][1], beaches[i][2]),
+                    position: new google.maps.LatLng(points[i]["Latitude"], points[i]["Longitude"]),
                     map: map,
-                    title: beaches[i][0]
+                    title: points[i][0]
                 });
 
-                var content = beaches[i][4];
+                var content = points[i]["Titre"] + "- Lat" + points[i]["Latitude"] + "-Long " + points[i]["Longitude"];
 
                 var infowindow = new google.maps.InfoWindow();
 
@@ -92,16 +103,16 @@
 
             //Dessin de la route
             for (var t = 0;
-              (t + 1) < beaches.length; t++) {
+              (t + 1) < points.length; t++) {
 
                 //Intialize the Direction Service
                 var service = new google.maps.DirectionsService();
                 var directionsDisplay = new google.maps.DirectionsRenderer();
 
                 var bounds = new google.maps.LatLngBounds();
-                if ((t + 1) < beaches.length) {
-                    var src = new google.maps.LatLng(beaches[t][1], beaches[t][2]);
-                    var des = new google.maps.LatLng(beaches[t + 1][1], beaches[t + 1][2]);
+                if ((t + 1) < points.length) {
+                    var src = new google.maps.LatLng(points[t]["Latitude"], points[t]["Longitude"]);
+                    var des = new google.maps.LatLng(points[t + 1]["Latitude"], points[t + 1]["Longitude"]);
                     console.log("src=" + src.toUrlValue() + " dest=" + des.toUrlValue());
                     service.route({
                         origin: src,
@@ -115,7 +126,7 @@
 
                             var poly = new google.maps.Polyline({
                                 map: map,
-                                strokeColor: '#4986E7'
+                                strokeColor: '#33cc33'
                             });
                             poly.setPath(path);
                             for (var k = 0, len = result.routes[0].overview_path.length; k < len; k++) {

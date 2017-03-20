@@ -27,6 +27,6 @@ namespace BO
 
         public virtual List<Participant> Participants { get; set; }
 
-        public virtual List<Point> points { get; set; }
+        public virtual List<Point> Points { get; set; }
     }
 }

@@ -64,7 +64,7 @@ namespace WUI.Extensions
                 : null;
         }
 
-        public static RaceModel ToModel(this Race bo, bool withJoin = false)
+        public static RaceModel ToModel(this Race bo, bool withJoinParticipants = false, bool withJoinPoints = false)
         {
             if (bo == null) return null;
 
@@ -78,8 +78,8 @@ namespace WUI.Extensions
                 Town = bo.Town,
                 MaxParticipants = bo.MaxParticipants,
 
-                Participants = withJoin && bo.Participants != null ? bo.Participants.Select(x => x.ToModel()).ToList() : null,
-                //Pois = bo.Pois.Select(x => x.ToModel()).ToList(),
+                Participants = withJoinParticipants && bo.Participants != null ? bo.Participants.Select(x => x.ToModel()).ToList() : null,
+                Points = withJoinPoints && bo.Points != null ? bo.Points.Select(x => x.ToModel()).ToList() : null
             };
         }
 

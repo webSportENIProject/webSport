@@ -77,6 +77,13 @@ namespace Repository
         {
             return base.GetAll().ToBos();
         }
+
+        //GET ALL
+        public List<Point> GetAllItemsByIdRace(int idRace)
+        {
+            List <Point> points =  base.Where(x => x.CourseId == idRace).ToList().ToBos(true);
+            return points;
+        }
         #endregion
     }
 }
