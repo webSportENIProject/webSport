@@ -4,6 +4,7 @@
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon Compte<span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li>@Html.ActionLink("Mes informations", "ManageInfos", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
+            <li>@Html.ActionLink("Mes Inscriptions", "Index", "Participant")</li>
             <li>@Html.ActionLink("Changer Mots de Passe", "ManagePassword", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
         </ul>
     </li>

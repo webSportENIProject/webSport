@@ -6,17 +6,26 @@ namespace Repository
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
+        private static UnitOfWork _instance = null;
+
+        public static UnitOfWork GetInstance() {
+            if (_instance == null) {
+                _instance = new UnitOfWork();
+            }
+            return _instance;
+        }
+
         private bool disposed;
         private WebSportEntities context;
 
         #region Constructors
 
-        public UnitOfWork()
+        private UnitOfWork()
             : this(new WebSportEntities())
         {
         }
 
-        public UnitOfWork(WebSportEntities context)
+        private UnitOfWork(WebSportEntities context)
         {
             this.context = context;
         }

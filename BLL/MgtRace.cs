@@ -26,7 +26,7 @@ namespace BLL
         private MgtRace()
         {  
             // Récupération des données via la DAL (informations stockées dans une base de données SQL)
-            _uow = new UnitOfWork();           
+            _uow = UnitOfWork.GetInstance();           
         }
 
         public bool AddRace(Race race)

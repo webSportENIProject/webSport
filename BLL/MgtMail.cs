@@ -25,7 +25,7 @@ namespace BLL
         private MgtMail()
         {
             // Récupération des données via la DAL (informations stockées dans une base de données SQL)
-            _uow = new UnitOfWork();
+            _uow = UnitOfWork.GetInstance();
         }
 
         public bool AddMail(Mail mail)
