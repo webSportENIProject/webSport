@@ -79,6 +79,17 @@ namespace BLL
             this._uow.PointRepo.Update(point);
             this._uow.Save();
             return true;
+        }
+        
+        //DELETE
+        public bool DeletePoint(int id)
+        {
+            if (id < 1) return false;
+
+            this._uow.PointRepo.Remove(id);
+            this._uow.Save();
+
+            return true;
         }      
 
     }

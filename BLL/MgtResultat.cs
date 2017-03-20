@@ -82,5 +82,22 @@ namespace BLL
             return this._uow.ResultatRepo.GetAllByCourseAndPersonne(idCourse, personne.Id);
         }
 
+        //GET BY ID POINT
+        public List<Resultat> GetAllByPoint(int idPoint)
+        {
+            return this._uow.ResultatRepo.GetAllByPoint(idPoint);
+        }
+
+        //DELETE
+        public bool DeleteResultat(int id)
+        {
+            if (id < 1) return false;
+
+            this._uow.ResultatRepo.Remove(id);
+            this._uow.Save();
+
+            return true;
+        }
+
     }
 }

@@ -361,6 +361,7 @@
     <Content Include="Views\Resultat\Import.cshtml" />
     <Content Include="Views\Point\Update.cshtml" />
     <Content Include="Views\Resultat\Resultat.cshtml" />
+    <Content Include="Views\Point\Delete.cshtml" />
     <Content Include="Views\Race\Inscrits.cshtml" />
     <Content Include="Views\Race\Details.cshtml" />
   </ItemGroup>

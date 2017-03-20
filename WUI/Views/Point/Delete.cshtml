@@ -1,0 +1,58 @@
+﻿@model WUI.Models.PointModel
+
+@{
+    ViewBag.Title = "Suppression";
+}
+
+<h3>Êtes-vous sur de vouloir supprimer cet élément ?</h3>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Titre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Titre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ordre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ordre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Longitude)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Longitude)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Latitude)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Latitude)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.LibelleCourse)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LibelleCourse)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.LibelleTypePoint)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LibelleTypePoint)
+    </div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <p>
+        <button type="submit" value="Delete" class="btn btn-default">Delete</button> |
+        @Html.ActionLink("Retour à la liste", "Index")
+    </p>
+}

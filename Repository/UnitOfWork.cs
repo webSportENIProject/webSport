@@ -115,8 +115,9 @@ namespace Repository
                 context.SaveChanges();
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex);    
                 return false;
             }
         }

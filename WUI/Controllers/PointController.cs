@@ -83,10 +83,16 @@ namespace WUI.Controllers
 
         //
         // GET: /Race/Delete
-       /* [Authorize(Roles = "Administrateur")]
-        public ActionResult Delete(int id)
+       [Authorize(Roles = "Administrateur")]
+        public ActionResult Delete(int idPoint)
         {
-            var result = MgtPoint.GetInstance().GetPointById(id).ToModel();
+            var result = MgtPoint.GetInstance().GetPointById(idPoint).ToModel();
+            RaceModel race = MgtRace.GetInstance().GetRace(result.IdCourse).ToModel();
+            TypePointModel typePoint = MgtTypePoint.GetInstance().GetTypePoint(result.IdTypePoint).ToModel();
+
+            result.LibelleCourse = race.Title;
+            result.LibelleTypePoint = typePoint.Libelle;
+
             if (result == null)
             {
                 return HttpNotFound();
@@ -100,11 +106,19 @@ namespace WUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int idPoint, FormCollection collection)
         {
             try
             {
-                var result = MgtPoint.GetInstance().RemovePoint(id);
+                PointModel point = MgtPoint.GetInstance().GetPointById(idPoint).ToModel();
+                List<Resultat> listResultats = MgtResultat.GetInstance().GetAllByPoint(idPoint).ToList();
+                //Suppression des résultats associés au point
+                foreach (Resultat resultat in listResultats)
+                {
+                    MgtResultat.GetInstance().DeleteResultat(resultat.id);
+                }
+
+                var result = MgtPoint.GetInstance().DeletePoint(idPoint);
                 if (result)
                 {
                     return RedirectToAction("Index");
@@ -118,7 +132,7 @@ namespace WUI.Controllers
             {
                 return View();
             }
-        }*/
+        }
 
     }
 }

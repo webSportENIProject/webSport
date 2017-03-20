@@ -47,14 +47,34 @@ namespace Repository
             }
         }
 
+        //GET
         public Resultat GetById(int id)
         {
-            return base.Where(x => x.id == id).SingleOrDefault().ToBo();
+            var resultat = this.GetByIdPrivate(id);
+            return resultat != null ? resultat.ToBo() : null;
+        }
+        private ResultatEntity GetByIdPrivate(int id)
+        {
+            return base.Where(x => x.id == id).SingleOrDefault();
         }
 
+        //GET ALL BY ID COURSE AND ID PERSONNE
         public List<Resultat> GetAllByCourseAndPersonne(int idCourse, int idPersonne)
         {
             return base.Where(x => x.idCourse == idCourse).Where(x => x.idPersonne == idPersonne).ToList().ToBos();
+        }
+
+        //Récupération de la liste des résultats pour un point d'une course
+        public List<Resultat> GetAllByPoint(int idPoint)
+        {
+            return base.Where(x => x.idPoint == idPoint).ToList().ToBos();
+        }
+
+        //DELETE
+        public void Remove(int id)
+        {
+            var resultatToDelete = this.GetByIdPrivate(id);
+            base.Remove(resultatToDelete);
         }
 
         #endregion
