@@ -160,5 +160,20 @@ namespace WUI.Controllers
                 return View();
             }
         }
+
+
+        // GET: /Race/Details/5
+        [AllowAnonymous]
+        public ActionResult Details(int id)
+         {		
+             var result = MgtRace.GetInstance().GetRace(id).ToModel();		
+             if (result == null)		
+             {		
+                 return HttpNotFound();		
+             }		
+ 		
+             return View(result);		
+         }
+
     }
 }

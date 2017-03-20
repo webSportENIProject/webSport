@@ -1,0 +1,135 @@
+﻿@model WUI.Models.RaceModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section css {
+    @Styles.Render("~/Content/Race/css")
+}
+
+@section scriptsHeader{
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&ext=.js&key=AIzaSyCmQ54LQucf9hRGkuQ1kGJM9EIFMr5vtT8"></script>
+
+}
+
+<h2>Details</h2>
+
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DateStart)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateStart)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DateEnd)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateEnd)
+    </div>
+
+<div id="mapid"></div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/Race/js")
+
+    <script type="text/javascript">
+        var geocoder;
+        var map;
+
+            //IdPoint - Latitude - Longitude - Image/TypePoint - Description
+        var beaches = [
+            ['0', 47.21806, -1.55278, 'cat1', 'Départ de la course'],
+            ['1', 47.31806, -1.45278, 'cat1', 'Virage 1'],
+            ['2', 47.41806, -1.75278, 'cat2', 'Virage 2'],
+            ['3', 47.41806, -1.55278, 'cat2', 'Fin de la courese']
+        ];
+
+        function initialize() {
+            var map = new google.maps.Map(
+              document.getElementById("mapid"), {
+                  center: new google.maps.LatLng(47.21806, -1.55278),
+                  zoom: 13,
+                  mapTypeId: google.maps.MapTypeId.HYBRID
+              });
+
+            //Dessin des markers
+            for (i = 0; i < beaches.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(beaches[i][1], beaches[i][2]),
+                    map: map,
+                    title: beaches[i][0]
+                });
+
+                var content = beaches[i][4];
+
+                var infowindow = new google.maps.InfoWindow();
+
+                google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
+                    return function () {
+                        infowindow.setContent(content);
+                        infowindow.open(map, marker);
+                    };
+                })(marker, content, infowindow));
+            }
+
+            //Dessin de la route
+            for (var t = 0;
+              (t + 1) < beaches.length; t++) {
+
+                //Intialize the Direction Service
+                var service = new google.maps.DirectionsService();
+                var directionsDisplay = new google.maps.DirectionsRenderer();
+
+                var bounds = new google.maps.LatLngBounds();
+                if ((t + 1) < beaches.length) {
+                    var src = new google.maps.LatLng(beaches[t][1], beaches[t][2]);
+                    var des = new google.maps.LatLng(beaches[t + 1][1], beaches[t + 1][2]);
+                    console.log("src=" + src.toUrlValue() + " dest=" + des.toUrlValue());
+                    service.route({
+                        origin: src,
+                        destination: des,
+                        travelMode: google.maps.DirectionsTravelMode.WALKING
+                    }, function (result, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+
+                            var path = new google.maps.MVCArray();
+                            //Set the Path Stroke Color
+
+                            var poly = new google.maps.Polyline({
+                                map: map,
+                                strokeColor: '#4986E7'
+                            });
+                            poly.setPath(path);
+                            for (var k = 0, len = result.routes[0].overview_path.length; k < len; k++) {
+                                path.push(result.routes[0].overview_path[k]);
+                                bounds.extend(result.routes[0].overview_path[k]);
+                                map.fitBounds(bounds);
+                            }
+                        } else alert("Directions Service failed:" + status);
+                    });
+                }
+            }
+        }
+        google.maps.event.addDomListener(window, "load", initialize);
+
+    </script>
+
+}
