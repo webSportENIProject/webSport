@@ -46,9 +46,15 @@ namespace WUI.Models
         [Required(ErrorMessage = "Le {0} est requise")]
         public int MaxParticipants { get; set; }
 
+        public bool inscrit { get; set; }
+
         public List<ParticipantModel> Participants { get; set; }
 
         public List<PoiModel> Pois { get; set; }
+
+        public RaceModel() {
+            inscrit = false;
+        }
 
     }
 }

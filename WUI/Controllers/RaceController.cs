@@ -33,6 +33,22 @@ namespace WUI.Controllers
         public ActionResult Index()
         {
             List<RaceModel> result = MgtRace.GetInstance().GetAllItemsWithParticipants().ToModels(true);
+            int idUser = 0;
+            if (WebSecurity.IsAuthenticated) {
+                if (!WebSecurity.Initialized) {
+                    WebSecurity.InitializeDatabaseConnection("SqlAdoCs", "UserTable", "Id", "Name", autoCreateTables: true);
+                }
+                idUser = WebSecurity.CurrentUserId;
+            }
+            if (idUser > 0) {
+                Personne user = MgtPersonne.GetInstance().GetPersonneByIdUserTable(idUser);
+                for (int i = 0; i < result.Count; i++) {
+                    bool inscrit = MgtParticipant.GetInstance().isIncrit(result.ElementAt(i).Id, user.Id);
+                    result.ElementAt(i).inscrit = inscrit;
+                }
+            }
+            
+
             return View(result);
         }       
 

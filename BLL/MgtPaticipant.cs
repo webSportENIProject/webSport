@@ -67,5 +67,9 @@ namespace BLL
             return true;
         }
 
+        public bool isIncrit(int idCourse, int idPersonne) {
+            return this._uow.ParticipantRepo.isInscrit(idCourse, idPersonne);
+        }
+
      }
 }

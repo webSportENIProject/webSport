@@ -72,6 +72,13 @@ namespace Repository
             base.Remove(participantToDelete);
         }
 
+
+        //GET BY ID RACE
+        public bool isInscrit(int idRace, int idPersonne)
+        {
+            return base.Where(x => x.CourseId == idRace).Where(x => x.PersonneId == idPersonne).Count() > 0;
+        }
+
         #endregion
     }
 }
