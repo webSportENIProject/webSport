@@ -87,16 +87,34 @@ namespace WUI.Controllers
 
         public ActionResult Register(int id = 0)
         {
-            var result = MgtRace.GetInstance().GetRace(id).ToModel();
+            RaceModel model = MgtRace.GetInstance().GetRace(id).ToModel();
             if (!WebSecurity.Initialized) {
                 WebSecurity.InitializeDatabaseConnection("SqlAdoCs", "UserTable", "Id", "Name", autoCreateTables: true);
             }
             int idUser = WebSecurity.CurrentUserId;
-            MgtRace.GetInstance().addInscription(id, idUser);
-            MailUtil mail = new MailUtil();
-           // mail.sendMailInscription(id, idUser);
+            int maxParticipant = model.MaxParticipants;
+            int nbParticpant = 0;
+            if (maxParticipant > 0) {
+                nbParticpant = MgtParticipant.GetInstance().GetAllByIdCourse(id).Count;
+            }
+            String message = "";
+            if (maxParticipant > 0 && nbParticpant < maxParticipant) {
+                MgtRace.GetInstance().addInscription(id, idUser);
+                message = "Vous êtes bien inscrit à la course " + model.Title + " qui commenceras le " + model.DateStart + " " +
+                    "à " + model.Town + ".Un email récapitulatif vous a été envoyer.";
+            }
+            else {
+                message = "Il n'y a plus de place pour cette course. Veuillez essayer ultérieument ou participer à une autre course.";
+            }
+            
 
-            return View(result);
+            MailUtil mail = new MailUtil();
+            // mail.sendMailInscription(id, idUser);
+
+            RegisterView view = new RegisterView();
+            view.Course = model;
+            view.message = message;
+            return View(view);
         }
 
         //

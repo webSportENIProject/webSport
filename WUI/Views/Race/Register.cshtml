@@ -1,4 +1,4 @@
-﻿@model WUI.Models.RaceModel
+﻿@model WUI.Models.RegisterView
 
 @{
     ViewBag.Title = "Inscription";
@@ -8,10 +8,9 @@
     @Styles.Render("~/Content/Race/css")
 }
 
-<h2>Inscription à la course @Html.DisplayTextFor(model => model.Title)</h2>
+<h2>Inscription à la course @Html.DisplayTextFor(model => model.Course.Title)</h2>
 
-<p>Vous êtes bien inscrit à la course @Html.DisplayTextFor(model => model.Title) qui commenceras le @Html.DisplayTextFor(model => model.DateStart) 
-    à @Html.DisplayTextFor(model => model.Town). Un email récapitulatif vous a été envoyer.</p>
+<p>@Html.DisplayTextFor(model => model.message)</p>
 
 
 @section scripts {
