@@ -78,7 +78,7 @@
               document.getElementById("mapid"), {
                   center: new google.maps.LatLng(47.21806, -1.55278),
                   zoom: 13,
-                  mapTypeId: google.maps.MapTypeId.HYBRID
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
               });
 
             //Dessin des markers
@@ -126,7 +126,7 @@
 
                             var poly = new google.maps.Polyline({
                                 map: map,
-                                strokeColor: '#33cc33'
+                                strokeColor: '#0288d1'
                             });
                             poly.setPath(path);
                             for (var k = 0, len = result.routes[0].overview_path.length; k < len; k++) {
