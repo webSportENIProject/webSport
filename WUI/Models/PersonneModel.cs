@@ -24,6 +24,7 @@ namespace WUI.Models
 
         public string distance { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DateNaissance { get; set; }
     }
 
