@@ -23,7 +23,7 @@ namespace WUI.Models
 
         [Display(Name = "Description")]
         [StringLength(100, MinimumLength=20, ErrorMessage="La {0} doit faire au minimum 20 caractères"),  ]
-        [MaxLength("100", "La {0} doit faire au maximun 100 caractères")]
+        [MaxLength(100, "La {0} doit faire au maximun 100 caractères")]
         [Required(ErrorMessage = "La {0} est requise")]
         public string Description { get; set; }
 
