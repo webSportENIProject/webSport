@@ -10,6 +10,17 @@ using System.Web.Mvc;
 using WUI.Extensions;
 using WUI.Models;
 using BO;
+//For converting HTML TO PDF- START
+using iTextSharp.text;
+using iTextSharp.text.html;
+using iTextSharp.text.pdf;
+using iTextSharp.text.xml;
+using iTextSharp.text.html.simpleparser;
+using System.IO;
+using System.util;
+using System.Text.RegularExpressions;
+//For converting HTML TO PDF- END
+
 
 namespace WUI.Controllers
 {
@@ -276,6 +287,55 @@ namespace WUI.Controllers
             }
             return Json(result.Points, JsonRequestBehavior.AllowGet);
         }
+
+        [AllowAnonymous]
+        public ActionResult CreatePDF()
+        {
+            Document doc = new Document(PageSize.LETTER, 50, 50, 50, 50);
+            string html = RenderRazorViewToString("~/Views/Race/CreatePDF.cshtml", null);
+            TextReader reader = new StringReader(html);
+
+            using (MemoryStream output = new MemoryStream())
+            {
+                PdfWriter wri = PdfWriter.GetInstance(doc, output);
+
+                // step 3: we create a worker parse the document
+                HTMLWorker worker = new HTMLWorker(doc);
+
+                doc.Open();
+
+                worker.StartDocument();
+
+                // step 5: parse the html into the document
+                worker.Parse(reader);
+
+                // step 6: close the document and the worker
+                worker.EndDocument();
+                worker.Close();
+
+                doc.Close();
+                return File(output.ToArray(), "application/pdf", "test.pdf");
+            }
+
+        }
+
+
+        public string RenderRazorViewToString(string viewName, object model)
+        {
+            ViewData.Model = model;
+            using (var sw = new StringWriter())
+            {
+                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext,
+                                                                         viewName);
+                var viewContext = new ViewContext(ControllerContext, viewResult.View,
+                                             ViewData, TempData, sw);
+                viewResult.View.Render(viewContext, sw);
+                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+                return sw.GetStringBuilder().ToString();
+            }
+        }
+
+
 
     }
 }
