@@ -371,6 +371,7 @@
     <Content Include="Views\Race\Details.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Race\CreatePDF.cshtml" />
+    <Content Include="Views\Race\Old.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />

@@ -9,17 +9,8 @@
     @Styles.Render("~/Content/Race/css")
 }
 
-<h2>Liste des courses</h2>
-@if (User.IsInRole("Administrateur"))
-{
-    <p>
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        @Html.ActionLink("Créer une nouvelle course", "Create")
-    </p>
-    <p>
-        @Html.ActionLink("Voir les anciens courses", "Old")
-    </p>
-}
+<h2>Liste des anciennes courses</h2>
+
 <table class="table">
     <thead>
         <tr>
@@ -88,21 +79,17 @@
                     </td>
 
                     <td>
-                        @if (!item.Inscrit) {
-                            @Html.ActionLink("S'inscrire", "Register", new { id = item.Id })<br/>
-                        }
-                        @Html.ActionLink("+Infos", "Details", new { id = item.Id })
-
-                        @if (User.IsInRole("Administrateur"))
-                        {
-                            <br />@Html.ActionLink("Modifier", "Edit", new { id = item.Id })<br/>
-                            @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })<br />
-                            @Html.ActionLink("Voir la liste des inscrits", "Inscrits", new { id = item.Id })<br />
-                            @Html.ActionLink("Gérer les points", "Index", "Point", new { id = item.Id }, null)
-                        }
+                        @Html.ActionLink("+Infos", "Details", new { id = item.Id })<br/>
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })<br />
+                        @Html.ActionLink("Voir la liste des inscrits", "Inscrits", new { id = item.Id })<br />
+                        @Html.ActionLink("Gérer les points", "Index", "Point", new { id = item.Id }, null)
                     </td>
                 </tr>
             }
         }
     </tbody>
 </table>
+
+<div>
+    @Html.ActionLink("Retour à la liste", "Index")
+</div>

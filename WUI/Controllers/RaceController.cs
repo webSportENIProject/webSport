@@ -44,6 +44,8 @@ namespace WUI.Controllers
         public ActionResult Index()
         {
             List<RaceModel> result = MgtRace.GetInstance().GetAllItemsWithParticipants().ToModels(true);
+            result = result.Where(x => x.DateEnd >= DateTime.Now ).ToList();
+
             int idUser = 0;
             if (WebSecurity.IsAuthenticated) {
                 if (!WebSecurity.Initialized) {
@@ -60,8 +62,18 @@ namespace WUI.Controllers
             }
             
 
-            return View(result);
-        }       
+
+            return View(result.OrderByDescending(x => x.DateStart).ToList());
+        }
+
+        [Authorize(Roles = "Administrateur")]
+        public ActionResult Old()
+        {
+            List<RaceModel> result = MgtRace.GetInstance().GetAllItemsWithParticipants().ToModels(true);
+            result = result.Where(x => x.DateEnd < DateTime.Now).ToList();
+
+            return View(result.OrderByDescending(x => x.DateStart).ToList());
+        }
 
         //
         // GET: /Race/Create
