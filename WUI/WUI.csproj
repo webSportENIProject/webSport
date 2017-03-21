@@ -177,6 +177,7 @@
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Attributes\CompareDateAttribute.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\CoordGpsModel.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Pager.cs" />
@@ -374,6 +376,9 @@
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Race\CreatePDF.cshtml" />
     <Content Include="Views\Race\Old.cshtml" />
+    <Content Include="Views\Contact\Create.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />

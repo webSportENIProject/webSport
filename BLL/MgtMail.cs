@@ -43,5 +43,11 @@ namespace BLL
 
             return false;
         }
+
+        public List<Mail> GetAllContact()
+        {
+            List<Mail> contact = this._uow.MailRepo.GetAllItems();
+            return contact;
+        }
     }
 }

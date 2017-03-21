@@ -174,8 +174,30 @@ namespace WUI.Extensions
         }
         #endregion
 
-        #region Mail
-        public static Mail ToBo(this MailModel model)
+        #region Contact
+
+        public static List<ContactModel> ToModels(this List<Mail> bos)
+        {
+            return bos != null
+                ? bos.Where(x => x != null).Select(x => x.ToModel()).ToList()
+                : null;
+        }
+
+        public static ContactModel ToModel(this Mail bo)
+        {
+            if (bo == null) return null;
+
+            return new ContactModel
+            {
+                Id = bo.Id,
+                Nom = bo.Nom,
+                Email = bo.Email,
+                Titre = bo.Titre,
+                Message = bo.Message
+            };
+        }
+
+        public static Mail ToBo(this ContactModel model)
         {
             if (model == null) return null;
 

@@ -25,24 +25,5 @@ namespace WUI.Controllers
 
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Votre page de contact.";
-
-            return View();
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Contact(MailModel mail)
-        {
-            if (ModelState.IsValid)
-            {
-                MgtMail.GetInstance().AddMail(mail.ToBo());
-            }
-            return RedirectToAction("Index");
-        }
     }
 }

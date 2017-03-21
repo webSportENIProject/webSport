@@ -1,5 +1,6 @@
 ﻿using BO;
 using DAL.EntityFramework;
+using DAL.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -133,7 +134,14 @@ namespace DAL.Extensions
             };
         }
 
-        public static Mail ToBO(this MailEntity entity)
+        public static List<Mail> ToBos(this List<MailEntity> bos, bool withJoin = false)
+        {
+            return bos != null
+                ? bos.Where(x => x != null).Select(x => x.ToBo()).ToList()
+                : null;
+        }
+
+        public static Mail ToBo(this MailEntity entity)
         {
             if (entity == null) return null;
 

@@ -1,0 +1,14 @@
+﻿@model WUI.Models.ContactModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>@ViewBag.Message</h2>
+</hgroup>
+
+@Html.DisplayFor(m => m.Nom)
+@Html.DisplayFor(m => m.Email)
+@Html.DisplayFor(m => m.Titre)
+@Html.DisplayFor(m => m.Message)

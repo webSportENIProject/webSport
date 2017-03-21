@@ -29,5 +29,10 @@ namespace Repository
             }
 
         }
+
+        public List<Mail> GetAllItems()
+        {
+            return base.GetAll().ToBos();
+        }
     }
 }
