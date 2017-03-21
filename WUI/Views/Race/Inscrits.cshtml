@@ -55,6 +55,40 @@
     </tbody>
 </table>
 
+@if (Model.Pager.EndPage > 1)
+{
+    <ul class="pagination">
+        @if (Model.Pager.CurrentPage > 1)
+        {
+            <li>
+                <a href="@Url.Action("Old", "Race")">First</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Old", "Race", new {page = Model.Pager.CurrentPage - 1 })">Previous</a>
+            </li>
+        }
+
+
+
+        @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+        {
+            <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                <a href="@Url.Action("Old", "Race", new { page = @page})">@page</a>
+            </li>    }
+
+        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+        {
+            <li>
+                <a href="@Url.Action("Old", "Race", new { page = Model.Pager.CurrentPage + 1 })">Next</a>
+            </li>
+            <li>
+
+                <a href="@Url.Action("Old", "Race", new { page = Model.Pager.TotalPages})">Last</a>
+            </li>
+        }
+    </ul>
+}
+
 <div>
     @Html.ActionLink("Voir le pourcentage d'inscriptions par tranche d'âge", "InscriptionAge", new { id = Model.Course.Id })<br/>
     @Html.ActionLink("Voir le nombre d'inscriptions par jour", "InscriptionJour", new { id = Model.Course.Id })<br />

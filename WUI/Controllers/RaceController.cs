@@ -224,10 +224,10 @@ namespace WUI.Controllers
         }
 
         [Authorize(Roles = "Administrateur")]
-        public ActionResult Inscrits(int id = 0)
+        public ActionResult Inscrits(int id = 0, int page = 1)
         {
             InscritsView view = new InscritsView();
-
+            
             List<Participant> partipants = MgtParticipant.GetInstance().GetAllByIdCourse(id);
             List<PersonneModel> personnes = new List<PersonneModel>();
 
@@ -236,11 +236,13 @@ namespace WUI.Controllers
                 personnes.Add(model);
             }
 
-            view.Course = MgtRace.GetInstance().GetRace(id).ToModel();
-            view.personnes = personnes;
-            view.nbInscrits = personnes.Count;
+            Pager pager = new Pager(personnes.Count, page, 15);
 
+            view.Course = MgtRace.GetInstance().GetRace(id).ToModel();
+            view.personnes = personnes.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize).ToList();
+            view.nbInscrits = personnes.Count;
             view.inscriptions = initInscriptions(partipants);
+            view.Pager = pager;
 
             return View(view);
         }

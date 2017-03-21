@@ -12,6 +12,7 @@ namespace WUI.Models
         public List<PersonneModel> personnes { get; set; }
         public Dictionary<DateTime, int> inscriptions { get; set; }
         public RaceModel Course { get; set; }
+        public Pager Pager { get; set; }
         public int nbInscrits { get; set; }
         public int TA20 { get; set; }
         public int TA21_30 { get; set; }
