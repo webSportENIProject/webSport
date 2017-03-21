@@ -297,6 +297,7 @@ namespace WUI.Controllers
         public JsonResult Points(int id)
         {
             RaceModel result = MgtRace.GetInstance().GetRaceWithPoints(id).ToModel(false, true);
+            result.Points = result.Points.OrderBy(x => x.Ordre).ToList();
             if (result == null)
             {
                 return Json("");
