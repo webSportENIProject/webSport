@@ -100,6 +100,13 @@ namespace DAL.Extensions
             };
         }
 
+        public static List<Personne> ToBos(this List<PersonneEntity> bos)
+        {
+            return bos != null
+                ? bos.Where(x => x != null).Select(x => x.ToBO()).ToList()
+                : null;
+        }
+
         public static Personne ToBO(this PersonneEntity entity)
         {
             if (entity == null) return null;
@@ -234,7 +241,7 @@ namespace DAL.Extensions
 
         #endregion
 
-
+        #region Resultat
         public static List<Resultat> ToBos(this List<ResultatEntity> entities)
         {
             List<Resultat> resultats = new List<Resultat>();
@@ -245,7 +252,7 @@ namespace DAL.Extensions
 
             return resultats;
         }
-
+        
         public static Resultat ToBo(this ResultatEntity entity)
         {
             if (entity == null) return null;
@@ -273,5 +280,6 @@ namespace DAL.Extensions
                 temps = bo.temps
             };
         }
+        #endregion
     }
 }

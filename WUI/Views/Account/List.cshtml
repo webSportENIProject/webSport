@@ -1,0 +1,90 @@
+﻿@using WUI.Models
+@model PersonneView
+
+@{
+    ViewBag.Title = "Liste des comptes utilisateurs";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.personnes.First().Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personnes.First().Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personnes.First().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personnes.First().Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.personnes.First().DateNaissance)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model.personnes)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateNaissance)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<!-- Pager -->
+@if (Model.Pager.EndPage > 1)
+{
+    <ul class="pagination">
+        @if (Model.Pager.CurrentPage > 1)
+        {
+            <li>
+                <a href="@Url.Action("List", "Account")">First</a>
+            </li>
+            <li>
+                <a href="@Url.Action("List", "Account", new {page = Model.Pager.CurrentPage - 1 })">Previous</a>
+            </li>
+        }
+
+        @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+        {
+            <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                <a href="@Url.Action("List", "Account", new { page = @page})">@page</a>
+            </li>    
+        }
+
+        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+        {
+            <li>
+                <a href="@Url.Action("List", "Account", new { page = Model.Pager.CurrentPage + 1 })">Next</a>
+            </li>
+            <li>
+
+                <a href="@Url.Action("List", "Account", new { page = Model.Pager.TotalPages})">Last</a>
+            </li>
+        }
+    </ul>
+} 

@@ -21,6 +21,22 @@ namespace WUI.Controllers
     public class AccountController : Controller
     {
         //
+        // GET: /Account/List
+
+        [Authorize(Roles="Administrateur")]
+        public ActionResult List(int page = 1)
+        {
+            PersonneView view = new PersonneView();
+            var result = MgtPersonne.GetInstance().GetAll().ToModels();
+
+            Pager pager = new Pager(result.Count(), page, 16);
+            view.personnes = result.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize).ToList();
+            view.Pager = pager;
+
+            return View(view);
+        }
+
+        //
         // GET: /Account/Login
 
         [AllowAnonymous]

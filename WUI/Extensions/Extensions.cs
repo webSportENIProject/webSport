@@ -102,6 +102,12 @@ namespace WUI.Extensions
         #endregion
 
         #region Personne
+        public static List<PersonneModel> ToModels(this List<Personne> bos)
+        {
+            return bos != null
+                ? bos.Where(x => x != null).Select(x => x.ToModel()).ToList()
+                : null;
+        }
         public static PersonneModel ToModel(this Personne bo)
         {
             if (bo == null) return null;
@@ -296,6 +302,7 @@ namespace WUI.Extensions
 
         #endregion
 
+        #region Participant
         public static ResultatModel ToModel(this Resultat bo)
         {
             if (bo == null) return null;
@@ -320,5 +327,6 @@ namespace WUI.Extensions
 
             return models;
         }
+        #endregion
     }
 }

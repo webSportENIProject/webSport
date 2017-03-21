@@ -24,6 +24,7 @@ namespace Repository
 
         #endregion
 
+        #region Methodes
         private UserTable GetByIdPrivate(int id)
         {
             return base.Where(x => x.Id == id).SingleOrDefault();
@@ -35,5 +36,7 @@ namespace Repository
             var resultatToDelete = this.GetByIdPrivate(id);
             base.Remove(resultatToDelete);
         }
+
+        #endregion
     }
 }

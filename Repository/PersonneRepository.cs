@@ -39,6 +39,12 @@ namespace Repository
             }
         }
 
+        //GET ALL
+        public List<Personne> GetAllItems()
+        {
+            return base.GetAll().ToBos();
+        }
+
         public Personne getPersonneByUserId(int id) {
             return base.Where(x => x.Id == id).SingleOrDefault().ToBO();
         }

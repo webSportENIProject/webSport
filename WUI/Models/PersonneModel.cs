@@ -26,4 +26,5 @@ namespace WUI.Models
 
         public DateTime? DateNaissance { get; set; }
     }
+
 }

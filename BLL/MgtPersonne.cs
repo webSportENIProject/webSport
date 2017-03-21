@@ -36,7 +36,7 @@ namespace BLL
         {
             this._uow.PersonneRepo.Add(personne);
         }
-            // UPDATE
+
         //GET
         public Personne GetPersonneByIdUserTable(int id)
         {
@@ -46,6 +46,13 @@ namespace BLL
         public Personne GetPersonneById(int id)
         {
             return this._uow.PersonneRepo.getPersonneByUserId(id);
+        }
+
+        //GET ALL
+        public List<Personne> GetAll()
+        {
+            List<Personne> listPersonnes = this._uow.PersonneRepo.GetAllItems();
+            return (listPersonnes);
         }
 
         // UPDATE
