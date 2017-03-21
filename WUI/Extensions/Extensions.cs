@@ -157,11 +157,11 @@ namespace WUI.Extensions
             bool kms = false;
             bool miles = false;
 
-            if (model.distance.Equals("Kms"))
+            if ("Kms".Equals(model.distance))
             {
                 kms = true;
             }
-            else if (model.distance.Equals("Miles"))
+            else if ("Miles".Equals(model.distance))
             {
                 miles = true;
             }

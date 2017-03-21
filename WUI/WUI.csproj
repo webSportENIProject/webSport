@@ -207,7 +207,6 @@
     <Compile Include="Models\PointView.cs" />
     <Compile Include="Models\ResultatModel.cs" />
     <Compile Include="Models\PersonneModel.cs" />
-    <Compile Include="Models\PoiModel.cs" />
     <Compile Include="Models\PointModel.cs" />
     <Compile Include="Models\RaceModel.cs" />
     <Compile Include="Models\TypePointModel.cs" />
