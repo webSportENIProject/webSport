@@ -21,6 +21,9 @@
     // Grâce à la propriété "true", on affiche uniquement les erreurs
     // n'étant pas rattachées à la propriété du model (ici PointModel)
     @Html.ValidationSummary(true)
+    
+    @Html.HiddenFor(model => model.IdCourse)
+    @Html.HiddenFor(model => model.Ordre)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Titre)
@@ -28,15 +31,6 @@
         <div class="form-group">
             @Html.TextBoxFor(model => model.Titre, new { @class="form-control", size = "30" })
             @Html.ValidationMessageFor(model => model.Titre)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ordre)
-        </div>
-
-        <div class="form-group">
-            @Html.TextBoxFor(model => model.Ordre, new { @class = "form-control", type = "int", size = "30" })
-            @Html.ValidationMessageFor(model => model.Ordre)
         </div>
 
         <div class="form-group">
@@ -50,15 +44,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LibelleCourse)
-        </div>
-        <div class="form-group">
-            @Html.DropDownListFor(model => model.IdCourse, new SelectList(Model.ListCourseOptions,
-                            "Id", "Title"))
-            @Html.ValidationMessageFor(model => model.IdCourse)
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.LibelleTypePoint)
         </div>
         <div class="form-group">
@@ -67,13 +52,15 @@
             @Html.ValidationMessageFor(model => model.IdTypePoint)
         </div>
 
+        <div id="mapid"></div>
+        <br/>
         <button type="submit" value="Créer le point" class="btn btn-default">Créer le point</button>
    }
 
 
-    <div>
-        @Html.ActionLink("Retour à la liste", "Index")
-    </div>
+        <div>
+            @Html.ActionLink("Retour à la liste", "Index", new { id = Model.IdCourse })
+        </div>
 
     <div id="mapid"></div>
 

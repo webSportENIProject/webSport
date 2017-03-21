@@ -94,7 +94,8 @@
                         {
                             <br />@Html.ActionLink("Modifier", "Edit", new { id = item.Id })<br/>
                             @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })<br />
-                            @Html.ActionLink("Voir la liste des inscrits", "Inscrits", new { id = item.Id })
+                            @Html.ActionLink("Voir la liste des inscrits", "Inscrits", new { id = item.Id })<br />
+                            @Html.ActionLink("Gérer les points", "Index", "Point", new { id = item.Id }, null)
                         }
                     </td>
                 </tr>

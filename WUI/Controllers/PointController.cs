@@ -15,17 +15,22 @@ namespace WUI.Controllers
         //
         // GET: /Point/
         [Authorize(Roles = "Administrateur")]
-        public ActionResult Index()
+        public ActionResult Index(int id = 0)
         {
-            List<PointModel> points = MgtPoint.GetInstance().GetALLWithCourseAndTypePoint().ToModels();
-            return View(points);
+            PointView view = new PointView();
+            List<PointModel> points = MgtPoint.GetInstance().GetAllWithCourseAndTypePointByCourse(id).ToModels();
+            view.points = points.OrderBy(x => x.Ordre).ToList();
+            view.idCourse = id;
+
+            return View(view);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
             PointModel point = new PointModel();
             point.ListTypePointOptions = MgtTypePoint.GetInstance().GetAllItems();
-            point.ListCourseOptions = MgtRace.GetInstance().GetAllItems();
+            point.IdCourse = id;
+            point.Ordre = MgtPoint.GetInstance().GetAllWithCourseAndTypePointByCourse(id).Count;
             return View(point);
         }
 
@@ -37,7 +42,7 @@ namespace WUI.Controllers
             {
                 if (ModelState.IsValid && MgtPoint.GetInstance().AddPoint(point.ToBo()))
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { id = point.IdCourse });
                 }
                 else
                 {
@@ -67,7 +72,7 @@ namespace WUI.Controllers
             {
                 if (ModelState.IsValid && MgtPoint.GetInstance().UpdatePoint(point.ToBo()))
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { id = point.IdCourse });
                 }
                 else
                 {
@@ -102,8 +107,7 @@ namespace WUI.Controllers
         }
 
         //
-        // POST: /Race/Delete
-
+        // POST: /Race/Delet
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int idPoint, FormCollection collection)
@@ -121,7 +125,7 @@ namespace WUI.Controllers
                 var result = MgtPoint.GetInstance().DeletePoint(idPoint);
                 if (result)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { id = point.IdCourse });
                 }
                 else
                 {
@@ -132,6 +136,36 @@ namespace WUI.Controllers
             {
                 return View();
             }
+        }
+
+        [Authorize(Roles = "Administrateur")]
+        public ActionResult Up(int id = 0)
+        {
+            Point point = MgtPoint.GetInstance().GetPointById(id);
+            int oldOrdre = point.Ordre;
+            int newOrdre = point.Ordre - 1;
+            Point pointToEchange = MgtPoint.GetInstance().GetPointByCourseAndOrder(point.CourseId, newOrdre);
+            point.Ordre = newOrdre;
+            pointToEchange.Ordre = oldOrdre;
+            MgtPoint.GetInstance().UpdatePoint(point);
+            MgtPoint.GetInstance().UpdatePoint(pointToEchange);
+
+            return RedirectToAction("Index", new { id = point.CourseId });
+        }
+
+        [Authorize(Roles = "Administrateur")]
+        public ActionResult Down(int id = 0)
+        {
+            Point point = MgtPoint.GetInstance().GetPointById(id);
+            int oldOrdre = point.Ordre;
+            int newOrdre = point.Ordre + 1;
+            Point pointToEchange = MgtPoint.GetInstance().GetPointByCourseAndOrder(point.CourseId, newOrdre);
+            point.Ordre = newOrdre;
+            pointToEchange.Ordre = oldOrdre;
+            MgtPoint.GetInstance().UpdatePoint(point);
+            MgtPoint.GetInstance().UpdatePoint(pointToEchange);
+
+            return RedirectToAction("Index", new { id = point.CourseId });
         }
 
     }

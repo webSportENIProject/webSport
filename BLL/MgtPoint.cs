@@ -65,10 +65,28 @@ namespace BLL
             return points;
         }
 
+        public List<Point> GetAllWithCourseAndTypePointByCourse(int idcourse)
+        {
+            List<Point> points = this._uow.PointRepo.GetAllItemsByIdRace(idcourse);
+
+            foreach (Point item in points)
+            {
+                item.Course = this._uow.RaceRepo.GetById(item.CourseId);
+                item.TypePoint = this._uow.TypePointRepo.GetById(item.TypePointId);
+            }
+
+            return points;
+        }
+
         //GET BY ID
         public Point GetPointById(int id)
         {
             return this._uow.PointRepo.GetById(id);
+        }
+
+        public Point GetPointByCourseAndOrder(int idCourse, int ordre)
+        {
+            return this._uow.PointRepo.GetPointByCourseAndOrder(idCourse, ordre);
         }
 
         //UPDATE

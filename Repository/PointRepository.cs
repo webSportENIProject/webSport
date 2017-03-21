@@ -47,6 +47,11 @@ namespace Repository
             return point != null ? point.ToBo() : null;
         }
 
+        public Point GetPointByCourseAndOrder(int idCourse, int ordre)
+        {
+            return base.Where(x => x.CourseId == idCourse).Where(x => x.Ordre == ordre).SingleOrDefault().ToBo();
+        }
+
         private PointEntity GetByIdPrivate(int id)
         {
             return base.Where(x => x.Id == id).SingleOrDefault();
