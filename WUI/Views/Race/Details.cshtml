@@ -68,14 +68,12 @@
             console.log(result);
             points = result;
             initialize();
-        }
-
-       
+        }       
 
         function initialize() {
             directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
 
-            if (jQuery('#mapid').length > 0) {
+            if (jQuery('#mapid').length > 0 && points.length != 0) {
 
                 var locations = points;
 
@@ -134,6 +132,7 @@
             };
             directionsService.route(request, function (response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
+                    console.log(response);
                     directionsDisplay.setDirections(response);
                     var route = response.routes[0];
                     var summaryPanel = document.getElementById('directions_panel');
