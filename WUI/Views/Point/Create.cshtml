@@ -68,49 +68,49 @@
         </div>
 
         <button type="submit" value="Créer le point" class="btn btn-default">Créer le point</button>
-        }
+   }
 
 
-        <div>
-            @Html.ActionLink("Retour à la liste", "Index")
-        </div>
+    <div>
+        @Html.ActionLink("Retour à la liste", "Index")
+    </div>
 
-        <div id="mapid"></div>
+    <div id="mapid"></div>
 
-        @section scripts {
+    @section scripts {
 
 
-            <script type="text/javascript">
+        <script type="text/javascript">
 
-                function initMap() {
-                    //Initialisation d'un marker par défaut
-                    var myOptions = {
-                        zoom: 6,
-                        center: new google.maps.LatLng(47.21564760150686, -1.5509283542633057)
-                    },
-                        map = new google.maps.Map(document.getElementById('mapid'), myOptions),
-                        marker = new google.maps.Marker({
-                            map: map,
-                        }),
-                        infowindow = new google.maps.InfoWindow;
+            function initMap() {
+                //Initialisation d'un marker par défaut
+                var myOptions = {
+                    zoom: 6,
+                    center: new google.maps.LatLng(47.21564760150686, -1.5509283542633057)
+                },
+                    map = new google.maps.Map(document.getElementById('mapid'), myOptions),
+                    marker = new google.maps.Marker({
+                        map: map,
+                    }),
+                    infowindow = new google.maps.InfoWindow;
 
-                    //Modification du placement du marker avec clic sur la MAP
-                    map.addListener('click', function (e) {
-                        map.setCenter(e.latLng);
-                        marker.setPosition(e.latLng);
-                        infowindow.setContent("Latitude: " + e.latLng.lat() +
-                            "<br>" + "Longitude: " + e.latLng.lng());
+                //Modification du placement du marker avec clic sur la MAP
+                map.addListener('click', function (e) {
+                    map.setCenter(e.latLng);
+                    marker.setPosition(e.latLng);
+                    infowindow.setContent("Latitude: " + e.latLng.lat() +
+                        "<br>" + "Longitude: " + e.latLng.lng());
 
-                        var latitude = document.getElementById('Latitude');
-                        var longitude = document.getElementById('Longitude');
+                    var latitude = document.getElementById('Latitude');
+                    var longitude = document.getElementById('Longitude');
 
-                        latitude.setAttribute("value", e.latLng.lat().toString().replace(".", ","));
-                        longitude.setAttribute("value", e.latLng.lng().toString().replace(".", ","));
+                    latitude.setAttribute("value", e.latLng.lat().toString().replace(".", ","));
+                    longitude.setAttribute("value", e.latLng.lng().toString().replace(".", ","));
 
-                        infowindow.open(map, marker);
-                    });
-                }
-                google.maps.event.addDomListener(window, "load", initMap);
-            </script>
+                    infowindow.open(map, marker);
+                });
+            }
+            google.maps.event.addDomListener(window, "load", initMap);
+        </script>
 
-        }
+    }

@@ -4,6 +4,12 @@
     ViewBag.Title = "Update";
 }
 
+@section scriptsHeader{
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&ext=.js&key=AIzaSyCmQ54LQucf9hRGkuQ1kGJM9EIFMr5vtT8"></script>
+
+}
+
 <h2>Modification d'un point</h2>
 
 @using (Html.BeginForm("Update", "Point", FormMethod.Post))
@@ -35,28 +41,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Longitude)
+            @Html.HiddenFor(model => model.Latitude)
+            @Html.ValidationMessageFor(model => model.Latitude)
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(model => model.Longitude, new { @class="form-control", type="int", size = "30" })
+            @Html.HiddenFor(model => model.Longitude)
             @Html.ValidationMessageFor(model => model.Longitude)
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Latitude)
-        </div>
-        <div class="form-group">
-            @Html.TextBoxFor(model => model.Latitude, new { @class="form-control", type="int", size = "30" })
-            @Html.ValidationMessageFor(model => model.Latitude)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LibelleCourse)
-        </div> 
-        <div class="form-group">
-           @Html.DropDownListFor(model => model.IdCourse, new SelectList(Model.ListCourseOptions,
-                               "Id", "Title"))
-           @Html.ValidationMessageFor(model => model.IdCourse)
+           @Html.HiddenFor(model => model.IdCourse)
         </div>
 
         <div class="form-group">
@@ -67,15 +61,63 @@
                                "Id", "Libelle"))
             @Html.ValidationMessageFor(model => model.IdTypePoint)
         </div>
-
-       <button type="submit" value="Modifier le point" class="btn btn-default">Modifier le point</button>
+       
+        <div id="mapid"></div>
+        <br />
+        <button type="submit" value="Modifier le point" class="btn btn-default">Modifier le point</button>
 }
 
 
-<div>
+<div class="link-return-list">
     @Html.ActionLink("Retour à la liste", "Index")
 </div>
 
-@section Scripts {
+@section scripts {
+
+
+    <script type="text/javascript">
+
+        function initMap() {
+            //Récupération des valeurs de la longitude et de la latitude pour les passer à la MAP
+            var latitudePoint = document.getElementById('Latitude').getAttribute("value").replace(",", ".");
+            var longitudePoint = document.getElementById('Longitude').getAttribute("value").replace(",", ".");
+            //Initialisation d'un marker par défaut
+            var myOptions = {
+                zoom: 6,
+                center: new google.maps.LatLng(Number(latitudePoint), Number(longitudePoint))
+            },
+            map = new google.maps.Map(document.getElementById('mapid'), myOptions),
+            marker = new google.maps.Marker({
+                map: map,
+            }),
+            infowindow = new google.maps.InfoWindow;
+
+            //Ajout du marker sur la MAP -> on le place avec les coordonnées actuelles du point
+            marker.setPosition(myOptions.center);
+            map.setCenter(myOptions.center);
+            //Infobulle avec coordonnées
+            infowindow.setContent("Latitude: " + Number(latitudePoint) +
+                    "<br>" + "Longitude: " + Number(longitudePoint));
+            infowindow.open(map, marker);
+
+            //Modification du placement du marker avec clic sur la MAP
+            map.addListener('click', function (e) {
+                map.setCenter(e.latLng);
+                marker.setPosition(e.latLng);
+                infowindow.setContent("Latitude: " + e.latLng.lat() +
+                    "<br>" + "Longitude: " + e.latLng.lng());
+
+                //Modification de la valeur de nos champs pour enregistrement en base de données
+                var latitude = document.getElementById('Latitude');
+                var longitude = document.getElementById('Longitude');
+                latitude.setAttribute("value", e.latLng.lat().toString().replace(".", ","));
+                longitude.setAttribute("value", e.latLng.lng().toString().replace(".", ","));
+
+                infowindow.open(map, marker);
+            });
+        }
+        //Chargement de la MAP sur notre page
+        google.maps.event.addDomListener(window, "load", initMap);
+    </script>
 
 }
