@@ -13,6 +13,8 @@ namespace BO
 
         public int IdCourse { get; set; }
 
+        public DateTime dateInscription { get; set; }
+
         public bool EstCompetiteur { get; set; }
 
         public bool EstOrganisateur { get; set; }

@@ -49,7 +49,8 @@ namespace WUI.Extensions
                 PersonneId = bo.IdPersonne,
                 CourseId = bo.IdCourse,
                 EstCompetiteur = bo.EstCompetiteur,
-                EstOrganisateur = bo.EstOrganisateur
+                EstOrganisateur = bo.EstOrganisateur,
+                dateInscription = bo.dateInscription
             };
         }
 

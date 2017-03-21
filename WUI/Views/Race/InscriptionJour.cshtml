@@ -1,0 +1,63 @@
+﻿@using WUI.Models
+@model InscritsView
+
+@{
+    ViewBag.Title = "Inscription par jour";
+}
+
+@section css {
+    @Styles.Render("~/Content/Race/css")
+}
+
+@section ScriptsHeader {
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                @if (Model.inscriptions.Count > 0) {
+                    <text>["Date", "Nb Inscriptions", { role: "style" } ],</text>
+                } else {
+                    <text>["Date", "Nb Inscriptions", { role: "style" } ]</text>
+                }
+                @foreach (var item in Model.inscriptions) {
+                    if (item.Key == Model.inscriptions.Last().Key) {
+                        <text>["@item.Key.ToString("dd/MM/yyyy")",parseInt(@item.Value), "color: #e5e4e2"]</text>
+                    }
+                    else {
+                        <text>["@item.Key.ToString("dd/MM/yyyy")",parseInt(@item.Value), "color: #e5e4e2"],</text>
+                    }
+
+              }
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                       { calc: "stringify",
+                           sourceColumn: 1,
+                           type: "string",
+                           role: "annotation" },
+                       2]);
+
+            var options = {
+                title: "Nombre d'inscriptions par jour",
+                width: 600,
+                height: 400,
+                bar: {groupWidth: "95%"},
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            chart.draw(view, options);
+        }
+    </script>
+}
+
+<div>
+    @Html.ActionLink("Retour à la liste des inscrits", "Inscrits", new { id = Model.Course.Id })
+</div>
+
+<h2>Nombre d'inscriptions par jour</h2>
+
+<div id="columnchart_values" style="width: 100%; height: 300px;"></div>

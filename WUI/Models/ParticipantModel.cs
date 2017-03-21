@@ -13,6 +13,8 @@ namespace WUI.Models
 
         public int CourseId { get; set; }
 
+        public DateTime dateInscription { get; set; }
+
         public bool EstCompetiteur { get; set; }
 
         public bool EstOrganisateur { get; set; }

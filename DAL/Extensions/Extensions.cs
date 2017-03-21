@@ -75,7 +75,8 @@ namespace DAL.Extensions
                 IdPersonne = bo.PersonneId,
                 IdCourse = bo.CourseId,
                 EstCompetiteur = bo.EstCompetiteur,
-                EstOrganisateur = bo.EstOrganisateur
+                EstOrganisateur = bo.EstOrganisateur,
+                dateInscription = bo.dateInscription
             };
         }
 

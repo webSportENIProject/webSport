@@ -377,6 +377,8 @@
     <Content Include="Views\Race\CreatePDF.cshtml" />
     <Content Include="Views\Account\List.cshtml" />
     <Content Include="Views\Race\Old.cshtml" />
+    <Content Include="Views\Race\InscriptionAge.cshtml" />
+    <Content Include="Views\Race\InscriptionJour.cshtml" />
     <Content Include="Views\Contact\Create.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />

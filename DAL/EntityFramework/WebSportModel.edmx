@@ -36,6 +36,7 @@
           <Property Name="CourseId" Type="int" Nullable="false" />
           <Property Name="EstCompetiteur" Type="bit" Nullable="false" />
           <Property Name="EstOrganisateur" Type="bit" Nullable="false" />
+          <Property Name="dateInscription" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Personne">
           <Key>
@@ -331,6 +332,7 @@
           <Property Name="EstOrganisateur" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="Self.FK_Competiteur_Course" FromRole="Participant" ToRole="Course" />
           <NavigationProperty Name="Personne" Relationship="Self.FK_Competiteur_Personne" FromRole="Participant" ToRole="Personne" />
+          <Property Name="dateInscription" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="PersonneEntity">
           <Key>
@@ -608,6 +610,7 @@
           <EntitySetMapping Name="Participant">
             <EntityTypeMapping TypeName="WebSportModel.ParticipantEntity">
               <MappingFragment StoreEntitySet="Participant">
+                <ScalarProperty Name="dateInscription" ColumnName="dateInscription" />
                 <ScalarProperty Name="PersonneId" ColumnName="PersonneId" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
                 <ScalarProperty Name="EstCompetiteur" ColumnName="EstCompetiteur" />

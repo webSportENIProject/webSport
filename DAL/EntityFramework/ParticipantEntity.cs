@@ -18,6 +18,7 @@ namespace DAL.EntityFramework
         public int CourseId { get; set; }
         public bool EstCompetiteur { get; set; }
         public bool EstOrganisateur { get; set; }
+        public System.DateTime dateInscription { get; set; }
     
         public virtual CourseEntity Course { get; set; }
         public virtual PersonneEntity Personne { get; set; }
