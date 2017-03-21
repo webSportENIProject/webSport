@@ -1,5 +1,68 @@
-﻿@{
+﻿@model WUI.Models.RaceModel
+@{
     ViewBag.Title = "CreatePDF";
 }
 
-<h2 style="color:red;">La course</h2>
+@section scriptsHeader{
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places&ext=.js&key=AIzaSyCmQ54LQucf9hRGkuQ1kGJM9EIFMr5vtT8"></script>
+
+}
+
+
+<h1 style="text-align: center;">@Html.DisplayFor(model => model.Title)</h1>
+
+<br />
+
+<div>@Html.DisplayNameFor(model => model.Description) : @Html.DisplayFor(model => model.Description)</div>
+
+<div>@Html.DisplayNameFor(model => model.DateStart) : @Html.DisplayFor(model => model.DateStart)</div>
+
+<div>@Html.DisplayNameFor(model => model.DateEnd) : @Html.DisplayFor(model => model.DateEnd)</div>
+
+<br />
+<h3>Liste des points du parcours : </h3>
+<br />
+
+<table class="table"  border="1">
+<thead>
+    <tr>       
+        <th>
+            @Html.DisplayNameFor(model => model.Points.First().Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Points.First().Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Points.First().Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Points.First().LibelleTypePoint)
+        </th>        
+    </tr>
+</thead>
+
+<tbody>
+    @if (Model != null)
+    {
+        foreach (var item in Model.Points)
+        {
+            <tr>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LibelleTypePoint)
+                </td>              
+            </tr>
+        }
+    }
+</tbody>
+</table>
+

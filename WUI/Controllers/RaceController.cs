@@ -305,12 +305,13 @@ namespace WUI.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult CreatePDF()
+        public ActionResult CreatePDF(int id)
         {
+            RaceModel result = MgtRace.GetInstance().GetRaceWithPoints(id).ToModel(false, true);
             Document doc = new Document(PageSize.LETTER, 50, 50, 50, 50);
-            string html = RenderRazorViewToString("~/Views/Race/CreatePDF.cshtml", null);
+            string html = RenderRazorViewToString("~/Views/Race/CreatePDF.cshtml", result);
             TextReader reader = new StringReader(html);
-
+            
             using (MemoryStream output = new MemoryStream())
             {
                 PdfWriter wri = PdfWriter.GetInstance(doc, output);
@@ -330,11 +331,12 @@ namespace WUI.Controllers
                 worker.Close();
 
                 doc.Close();
-                return File(output.ToArray(), "application/pdf", "test.pdf");
+                return File(output.ToArray(), "application/pdf", result.Title+".pdf");
             }
 
         }
 
+     
 
         public string RenderRazorViewToString(string viewName, object model)
         {
