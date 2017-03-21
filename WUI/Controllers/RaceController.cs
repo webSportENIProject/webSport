@@ -67,12 +67,16 @@ namespace WUI.Controllers
         }
 
         [Authorize(Roles = "Administrateur")]
-        public ActionResult Old()
+        public ActionResult Old(int page = 1)
         {
+            OldRaceView view = new OldRaceView();
             List<RaceModel> result = MgtRace.GetInstance().GetAllItemsWithParticipants().ToModels(true);
             result = result.Where(x => x.DateEnd < DateTime.Now).ToList();
+            Pager pager = new Pager(result.Count(), page);
+            view.races = result.OrderByDescending(x => x.DateStart).Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize).ToList();
+            view.Pager = pager;
 
-            return View(result.OrderByDescending(x => x.DateStart).ToList());
+            return View(view);
         }
 
         //

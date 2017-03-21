@@ -1,5 +1,5 @@
 ﻿@using WUI.Models
-@model IEnumerable<RaceModel>
+@model OldRaceView
 
 @{
     ViewBag.Title = "Index";
@@ -15,22 +15,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.races.First().Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.races.First().Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateStart)
+                @Html.DisplayNameFor(model => model.races.First().DateStart)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateEnd)
+                @Html.DisplayNameFor(model => model.races.First().DateEnd)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Town)
+                @Html.DisplayNameFor(model => model.races.First().Town)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaxParticipants)
+                @Html.DisplayNameFor(model => model.races.First().MaxParticipants)
             </th>
             <th>
                 Nb Inscrits
@@ -42,7 +42,7 @@
     <tbody>
         @if (Model != null)
         {
-            foreach (var item in Model)
+            foreach (var item in Model.races)
             {
                 <tr>
                     <td>
@@ -89,6 +89,41 @@
         }
     </tbody>
 </table>
+
+<!-- pager -->
+@if (Model.Pager.EndPage > 1)
+{
+    <ul class="pagination">
+        @if (Model.Pager.CurrentPage > 1)
+        {
+            <li>
+                <a href="@Url.Action("Old", "Race")">First</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Old", "Race", new {page = Model.Pager.CurrentPage - 1 })">Previous</a>
+            </li>
+        }
+
+
+
+        @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+        {
+            <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                <a href="@Url.Action("Old", "Race", new { page = @page})">@page</a>
+            </li>    }
+
+        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+        {
+            <li>
+                <a href="@Url.Action("Old", "Race", new { page = Model.Pager.CurrentPage + 1 })">Next</a>
+            </li>
+            <li>
+
+                <a href="@Url.Action("Old", "Race", new { page = Model.Pager.TotalPages})">Last</a>
+            </li>
+        }
+    </ul>
+}
 
 <div>
     @Html.ActionLink("Retour à la liste", "Index")
