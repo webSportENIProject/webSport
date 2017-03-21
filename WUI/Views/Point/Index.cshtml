@@ -7,6 +7,7 @@
 
 @section css {
     @Styles.Render("~/Content/Race/css")
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 }
 
 <h2>@ViewBag.Title</h2>
@@ -19,10 +20,10 @@
         <tr>
             <th></th>
             <th>
-                @Html.DisplayNameFor(model => model.points.First().Titre)
+                @Html.DisplayNameFor(model => model.points.First().Ordre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.points.First().Ordre)
+                @Html.DisplayNameFor(model => model.points.First().Titre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.points.First().Longitude)
@@ -60,10 +61,10 @@
                         }
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Titre)
+                        @Html.DisplayFor(modelItem => item.Ordre)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Ordre)
+                        @Html.DisplayFor(modelItem => item.Titre)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Longitude)
