@@ -11,5 +11,6 @@ namespace WUI.Models
     {
         public List<PointModel> points { get; set; }
         public int idCourse { get; set; }
+        public string libelleCourse { get; set; }
     }
 }

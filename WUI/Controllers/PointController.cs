@@ -19,8 +19,11 @@ namespace WUI.Controllers
         {
             PointView view = new PointView();
             List<PointModel> points = MgtPoint.GetInstance().GetAllWithCourseAndTypePointByCourse(id).ToModels();
+            RaceModel race = MgtRace.GetInstance().GetRace(id).ToModel();
+
             view.points = points.OrderBy(x => x.Ordre).ToList();
             view.idCourse = id;
+            view.libelleCourse = race.Title;
 
             return View(view);
         }
