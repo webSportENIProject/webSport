@@ -1,5 +1,4 @@
-﻿
-/***************************************HEADER*************************************************/
+﻿/***************************************HEADER*************************************************/
 /*Menu*/
 .navbar-default{
     background-image: none !important;
@@ -34,11 +33,16 @@
     background-size: 120px 140px;
     border-right: medium solid;
     border-left: medium solid;
-    position:absolute;
+    position: absolute;
     height: 120px;
     width: 120px;
     overflow: hidden;
     border-radius: 50%;
+}
+
+.img-coureurs{
+   width: 1207px;
+   height: 450px;
 }
 
 /*Bloc centrale accueil*/
