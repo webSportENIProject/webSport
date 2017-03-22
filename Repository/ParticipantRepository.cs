@@ -32,6 +32,7 @@ namespace Repository
             {
                 PersonneId = idPersonne,
                 CourseId = idRace,
+                dateInscription = DateTime.Today,
                 EstCompetiteur = true,
                 EstOrganisateur = false
             };
