@@ -24,7 +24,6 @@
 }
 
 /*Page d'accueil*/
-
 #titre{
     padding-top:45px;
     padding-left: 150px;
@@ -40,6 +39,11 @@
     width: 120px;
     overflow: hidden;
     border-radius: 50%;
+}
+
+/*Bloc centrale accueil*/
+.bloc-centrale-accueil{
+    margin-top: 10%;
 }
 
 
