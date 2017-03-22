@@ -14,39 +14,27 @@
 
 }
 
-<h2>Details</h2>
+<h2>Details de la course @Html.DisplayFor(model => model.Title)</h2>
 
+<h3>Qui aura lieu du @Html.DisplayFor(model => model.DateStart) au @Html.DisplayFor(model => model.DateEnd)</h3>
 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.Title)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.DateStart)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateStart)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.DateEnd)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateEnd)
-    </div>
+<p>@Html.DisplayFor(model => model.Description)</p>
 
 <div id="mapid"></div>
-<div id="directions_panel"></div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Partie</th>
+                <th>Adresse de départ</th>
+                <th>Adresse d'arrivée</th>
+                <th>Nombre de kilomètres</th>
+            </tr>
+        </thead>
+        <tbody id="directions_panel"></tbody>
+    </table>
+</div>
+
 
 @section scripts {
     <script type="text/javascript">
@@ -68,7 +56,7 @@
             console.log(result);
             points = result;
             initialize();
-        }       
+        }
 
         function initialize() {
             directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
@@ -136,14 +124,16 @@
                     directionsDisplay.setDirections(response);
                     var route = response.routes[0];
                     var summaryPanel = document.getElementById('directions_panel');
-                    summaryPanel.innerHTML = '';
+                    
                     // For each route, display summary information.
                     for (var i = 0; i < route.legs.length; i++) {
                         var routeSegment = i + 1;
-                        summaryPanel.innerHTML += '<b>Partie: ' + routeSegment + '</b><br>';
-                        summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
-                        summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
-                        summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+                        summaryPanel.innerHTML += '<tr>'
+                                                + '<td>' + routeSegment + '</td>'
+                                                + '<td>' + route.legs[i].start_address + '</td>'
+                                                + '<td>' + route.legs[i].end_address + '</td>'
+                                                + '<td>' + route.legs[i].distance.text + '</td>'
+                                                + '</tr>';
                     }
                 }
             });
@@ -223,7 +213,7 @@
            }
        }*/
 
-       
+
 
     </script>
 
