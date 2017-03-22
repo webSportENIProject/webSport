@@ -41,13 +41,17 @@
 }
 
 .img-coureurs{
-   width: 1207px;
+   width: 1170px;
    height: 450px;
+}
+
+.signature-websport{
+    float: right;
 }
 
 /*Bloc centrale accueil*/
 .bloc-centrale-accueil{
-    margin-top: 10%;
+    margin-top: 8%;
 }
 
 
