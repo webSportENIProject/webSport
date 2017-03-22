@@ -15,6 +15,8 @@ namespace WUI.Models
 
         public DateTime dateInscription { get; set; }
 
+        public int dossard { get; set; }
+
         public bool EstCompetiteur { get; set; }
 
         public bool EstOrganisateur { get; set; }

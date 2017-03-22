@@ -37,17 +37,18 @@ namespace BLL
             foreach (String lines in allLines)
             {
                 string[] data = lines.Split(';');
-                int idPersonne = int.Parse(data[0]);
+                int dossard = int.Parse(data[0]);
                 int idCourse = int.Parse(data[1]);
                 int idPoint = int.Parse(data[2]);
                 string temps = data[3];
                 DateTime dateTimeTemps = DateTime.ParseExact(temps,
                                                       "dd/MM/yyyy HH:mm:ss.fff",
                                                      System.Globalization.CultureInfo.InvariantCulture);
+                Participant participant = this._uow.ParticipantRepo.GetByIdCourseAndDossard(idCourse, dossard);
                 resultats.Add(new Resultat()
                 {
                     idCourse = idCourse,
-                    idPersonne = idPersonne,
+                    idPersonne = participant.IdPersonne,
                     idPoint = idPoint,
                     temps = dateTimeTemps
                 });

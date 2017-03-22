@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="WebSportModel.UserTable" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="WebSportModel.webpages_Membership" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WebSportModel.webpages_OAuthMembership" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebSportModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebSportModel.webpages_Roles" Width="1.5" PointX="1" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="WebSportModel.FK_Competiteur_Course" ManuallyRouted="false" />
         <AssociationConnector Association="WebSportModel.FK_Competiteur_Personne" ManuallyRouted="false" />
         <AssociationConnector Association="WebSportModel.FK_PersonneUserTable" ManuallyRouted="false" />

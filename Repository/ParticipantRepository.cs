@@ -28,10 +28,12 @@ namespace Repository
 
         public Boolean AddCompetiteur(int idRace, int idPersonne)
         {
+            int dossard = GetAllItemsByIdRace(idRace).Count + 1;
             ParticipantEntity entity = new ParticipantEntity()
             {
                 PersonneId = idPersonne,
                 CourseId = idRace,
+                dossard = dossard,
                 dateInscription = DateTime.Today,
                 EstCompetiteur = true,
                 EstOrganisateur = false
@@ -51,19 +53,19 @@ namespace Repository
         //GET ALL
         public List<Participant> GetAllItems()
         {
-            return base.GetAll().ToParticipantBos();
+            return base.GetAll().ToBos();
         }
 
         //GET BY ID PERSONNE
         public List<Participant> GetAllItemsByIdPersonne(int id)
         {
-            return base.Where(x => x.PersonneId == id).ToList().ToParticipantBos();
+            return base.Where(x => x.PersonneId == id).ToList().ToBos();
         }
 
         //GET BY ID RACE
         public List<Participant> GetAllItemsByIdRace(int idRace)
         {
-            return base.Where(x => x.CourseId == idRace).ToList().ToParticipantBos();
+            return base.Where(x => x.CourseId == idRace).ToList().ToBos();
         }
 
         //REMOVE
@@ -89,11 +91,17 @@ namespace Repository
             }
         }
 
+    
 
         //GET BY ID RACE
         public bool isInscrit(int idRace, int idPersonne)
         {
             return base.Where(x => x.CourseId == idRace).Where(x => x.PersonneId == idPersonne).Count() > 0;
+        }
+
+        public Participant GetByIdCourseAndDossard(int idCourse, int dossard)
+        {
+            return base.Where(x => x.CourseId == idCourse).Where(x => x.dossard == dossard).SingleOrDefault().ToBo();
         }
 
         #endregion

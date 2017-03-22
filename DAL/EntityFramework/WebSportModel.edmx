@@ -26,6 +26,7 @@
           <Property Name="Email" Type="nchar" MaxLength="50" />
           <Property Name="Titre" Type="nchar" MaxLength="250" />
           <Property Name="Message" Type="nchar" MaxLength="1000" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Participant">
           <Key>
@@ -37,6 +38,7 @@
           <Property Name="EstCompetiteur" Type="bit" Nullable="false" />
           <Property Name="EstOrganisateur" Type="bit" Nullable="false" />
           <Property Name="dateInscription" Type="datetime" Nullable="false" />
+          <Property Name="dossard" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Personne">
           <Key>
@@ -333,6 +335,7 @@
           <NavigationProperty Name="Course" Relationship="Self.FK_Competiteur_Course" FromRole="Participant" ToRole="Course" />
           <NavigationProperty Name="Personne" Relationship="Self.FK_Competiteur_Personne" FromRole="Participant" ToRole="Personne" />
           <Property Name="dateInscription" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dossard" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="PersonneEntity">
           <Key>
@@ -491,6 +494,7 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Titre" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
           <Property Name="Message" Type="String" MaxLength="1000" FixedLength="true" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="PointEntity">
           <Key>
@@ -610,6 +614,7 @@
           <EntitySetMapping Name="Participant">
             <EntityTypeMapping TypeName="WebSportModel.ParticipantEntity">
               <MappingFragment StoreEntitySet="Participant">
+                <ScalarProperty Name="dossard" ColumnName="dossard" />
                 <ScalarProperty Name="dateInscription" ColumnName="dateInscription" />
                 <ScalarProperty Name="PersonneId" ColumnName="PersonneId" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
@@ -686,6 +691,7 @@
           <EntitySetMapping Name="Mail">
             <EntityTypeMapping TypeName="WebSportModel.MailEntity">
               <MappingFragment StoreEntitySet="Mail">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="Titre" ColumnName="Titre" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

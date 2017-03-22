@@ -60,7 +60,7 @@ namespace WUI.Controllers
             }
             catch
             {
-                ViewBag.Message = "Upload du fichier réussi en echec";
+                ViewBag.Message = "Upload du fichier en echec";
                 return View();
             }
         }

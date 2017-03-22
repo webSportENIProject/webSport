@@ -35,7 +35,7 @@ namespace DAL.Extensions
                 Town = bo.Ville,
                 MaxParticipants = bo.MaxParticipants,
 
-                Participants = withJoin && bo.Participant != null ? bo.Participant.Where(x => x.EstCompetiteur).Select(x => x.ToParticipantBo()).ToList() : null
+                Participants = withJoin && bo.Participant != null ? bo.Participant.Where(x => x.EstCompetiteur).Select(x => x.ToBo()).ToList() : null
             };
         }
 
@@ -59,14 +59,14 @@ namespace DAL.Extensions
 
         #region Participant
 
-        public static List<Participant> ToParticipantBos(this List<ParticipantEntity> bos)
+        public static List<Participant> ToBos(this List<ParticipantEntity> bos)
         {
             return bos != null
-                ? bos.Where(x => x != null).Select(x => x.ToParticipantBo()).ToList()
+                ? bos.Where(x => x != null).Select(x => x.ToBo()).ToList()
                 : null;
         }
 
-        public static Participant ToParticipantBo(this ParticipantEntity bo)
+        public static Participant ToBo(this ParticipantEntity bo)
         {
             if (bo == null) return null;
 
@@ -74,6 +74,7 @@ namespace DAL.Extensions
             {
                 IdPersonne = bo.PersonneId,
                 IdCourse = bo.CourseId,
+                dossard = bo.dossard,
                 EstCompetiteur = bo.EstCompetiteur,
                 EstOrganisateur = bo.EstOrganisateur,
                 dateInscription = bo.dateInscription

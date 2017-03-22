@@ -19,5 +19,6 @@ namespace DAL.EntityFramework
         public string Email { get; set; }
         public string Titre { get; set; }
         public string Message { get; set; }
+        public System.DateTime Date { get; set; }
     }
 }
