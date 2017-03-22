@@ -48,7 +48,7 @@ namespace WUI.Extensions
             {   
                 PersonneId = bo.IdPersonne,
                 CourseId = bo.IdCourse,
-                dossard = bo.dossard,
+                Dossard = bo.dossard,
                 EstCompetiteur = bo.EstCompetiteur,
                 EstOrganisateur = bo.EstOrganisateur,
                 dateInscription = bo.dateInscription

@@ -24,6 +24,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.personnes.First().participant.Dossard)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.personnes.First().Nom)
             </th>
             <th>
@@ -40,6 +43,9 @@
             foreach (var item in Model.personnes)
             {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.participant.Dossard)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Nom)
                     </td>
@@ -92,6 +98,7 @@
 <div>
     @Html.ActionLink("Voir le pourcentage d'inscriptions par tranche d'âge", "InscriptionAge", new { id = Model.Course.Id })<br/>
     @Html.ActionLink("Voir le nombre d'inscriptions par jour", "InscriptionJour", new { id = Model.Course.Id })<br />
+    @Html.ActionLink("Exporter la liste en PDF", "InscritsToPDF", new { id = Model.Course.Id })<br/>
     @Html.ActionLink("Retour à la liste des courses", "Index")
 </div>
 

@@ -232,7 +232,8 @@ namespace WUI.Controllers
             List<PersonneModel> personnes = new List<PersonneModel>();
 
             foreach (Participant part in partipants) {
-                PersonneModel model = MgtPersonne.GetInstance().GetPersonneById(part.IdPersonne).ToModel();      
+                PersonneModel model = MgtPersonne.GetInstance().GetPersonneById(part.IdPersonne).ToModel();
+                model.participant = part.ToModel();     
                 personnes.Add(model);
             }
 
@@ -245,6 +246,53 @@ namespace WUI.Controllers
             view.Pager = pager;
 
             return View(view);
+        }
+
+        [AllowAnonymous]
+        public ActionResult InscritsToPDF(int id)
+        {
+            InscritsView view = new InscritsView();
+
+            List<Participant> partipants = MgtParticipant.GetInstance().GetAllByIdCourse(id);
+            List<PersonneModel> personnes = new List<PersonneModel>();
+
+            foreach (Participant part in partipants)
+            {
+                PersonneModel model = MgtPersonne.GetInstance().GetPersonneById(part.IdPersonne).ToModel();
+                model.participant = part.ToModel();
+                personnes.Add(model);
+            }
+
+            view.Course = MgtRace.GetInstance().GetRace(id).ToModel();
+            view.personnes = personnes;
+            view.nbInscrits = personnes.Count;
+            view.inscriptions = initInscriptions(partipants);
+
+            Document doc = new Document(PageSize.LETTER, 50, 50, 50, 50);
+            string html = RenderRazorViewToString("~/Views/Race/InscritsToPDF.cshtml", view);
+            TextReader reader = new StringReader(html);
+
+            using (MemoryStream output = new MemoryStream())
+            {
+                PdfWriter wri = PdfWriter.GetInstance(doc, output);
+
+                // step 3: we create a worker parse the document
+                HTMLWorker worker = new HTMLWorker(doc);
+
+                doc.Open();
+
+                worker.StartDocument();
+
+                // step 5: parse the html into the document
+                worker.Parse(reader);
+
+                // step 6: close the document and the worker
+                worker.EndDocument();
+                worker.Close();
+
+                doc.Close();
+                return File(output.ToArray(), "application/pdf", "Inscriptions" + view.Course.Title + ".pdf");
+            }
         }
 
         private Dictionary<DateTime, int> initInscriptions(List<Participant> partipants) {
@@ -325,8 +373,6 @@ namespace WUI.Controllers
             }
 
         }
-
-     
 
         public string RenderRazorViewToString(string viewName, object model)
         {

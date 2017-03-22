@@ -383,6 +383,7 @@
     <Content Include="Views\Contact\Create.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
+    <Content Include="Views\Race\InscritsToPDF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Autres\" />

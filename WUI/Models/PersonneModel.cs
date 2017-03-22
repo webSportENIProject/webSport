@@ -26,6 +26,8 @@ namespace WUI.Models
 
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DateNaissance { get; set; }
+
+        public ParticipantModel participant { get; set; }
     }
 
 }
