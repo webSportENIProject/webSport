@@ -51,6 +51,11 @@ namespace Repository
             return this.context.Personne.OrderBy(x => x.Id).Skip(skip).Take(take).ToList().ToBos();
         }
 
+        public int Count()
+        {
+            return this.context.Personne.Count();
+        }
+
         public Personne getPersonneByUserId(int id) {
             return base.Where(x => x.Id == id).SingleOrDefault().ToBO();
         }

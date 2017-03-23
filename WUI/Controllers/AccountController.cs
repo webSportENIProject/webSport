@@ -27,9 +27,7 @@ namespace WUI.Controllers
         public ActionResult List(int page = 1)
         {
             PersonneView view = new PersonneView();
-            var result = MgtPersonne.GetInstance().GetAll().ToModels();
-
-            Pager pager = new Pager(result.Count(), page, 16);
+            Pager pager = new Pager(MgtPersonne.GetInstance().Count(), page, 16);
             int skip = (pager.CurrentPage - 1) * pager.PageSize;
             view.personnes = MgtPersonne.GetInstance().GetAllItemsByLimit(skip, pager.PageSize).ToModels();
             view.Pager = pager;

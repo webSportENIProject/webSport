@@ -61,6 +61,11 @@ namespace BLL
             return (listPersonnes);
         }
 
+        public int Count()
+        {
+            return this._uow.PersonneRepo.Count();
+        }
+
         // UPDATE
         public void UpdatePersonne(Personne personne) {
             this._uow.PersonneRepo.Update(personne);
