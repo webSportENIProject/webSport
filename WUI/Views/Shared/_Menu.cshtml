@@ -2,20 +2,8 @@
 
 @if (User.IsInRole("Administrateur"))
 {
-    
-    <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion des résultats<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li>@Html.ActionLink("Importer les résultats", "Import", "Resultat")</li>
-        </ul>
-    </li>
-    <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestion des points<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li>@Html.ActionLink("Types de Point", "Index", "TypePoint")</li>        
-        </ul>
-    </li>
-
+    <li>@Html.ActionLink("Types de Point", "Index", "TypePoint")</li>
     <li>@Html.ActionLink("Utilisateurs", "List", "Account")</li>
+    <li>@Html.ActionLink("Importer les résultats", "Import", "Resultat")</li>
     <li>@Html.ActionLink("Messages", "Index", "Contact", routeValues: null, htmlAttributes: new { @class = "username", title = "Support" })</li>
 }
