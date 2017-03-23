@@ -125,6 +125,17 @@ namespace WUI.Controllers
                     MgtResultat.GetInstance().DeleteResultat(resultat.id);
                 }
 
+                int ordre = point.Ordre;
+                int taille = MgtPoint.GetInstance().GetAllWithCourseAndTypePointByCourse(point.IdCourse).Count;
+                if (ordre < taille - 1) {
+                    while (ordre < taille - 1) {
+                        ordre++;
+                        Point pointSup = MgtPoint.GetInstance().GetPointByCourseAndOrder(point.IdCourse, ordre);
+                        pointSup.Ordre = ordre - 1;
+                        MgtPoint.GetInstance().UpdatePoint(pointSup);
+                    }
+                }
+
                 var result = MgtPoint.GetInstance().DeletePoint(idPoint);
                 if (result)
                 {
