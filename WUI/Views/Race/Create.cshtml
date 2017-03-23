@@ -46,7 +46,7 @@
             @Html.LabelFor(model => model.DateStart)
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(model => model.DateStart, new { @class="form-control", placeholder = "JJ/MM/AAAA", type="date", size = "30" })
+            @Html.TextBoxFor(model => model.DateStart, new { @class = "form-control", placeholder = "JJ/MM/AAAA HH:MM", type = "datetime-local" })
             @Html.ValidationMessageFor(model => model.DateStart)
         </div>
 
@@ -54,7 +54,7 @@
             @Html.LabelFor(model => model.DateEnd)
         </div>
         <div class="form-group">
-            @Html.TextBoxFor(model => model.DateEnd, new { @class="form-control", placeholder = "JJ/MM/AAAA", type="date", size = "30" })
+            @Html.TextBoxFor(model => model.DateEnd, new { @class="form-control", placeholder = "JJ/MM/AAAA HH:MM", type= "datetime-local", size = "30" })
             @Html.ValidationMessageFor(model => model.DateEnd)
         </div>
 
