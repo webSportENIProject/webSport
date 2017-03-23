@@ -30,7 +30,8 @@ namespace WUI.Controllers
             var result = MgtPersonne.GetInstance().GetAll().ToModels();
 
             Pager pager = new Pager(result.Count(), page, 16);
-            view.personnes = result.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize).ToList();
+            int skip = (pager.CurrentPage - 1) * pager.PageSize;
+            view.personnes = MgtPersonne.GetInstance().GetAllItemsByLimit(skip, pager.PageSize).ToModels();
             view.Pager = pager;
 
             return View(view);

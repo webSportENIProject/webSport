@@ -45,6 +45,11 @@ namespace Repository
             return base.GetAll().ToBos();
         }
 
+        public List<Personne> GetAllItemsByLimit(int skip, int take)
+        {
+            return this.context.Personne.OrderBy(x => x.Id).Skip(skip).Take(take).ToList().ToBos();
+        }
+
         public Personne getPersonneByUserId(int id) {
             return base.Where(x => x.Id == id).SingleOrDefault().ToBO();
         }

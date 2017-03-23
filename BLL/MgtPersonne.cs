@@ -55,6 +55,12 @@ namespace BLL
             return (listPersonnes);
         }
 
+        public List<Personne> GetAllItemsByLimit(int skip, int take)
+        {
+            List<Personne> listPersonnes = this._uow.PersonneRepo.GetAllItemsByLimit(skip, take);
+            return (listPersonnes);
+        }
+
         // UPDATE
         public void UpdatePersonne(Personne personne) {
             this._uow.PersonneRepo.Update(personne);
