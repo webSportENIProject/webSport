@@ -133,7 +133,8 @@
                     directionsDisplay.setDirections(response);
                     var route = response.routes[0];
                     var summaryPanel = document.getElementById('directions_panel');
-
+                    var totalDistances = 0;
+                    
                     // For each route, display summary information.
                     for (var i = 0; i < route.legs.length; i++) {
                         var routeSegment = i + 1;
@@ -143,7 +144,16 @@
                                                 + '<td>' + route.legs[i].end_address + '</td>'
                                                 + '<td>' + route.legs[i].distance.text + '</td>'
                                                 + '</tr>';
+
+                        //Distance totale du parcours : divisé par 1000 -> en km
+                        totalDistances += route.legs[i].distance.value / 1000;
                     }
+                    summaryPanel.innerHTML += '<tr>'
+                                                + '<td></td>'
+                                                + '<td></td>'
+                                                + '<th> Distance Totale </th>'
+                                                + '<td>' + totalDistances + ' km </td>'
+                                                + '</tr>';
                 }
             });
         }

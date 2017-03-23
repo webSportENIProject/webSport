@@ -36,7 +36,7 @@
 
         <div class="form-group">
             @Html.LabelFor(m => m.Naissance)
-            @Html.TextBoxFor(m => m.Naissance, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Naissance, new { @class = "form-control", placeholder = "JJ/MM/AAAA", type = "date" })
         </div>
 
     <h2>Informations de connexion</h2>

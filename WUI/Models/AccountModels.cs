@@ -108,6 +108,7 @@ namespace WUI.Models
         [Required]
         [DataType(DataType.DateTime)]
         [Display(Name = "Date de naissance")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Naissance { get; set; }
     }
 
