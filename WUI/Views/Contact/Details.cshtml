@@ -1,0 +1,17 @@
+﻿@using WUI.Models
+@model ContactModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1>@Html.DisplayFor(m => m.Titre)</h1>
+<p>Le @Html.DisplayFor(m => m.Date) par @Html.DisplayFor(m => m.Nom) (@Html.DisplayFor(m => m.Email))</p>
+
+<h3>Message : </h3>
+<div style="border : 1px solid black; height : auto;">
+    @Html.DisplayFor(m => m.Message)
+</div>
+<br />
+<div>
+    @Html.ActionLink("Retour aux messages", "Index")
+</div>

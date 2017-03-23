@@ -34,5 +34,10 @@ namespace Repository
         {
             return base.GetAll().ToBos();
         }
+
+        public Mail Get(int id)
+        {
+            return base.Where(x => x.Id == id).SingleOrDefault().ToBo();
+        }
     }
 }

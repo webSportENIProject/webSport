@@ -49,5 +49,11 @@ namespace BLL
             List<Mail> contact = this._uow.MailRepo.GetAllItems();
             return contact;
         }
+
+
+        public Mail Get(int id)
+        {
+            return this._uow.MailRepo.Get(id);
+        }
     }
 }

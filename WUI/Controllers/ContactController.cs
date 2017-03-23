@@ -46,5 +46,12 @@ namespace WUI.Controllers
            
         }
 
+        [Authorize(Roles = "Administrateur")]
+        public ActionResult Details(int id = 0)
+        {
+            ContactModel model = MgtMail.GetInstance().Get(id).ToModel();
+            return View(model);
+        }
+
     }
 }
