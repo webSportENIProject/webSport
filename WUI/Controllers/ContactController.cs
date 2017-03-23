@@ -38,8 +38,12 @@ namespace WUI.Controllers
             if (ModelState.IsValid)
             {
                 MgtMail.GetInstance().AddMail(mail.ToBo());
+                return RedirectToAction("Index", "Home");
+            }else
+            {
+                return View();
             }
-            return RedirectToAction("Index", "Home");
+           
         }
 
     }
