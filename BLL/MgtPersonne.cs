@@ -64,6 +64,8 @@ namespace BLL
         // UPDATE
         public void UpdatePersonne(Personne personne) {
             this._uow.PersonneRepo.Update(personne);
+
+            this._uow.Save();
         }
         // DELETE
         public void RemovePersonne(int idUser)

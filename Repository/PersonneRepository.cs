@@ -30,6 +30,7 @@ namespace Repository
         {
             try
             {
+                element.kms = true;
                 var result = base.Add(element.ToDataEntity());
                 return result.Id;
             }
