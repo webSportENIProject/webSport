@@ -25,7 +25,7 @@ namespace WUI.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Message = "Votre page de contact.";
+            ViewBag.Message = "Votre page de contact";
 
             return View();
         }
