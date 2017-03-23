@@ -45,7 +45,7 @@ namespace WUI.Controllers
         public ActionResult Index()
         {
             List<RaceModel> result = MgtRace.GetInstance().GetAllItemsWithParticipants().ToModels(true);
-            result = result.Where(x => x.DateEnd >= DateTime.Now ).ToList();
+            result = result.Where(x => x.DateEnd >= DateTime.Today ).ToList();
 
             int idUser = 0;
             if (WebSecurity.IsAuthenticated) {
@@ -72,7 +72,7 @@ namespace WUI.Controllers
         {
             OldRaceView view = new OldRaceView();
             List<RaceModel> result = MgtRace.GetInstance().GetAllItemsWithParticipants().ToModels(true);
-            result = result.Where(x => x.DateEnd < DateTime.Now).ToList();
+            result = result.Where(x => x.DateEnd < DateTime.Today).ToList();
             Pager pager = new Pager(result.Count(), page);
             view.races = result.OrderByDescending(x => x.DateStart).Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize).ToList();
             view.Pager = pager;
