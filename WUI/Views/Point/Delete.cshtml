@@ -6,47 +6,48 @@
 
 <h3>Êtes-vous sur de vouloir supprimer cet élément ?</h3>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Titre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Titre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Ordre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Ordre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Longitude)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Longitude)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Latitude)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Latitude)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.LibelleCourse)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LibelleCourse)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.LibelleTypePoint)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LibelleTypePoint)
-    </div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ordre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibelleCourse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibelleTypePoint)
+        </th>
+    </tr>
+    <tr>
+       <td>
+           @Html.DisplayFor(model => model.Titre)
+       </td>
+        <td>
+            @Html.DisplayFor(model => model.Ordre)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Longitude)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.LibelleCourse)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.LibelleTypePoint)
+        </td>
+    </tr>
+</table>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

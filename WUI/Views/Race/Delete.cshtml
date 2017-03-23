@@ -6,33 +6,36 @@
 
 <h3>Êtes-vous sur de vouloir supprimer cet élément ?</h3>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Title)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateStart)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateStart)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateEnd)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateEnd)
-    </div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateEnd)
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.DateStart)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.DateEnd)
+        </td>
+    </tr>
+</table>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

@@ -67,15 +67,10 @@
             @Html.TextBoxFor(model => model.MaxParticipants, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.MaxParticipants)
         </div>
-
-       <button type="submit" value="Créer la course" class="btn btn-default">Créer la course</button>
+       <p>
+           <button type="submit" value="Créer la course" class="btn btn-default">Créer la course</button> |
+           @Html.ActionLink("Retour à la liste", "Index")
+       </p>
+ 
 }
 
-
-<div>
-    @Html.ActionLink("Retour à la liste", "Index")
-</div>
-
-@section Scripts {
-
-}

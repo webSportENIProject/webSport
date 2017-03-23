@@ -76,10 +76,11 @@ body {
 footer{
     position: fixed;
     bottom: 0;
-    background-color: #f3f1f1;
+    background-color: #ece9e9;
     border-color: #dedede;
     color: #020202;
     width: 100%;
+    z-index: 200;
 }
 .footer-content {
     margin-left: 10px;

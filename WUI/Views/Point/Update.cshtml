@@ -54,13 +54,11 @@
        
         <div id="mapid"></div>
         <br />
-        <button type="submit" value="Modifier le point" class="btn btn-default">Modifier le point</button>
+        <p>
+            <button type="submit" value="Modifier le point" class="btn btn-default">Modifier le point</button> |
+            @Html.ActionLink("Retour à la liste", "Index", new { id = Model.IdCourse })
+        </p>
 }
-
-
-<div>
-    @Html.ActionLink("Retour à la liste", "Index", new { id = Model.IdCourse })
-</div>
 
 @section scripts {
 
