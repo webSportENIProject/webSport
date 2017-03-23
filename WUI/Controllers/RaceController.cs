@@ -117,7 +117,14 @@ namespace WUI.Controllers
                         point.Longitude = listePoints[i].lng;
                         point.Ordre = i;
                         // VALEUR HARCODE => //TODO: modify
-                        point.TypePointId = 4; //Correspond au KM
+                        if (i == 0) {
+                            point.TypePointId = 1; 
+                        } else if (i == listePoints.Length - 1) {
+                            point.TypePointId = 2; 
+                        }
+                        else {
+                            point.TypePointId = 4; //Correspond au KM
+                        }
                         point.CourseId = race.Id;
                         valid = valid && MgtPoint.GetInstance().AddPoint(point);
                     }
