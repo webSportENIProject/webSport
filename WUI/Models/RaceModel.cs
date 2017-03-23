@@ -51,6 +51,8 @@ namespace WUI.Models
 
         public string AjaxPoints { get; set; }
 
+        public string KmOrMiles { get; set; }
+
         public List<ParticipantModel> Participants { get; set; }
 
         public List<PointModel> Points { get; set; }

@@ -356,8 +356,38 @@ namespace WUI.Controllers
         [AllowAnonymous]
         public ActionResult Details(int id)
          {		
-             var result = MgtRace.GetInstance().GetRace(id).ToModel();		
-             if (result == null)		
+             RaceModel result = MgtRace.GetInstance().GetRace(id).ToModel();
+
+            int idUser = 0;
+
+            //On récupère l'ID de l'utilisateur courant
+            if (WebSecurity.IsAuthenticated)
+            {
+                if (!WebSecurity.Initialized)
+                {
+                    WebSecurity.InitializeDatabaseConnection("SqlAdoCs", "UserTable", "Id", "Name", autoCreateTables: true);
+                }
+                idUser = WebSecurity.CurrentUserId;
+            }
+
+            //On récupère l'utisateur
+            //On personnalise la vue en f(x) du paramètrage du compte
+            if (idUser > 0)
+            {
+                Personne user = MgtPersonne.GetInstance().GetPersonneByIdUserTable(idUser);
+                if (user.kms)
+                {
+                    result.KmOrMiles = "Km";
+                }else if (user.miles)
+                {
+                    result.KmOrMiles = "Miles";
+                } else
+                {
+                    result.KmOrMiles = "Km";
+                }
+            }
+
+            if (result == null)		
              {		
                  return HttpNotFound();		
              }		

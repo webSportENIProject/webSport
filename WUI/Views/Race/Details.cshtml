@@ -45,7 +45,12 @@
         var map;
         var directionsDisplay;
         var directionsService = new google.maps.DirectionsService();
-
+        var KmOrMiles = "@Model.KmOrMiles";
+        if( KmOrMiles == "Miles"){
+            var unitSystemCompte = google.maps.UnitSystem.IMPERIAL;
+        }else{
+            var unitSystemCompte = google.maps.UnitSystem.METRIC;
+        }
 
         $.ajax({
             url: "@Url.Action("Points", "Race", new {id= @Model.Id })",
@@ -119,7 +124,8 @@
                 origin: start,
                 destination: end,
                 waypoints: waypts,
-                travelMode: google.maps.TravelMode.WALKING
+                travelMode: google.maps.TravelMode.WALKING,
+                unitSystem: unitSystemCompte
             };
             directionsService.route(request, function (response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
@@ -127,7 +133,7 @@
                     directionsDisplay.setDirections(response);
                     var route = response.routes[0];
                     var summaryPanel = document.getElementById('directions_panel');
-                    
+
                     // For each route, display summary information.
                     for (var i = 0; i < route.legs.length; i++) {
                         var routeSegment = i + 1;
