@@ -11,6 +11,7 @@ namespace WUI.Controllers
 {
     public class ContactController : Controller
     {
+        [Authorize(Roles = "Administrateur")]
         public ActionResult Index(int page = 1)
         {
             ContactView view = new ContactView();
@@ -38,7 +39,7 @@ namespace WUI.Controllers
             {
                 MgtMail.GetInstance().AddMail(mail.ToBo());
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
     }

@@ -32,7 +32,7 @@ namespace BLL
         {
             if (mail != null)
             {
-
+                mail.Date = DateTime.Now;
                 int lastId = this._uow.MailRepo.Add(mail);
                 if (lastId > 0)
                 {

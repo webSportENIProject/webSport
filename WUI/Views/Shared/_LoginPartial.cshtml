@@ -10,12 +10,7 @@
             @if (!User.IsInRole("Administrateur"))
             {
                 <li>@Html.ActionLink("Supprimer mon compte", "Delete", "Account")</li>
-            } 
-            @if (User.IsInRole("Administrateur"))
-            {
-                <li>@Html.ActionLink("Messages", "Index", "Contact", routeValues: null, htmlAttributes: new { @class = "username", title = "Support" })</li>
             }
-
         </ul>
     </li>
     <li>@Html.ActionLink("Se déconnecter", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "registerLogOff" })</li>

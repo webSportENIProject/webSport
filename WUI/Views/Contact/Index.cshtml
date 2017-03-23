@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                Heure
+                Date
             </th>
             <th>
-                Date
+                Heure
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.contact.First().Nom)
@@ -34,10 +34,10 @@
         {
             <tr>
                 <td>
-                    @item.Date.ToString("t")
+                    @item.Date.ToString("d")
                 </td>
                 <td>
-                    @item.Date.ToString("d")
+                    @item.Date.ToString("t")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nom)
