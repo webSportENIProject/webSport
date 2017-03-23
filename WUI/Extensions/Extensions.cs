@@ -184,7 +184,7 @@ namespace WUI.Extensions
 
         #region Contact
 
-        public static List<ContactModel> ToModels(this List<Mail> bos)
+        public static List<ContactModel> ToModels(this List<Mail> bos, bool withJoin = false)
         {
             return bos != null
                 ? bos.Where(x => x != null).Select(x => x.ToModel()).ToList()
@@ -201,7 +201,8 @@ namespace WUI.Extensions
                 Nom = bo.Nom,
                 Email = bo.Email,
                 Titre = bo.Titre,
-                Message = bo.Message
+                Message = bo.Message,
+                Date = bo.Date
             };
         }
 
@@ -215,7 +216,8 @@ namespace WUI.Extensions
                 Nom = model.Nom,
                 Email = model.Email,
                 Titre = model.Titre,
-                Message = model.Message
+                Message = model.Message,
+                Date = model.Date
             };
         }
         #endregion

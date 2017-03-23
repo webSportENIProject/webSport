@@ -139,7 +139,8 @@ namespace DAL.Extensions
                 Nom = model.Nom,
                 Email = model.Email,
                 Titre = model.Titre,
-                Message = model.Message
+                Message = model.Message,
+                Date = model.Date
             };
         }
 
@@ -160,7 +161,8 @@ namespace DAL.Extensions
                 Nom = entity.Nom,
                 Email = entity.Email,
                 Titre = entity.Titre,
-                Message = entity.Message
+                Message = entity.Message,
+                Date = entity.Date
             };
         }
         #endregion

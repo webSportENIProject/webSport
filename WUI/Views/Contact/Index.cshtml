@@ -1,5 +1,5 @@
-﻿
-@model IEnumerable<WUI.Models.ContactModel>
+﻿@using WUI.Models
+@model ContactView
 @{
     ViewBag.Title = "Messages";
 }
@@ -13,20 +13,32 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nom)
+                Heure
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Titre)
+                @Html.DisplayNameFor(model => model.contact.First().Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contact.First().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contact.First().Titre)
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.contact)
         {
             <tr>
+                <td>
+                    @item.Date.ToString("t")
+                </td>
+                <td>
+                    @item.Date.ToString("d")
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nom)
                 </td>
@@ -43,3 +55,36 @@
         }
     </tbody>
 </table>
+
+@if (Model.Pager.EndPage > 1)
+{
+    <ul class="pagination">
+        @if (Model.Pager.CurrentPage > 1)
+        {
+            <li>
+                <a href="@Url.Action("Index", "Contact")">First</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Contact", new {page = Model.Pager.CurrentPage - 1 })">Previous</a>
+            </li>
+        }
+
+        @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+        {
+            <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                <a href="@Url.Action("Index", "Contact", new { page = @page})">@page</a>
+            </li>
+        }
+
+        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+        {
+            <li>
+                <a href="@Url.Action("Index", "Contact", new { page = Model.Pager.CurrentPage + 1 })">Next</a>
+            </li>
+            <li>
+
+                <a href="@Url.Action("Index", "Contact", new { page = Model.Pager.TotalPages})">Last</a>
+            </li>
+        }
+    </ul>
+} 

@@ -198,6 +198,7 @@
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Pager.cs" />
     <Compile Include="Models\OldRaceView.cs" />
+    <Compile Include="Models\ContactView.cs" />
     <Compile Include="Models\PersonneView.cs" />
     <Compile Include="Models\RegisterView.cs" />
     <Compile Include="Models\MailModel.cs" />

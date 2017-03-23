@@ -11,10 +11,15 @@ namespace WUI.Controllers
 {
     public class ContactController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            List<ContactModel> result = MgtMail.GetInstance().GetAllContact().ToModels();
-            return View(result);
+            ContactView view = new ContactView();
+            List<ContactModel> result = MgtMail.GetInstance().GetAllContact().ToModels(true).ToList();
+            Pager pager = new Pager(result.Count(), page,16);
+            view.contact = result.OrderByDescending(x => x.Date).Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize).ToList();
+            view.Pager = pager;
+
+            return View(view);
         }
 
         public ActionResult Create()
