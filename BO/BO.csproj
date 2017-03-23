@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="LatLng.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Mail.cs" />
     <Compile Include="Participant.cs" />

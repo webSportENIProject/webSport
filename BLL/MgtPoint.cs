@@ -37,8 +37,12 @@ namespace BLL
                 if (lastId > 0)
                 {
                     point.Id = lastId;
+                    return true;
+                }else
+                {
+                    return false;
                 }
-                return true;
+               
             }
 
             return false;

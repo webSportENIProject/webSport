@@ -34,8 +34,9 @@ namespace Repository
                 var result = base.Add(element.ToDataEntity());
                 return result.Id;
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return 0;
             }
         }

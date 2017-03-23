@@ -19,6 +19,7 @@ using iTextSharp.text.html.simpleparser;
 using System.IO;
 using System.util;
 using System.Text.RegularExpressions;
+using System.Web.Script.Serialization;
 //For converting HTML TO PDF- END
 
 
@@ -98,9 +99,36 @@ namespace WUI.Controllers
         {
             try
             {
-                if (ModelState.IsValid && MgtRace.GetInstance().AddRace(race.ToBo()))
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                LatLng[] listePoints = js.Deserialize<LatLng[]>(race.AjaxPoints);
+                bool valid = true;
+
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index");
+                    //Ajout de la course
+                    race = MgtRace.GetInstance().AddRace(race.ToBo()).ToModel();
+
+                    //Ajout des points
+                    for (int i = 0; i < listePoints.Length; i++)
+                    {
+                        Point point = new Point();
+                        point.Titre = "Titre " + i;
+                        point.Latitude = listePoints[i].lat;
+                        point.Longitude = listePoints[i].lng;
+                        point.Ordre = i;
+                        // VALEUR HARCODE => //TODO: modify
+                        point.TypePointId = 4; //Correspond au KM
+                        point.CourseId = race.Id;
+                        valid = valid && MgtPoint.GetInstance().AddPoint(point);
+                    }
+
+                    if (valid) {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
                 else
                 {
@@ -108,12 +136,13 @@ namespace WUI.Controllers
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return View();
             }
         }
-
+        
         //
         // GET: /Race/Edit/5
         [Authorize(Roles = "Administrateur")]

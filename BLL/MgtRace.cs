@@ -29,7 +29,7 @@ namespace BLL
             _uow = UnitOfWork.GetInstance();           
         }
 
-        public bool AddRace(Race race)
+        public Race AddRace(Race race)
         {
             if (race != null)
             {
@@ -38,11 +38,14 @@ namespace BLL
                 if (lastId > 0)
                 {
                     race.Id = lastId;
+                    return race;
                 }
-                return true;
+                else {
+                    return null;
+                }               
             }
 
-            return false;
+            return null;
         }
 
         public List<Race> GetAllItems()
