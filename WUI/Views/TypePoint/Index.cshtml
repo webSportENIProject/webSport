@@ -9,12 +9,12 @@
 
 }
 
-<h2>Liste des différens type de points</h2>
+<h2>Liste des différents types de points</h2>
 
-    <p>
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        @Html.ActionLink("Créer une nouveau type de point", "Create")
-    </p>
+<p>
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    @Html.ActionLink("Créer une nouveau type de point", "Create")
+</p>
 
 <table class="table">
     <thead>
@@ -34,17 +34,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Libelle)
                     </td>
-                   
-                    <td>                        
-                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id })                                               
+
+                    <td>
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id })
                     </td>
                 </tr>
             }
         }
     </tbody>
 </table>
-
-
-@section scripts {
-
-}

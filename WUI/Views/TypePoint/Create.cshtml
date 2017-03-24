@@ -1,14 +1,14 @@
 ﻿@model WUI.Models.TypePointModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Création d'un type de point";
 }
 
 @section css {
     
 }
 
-<h2>Création d'un type de point</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Create", "TypePoint", FormMethod.Post))
 {
@@ -26,16 +26,10 @@
         <div class="form-group">
             @Html.TextBoxFor(model => model.Libelle, new { @class="form-control", size = "30" })
             @Html.ValidationMessageFor(model => model.Libelle)
-        </div>        
+        </div>
 
-       <button type="submit" value="Créer" class="btn btn-default">Créer</button>
-}
-
-
-<div>
-    @Html.ActionLink("Retour à la liste", "Index")
-</div>
-
-@section Scripts {
-
+        <p>
+            <button type="submit" value="Créer" class="btn btn-default">Créer</button> |
+            @Html.ActionLink("Retour à la liste", "Index")
+        </p>
 }

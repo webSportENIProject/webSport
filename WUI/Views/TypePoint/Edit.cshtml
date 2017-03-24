@@ -1,24 +1,25 @@
 ﻿@model WUI.Models.TypePointModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edition d'un type de point";
 }
 
 @section css {
 
 }
 
-<h2>Edit</h2>
+<h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    
-        @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Libelle)
-        </div>
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Libelle)
+    </div>
         <div class="form-group">
             @Html.TextBoxFor(model => model.Libelle, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Libelle)
