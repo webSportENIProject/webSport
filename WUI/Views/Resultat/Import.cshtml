@@ -2,18 +2,17 @@
     ViewBag.Title = "Upload";
 }
 
-<h2>UploadFile</h2>
+<h2>Importer un fichier</h2>
+<p>Le fichier importé doit être de type .csv</p>
 
 @using (Html.BeginForm("Import", "Resultat", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
-    <div>
-        @Html.TextBox("file", "", new { type = "file" }) <br />
+    @Html.TextBox("file", "", new { type = "file" })
+    <br />
 
-        <input type="submit" value="Upload" />
+    <input class="btn btn-default" type="submit" value="Upload" />
 
-        @ViewBag.Message
-
-    </div>
+    @ViewBag.Message
 
 }
