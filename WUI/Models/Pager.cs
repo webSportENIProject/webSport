@@ -12,7 +12,18 @@ namespace WUI.Models
         {
             // calculate total, start and end pages
             var totalPages = (int)Math.Ceiling((decimal)totalItems / (decimal)pageSize);
-            var currentPage = page != null ? (int)page : 1;
+            var currentPage = 1;
+            if (page < 1)
+            {
+                currentPage = 1;
+            }
+            else if (page > totalPages)
+            {
+                currentPage = totalPages;
+            }
+            else {
+                currentPage = page != null ? (int)page : 1;
+            }
             var startPage = currentPage - 5;
             var endPage = currentPage + 4;
             if (startPage <= 0)

@@ -49,13 +49,15 @@ namespace WUI.Controllers
                 }
                 else
                 {
-                    return View();
+                    point.ListTypePointOptions = MgtTypePoint.GetInstance().GetAllItems();
+                    return View(point);
                 }
 
             }
             catch
             {
-                return View();
+                point.ListTypePointOptions = MgtTypePoint.GetInstance().GetAllItems();
+                return View(point);
             }
         }
 
